@@ -123,7 +123,6 @@
 		80E0569B176900F100C15EC6 /* ios-clientes */ = {
 			isa = PBXGroup;
 			children = (
-				80E056D117691E6700C15EC6 /* Statics */,
 				80E056A4176900F100C15EC6 /* BVAppDelegate.h */,
 				80E056A5176900F100C15EC6 /* BVAppDelegate.m */,
 				80E056A7176900F100C15EC6 /* Main.storyboard */,
@@ -165,21 +164,6 @@
 				80E056C4176900F100C15EC6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		80E056D117691E6700C15EC6 /* Statics */ = {
-			isa = PBXGroup;
-			children = (
-				80E056D217691E8C00C15EC6 /* Images */,
-			);
-			name = Statics;
-			sourceTree = "<group>";
-		};
-		80E056D217691E8C00C15EC6 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
