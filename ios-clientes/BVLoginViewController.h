@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BVDetailViewController : UIViewController
-
-//@property (strong, nonatomic) id detailItem;
+@interface BVLoginViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *textFieldUsuario;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;

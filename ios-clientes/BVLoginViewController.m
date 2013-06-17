@@ -6,41 +6,19 @@
 //  Copyright (c) 2013 Bice Vida. All rights reserved.
 //
 
-#import "BVDetailViewController.h"
+#import "BVLoginViewController.h"
 
-@interface BVDetailViewController ()
+@interface BVLoginViewController ()
 //- (void)configureView;
 @end
 
-@implementation BVDetailViewController
+@implementation BVLoginViewController
 
 #pragma mark - Managing the detail item
-
-/*
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-        
-        // Update the view.
-        [self configureView];
-    }
-}
-
-- (void)configureView
-{
-    // Update the user interface for the detail item.
-
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
-    }
-}
-*/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    //[self configureView];
+	// Gesto para esconder teclado al momento de tocar el background
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
     
     gestureRecognizer.cancelsTouchesInView = NO;
@@ -59,6 +37,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//Esconder teclado
 -(IBAction)textFieldReturn:(id)sender
 {
     [sender resignFirstResponder];

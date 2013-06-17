@@ -8,7 +8,7 @@
 
 #import "BVMasterViewController.h"
 
-#import "BVDetailViewController.h"
+#import "BVLoginViewController.h"
 
 @interface BVMasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;

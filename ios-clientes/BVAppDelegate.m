@@ -9,7 +9,7 @@
 #import "BVAppDelegate.h"
 
 
-#import "BVLoginViewController.h"
+//#import "BVLoginViewController.h"
 
 @implementation BVAppDelegate
 
@@ -21,7 +21,7 @@
 {
     // Override point for customization after application launch.
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    BVLoginViewController *controller = (BVLoginViewController *)navigationController.topViewController;
+    //BVLoginViewController *controller = (BVLoginViewController *)navigationController.topViewController;
     //controller.managedObjectContext = self.managedObjectContext;
     return YES;
 }
