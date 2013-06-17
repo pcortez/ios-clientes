@@ -9,13 +9,14 @@
 #import "BVDetailViewController.h"
 
 @interface BVDetailViewController ()
-- (void)configureView;
+//- (void)configureView;
 @end
 
 @implementation BVDetailViewController
 
 #pragma mark - Managing the detail item
 
+/*
 - (void)setDetailItem:(id)newDetailItem
 {
     if (_detailItem != newDetailItem) {
@@ -34,18 +35,33 @@
         self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
     }
 }
-
+*/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
+    //[self configureView];
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
+    
+    gestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:gestureRecognizer];
+}
+
+- (void)hideKeyboard:(UIGestureRecognizer *)gestureRecognizer
+{
+    [self.textFieldUsuario resignFirstResponder];
+    [self.textFieldPassword resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
 }
 
 @end

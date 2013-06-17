@@ -38,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		803DF4F6176FA5ED00C81849 /* BVLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVLoginViewController.h; path = ../BVLoginViewController.h; sourceTree = "<group>"; };
+		803DF4F7176FA5ED00C81849 /* BVLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVLoginViewController.m; path = ../BVLoginViewController.m; sourceTree = "<group>"; };
 		80E05690176900F100C15EC6 /* ios-clientes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-clientes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E05693176900F100C15EC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		80E05695176900F100C15EC6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,6 +91,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		803DF4F5176F8E5F00C81849 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		80E05687176900F100C15EC6 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +132,9 @@
 		80E0569B176900F100C15EC6 /* ios-clientes */ = {
 			isa = PBXGroup;
 			children = (
+				803DF4F6176FA5ED00C81849 /* BVLoginViewController.h */,
+				803DF4F7176FA5ED00C81849 /* BVLoginViewController.m */,
+				803DF4F5176F8E5F00C81849 /* ViewController */,
 				80E056A4176900F100C15EC6 /* BVAppDelegate.h */,
 				80E056A5176900F100C15EC6 /* BVAppDelegate.m */,
 				80E056A7176900F100C15EC6 /* Main.storyboard */,
@@ -471,6 +483,7 @@
 				80E056CD176900F100C15EC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		80E056CE176900F100C15EC6 /* Build configuration list for PBXNativeTarget "ios-clientesTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +492,7 @@
 				80E056D0176900F100C15EC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
