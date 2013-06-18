@@ -17,7 +17,7 @@
 		80E056A9176900F100C15EC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80E056A7176900F100C15EC6 /* Main.storyboard */; };
 		80E056AC176900F100C15EC6 /* ios_clientes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80E056AA176900F100C15EC6 /* ios_clientes.xcdatamodeld */; };
 		80E056AF176900F100C15EC6 /* BVMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E056AE176900F100C15EC6 /* BVMasterViewController.m */; };
-		80E056B2176900F100C15EC6 /* BVDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E056B1176900F100C15EC6 /* BVDetailViewController.m */; };
+		80E056B2176900F100C15EC6 /* BVLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E056B1176900F100C15EC6 /* BVLoginViewController.m */; };
 		80E056B4176900F100C15EC6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80E056B3176900F100C15EC6 /* Images.xcassets */; };
 		80E056BB176900F100C15EC6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E056BA176900F100C15EC6 /* XCTest.framework */; };
 		80E056BC176900F100C15EC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05693176900F100C15EC6 /* Foundation.framework */; };
@@ -53,14 +53,16 @@
 		80E056AB176900F100C15EC6 /* ios_clientes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ios_clientes.xcdatamodel; sourceTree = "<group>"; };
 		80E056AD176900F100C15EC6 /* BVMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVMasterViewController.h; sourceTree = "<group>"; };
 		80E056AE176900F100C15EC6 /* BVMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVMasterViewController.m; sourceTree = "<group>"; };
-		80E056B0176900F100C15EC6 /* BVDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVDetailViewController.h; sourceTree = "<group>"; };
-		80E056B1176900F100C15EC6 /* BVDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVDetailViewController.m; sourceTree = "<group>"; };
+		80E056B0176900F100C15EC6 /* BVLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVLoginViewController.h; sourceTree = "<group>"; };
+		80E056B1176900F100C15EC6 /* BVLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVLoginViewController.m; sourceTree = "<group>"; };
 		80E056B3176900F100C15EC6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		80E056B9176900F100C15EC6 /* ios-clientesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-clientesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E056BA176900F100C15EC6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		80E056C3176900F100C15EC6 /* ios-clientesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios-clientesTests-Info.plist"; sourceTree = "<group>"; };
 		80E056C5176900F100C15EC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		80E056C7176900F100C15EC6 /* ios_clientesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_clientesTests.m; sourceTree = "<group>"; };
+		80FC577917709278008CC3EB /* BVRutTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRutTextField.h; sourceTree = "<group>"; };
+		80FC577A17709278008CC3EB /* BVRutTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVRutTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		803DF4F5176F8E5F00C81849 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				80E056B0176900F100C15EC6 /* BVLoginViewController.h */,
+				80E056B1176900F100C15EC6 /* BVLoginViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		80E05687176900F100C15EC6 = {
 			isa = PBXGroup;
 			children = (
@@ -123,13 +134,14 @@
 		80E0569B176900F100C15EC6 /* ios-clientes */ = {
 			isa = PBXGroup;
 			children = (
+				80FC577B17709298008CC3EB /* Delegates */,
+				80FC5778177090FA008CC3EB /* TextFields */,
+				803DF4F5176F8E5F00C81849 /* ViewControllers */,
 				80E056A4176900F100C15EC6 /* BVAppDelegate.h */,
 				80E056A5176900F100C15EC6 /* BVAppDelegate.m */,
 				80E056A7176900F100C15EC6 /* Main.storyboard */,
 				80E056AD176900F100C15EC6 /* BVMasterViewController.h */,
 				80E056AE176900F100C15EC6 /* BVMasterViewController.m */,
-				80E056B0176900F100C15EC6 /* BVDetailViewController.h */,
-				80E056B1176900F100C15EC6 /* BVDetailViewController.m */,
 				80E056B3176900F100C15EC6 /* Images.xcassets */,
 				80E056AA176900F100C15EC6 /* ios_clientes.xcdatamodeld */,
 				80E0569C176900F100C15EC6 /* Supporting Files */,
@@ -164,6 +176,22 @@
 				80E056C4176900F100C15EC6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80FC5778177090FA008CC3EB /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				80FC577917709278008CC3EB /* BVRutTextField.h */,
+				80FC577A17709278008CC3EB /* BVRutTextField.m */,
+			);
+			name = TextFields;
+			sourceTree = "<group>";
+		};
+		80FC577B17709298008CC3EB /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +295,7 @@
 				80E056AC176900F100C15EC6 /* ios_clientes.xcdatamodeld in Sources */,
 				80E056A6176900F100C15EC6 /* BVAppDelegate.m in Sources */,
 				80E056AF176900F100C15EC6 /* BVMasterViewController.m in Sources */,
-				80E056B2176900F100C15EC6 /* BVDetailViewController.m in Sources */,
+				80E056B2176900F100C15EC6 /* BVLoginViewController.m in Sources */,
 				80E056A2176900F100C15EC6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +499,7 @@
 				80E056CD176900F100C15EC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		80E056CE176900F100C15EC6 /* Build configuration list for PBXNativeTarget "ios-clientesTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +508,7 @@
 				80E056D0176900F100C15EC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
