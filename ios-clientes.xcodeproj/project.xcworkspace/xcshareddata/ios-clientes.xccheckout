@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D2EFAB9B-ED58-402F-B87F-A0A90CD92D2E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ios-clientes</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B5F99DBD-578D-442A-8059-1750AF242899</key>
+		<string>ssh://github-bicevida/pcortezc/ios-clientes.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ios-clientes.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B5F99DBD-578D-442A-8059-1750AF242899</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github-bicevida/pcortezc/ios-clientes.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B5F99DBD-578D-442A-8059-1750AF242899</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B5F99DBD-578D-442A-8059-1750AF242899</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-clientes</string>
+		</dict>
+	</array>
+</dict>
+</plist>

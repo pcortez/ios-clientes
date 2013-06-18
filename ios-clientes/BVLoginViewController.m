@@ -9,7 +9,7 @@
 #import "BVLoginViewController.h"
 
 @interface BVLoginViewController ()
-//- (void)configureView;
+
 @end
 
 @implementation BVLoginViewController
@@ -25,7 +25,12 @@
     [self.view addGestureRecognizer:gestureRecognizer];
     
     //screen config
-    [self.view setBackgroundColor:[[UIColor alloc]initWithPatternImage:[UIImage imageNamed:@"backgroundLogin"]]];    
+    [self.view setBackgroundColor:[[UIColor alloc]initWithPatternImage:[UIImage imageNamed:@"backgroundLogin"]]];
+    
+    //la vista como delegate
+    self.textFieldUsuario.customDelegate = self;
+    //boton desactivado hasta que se valide el rut
+    self.UIButtonEntrar.enabled = NO;
 }
 
 - (void) viewDidUnload
@@ -78,6 +83,9 @@
     [UIView commitAnimations];
 }
 
-
+//delegate
+- (void)isCorrectInput:(BOOL) value {
+    self.UIButtonEntrar.enabled = value;
+}
 
 @end

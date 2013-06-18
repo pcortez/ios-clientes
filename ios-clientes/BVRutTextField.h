@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BVRutTextFieldDelegate.h"
 
 @interface BVRutTextField : UITextField
+
+@property (weak, nonatomic) id<BVRutTextFieldDelegate> customDelegate;
+- (NSString *)getFormatRut;
+
+-(IBAction)editBegin:(id)sender;
+-(IBAction)editDidEnd:(id)sender;
+-(IBAction)editChangeEnd:(id)sender;
 
 @end
