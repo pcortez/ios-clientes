@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
+<<<<<<< HEAD
+=======
+        <development version="5000" identifier="xcode"/>
+>>>>>>> develop
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="cUi-kZ-frf">
             <objects>
+<<<<<<< HEAD
                 <navigationController id="rS3-R9-Ivy" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
+=======
+                <navigationController navigationBarHidden="YES" id="rS3-R9-Ivy" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedTopBarMetrics"/>
+>>>>>>> develop
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="pGg-6v-bdr" kind="relationship" relationship="rootViewController" id="RxB-wf-QIq"/>
+                        <segue destination="HwH-Vp-uYK" kind="relationship" relationship="rootViewController" id="OYY-xg-PCR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq9-QA-ai8" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1" y="64"/>
         </scene>
+<<<<<<< HEAD
         <!--Master View Controller - Master-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
@@ -80,26 +91,95 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+=======
+        <!--Login View Controller-->
+        <scene sceneID="n9R-sh-o0e">
+            <objects>
+                <viewController id="HwH-Vp-uYK" customClass="BVLoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hZ8-6B-oSo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="contraseña" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KCz-Td-5Wk">
+                                <rect key="frame" x="131" y="425" width="107" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="1ER-pH-kwp"/>
+                                    <constraint firstAttribute="width" constant="107" id="Tda-ba-fGm"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="slideFrameDown" destination="HwH-Vp-uYK" eventType="editingDidEnd" id="Y2e-LG-J0C"/>
+                                    <action selector="slideFrameUp" destination="HwH-Vp-uYK" eventType="editingDidBegin" id="qD8-sf-K8F"/>
+                                    <action selector="textFieldReturn:" destination="HwH-Vp-uYK" eventType="editingDidEndOnExit" id="yBE-V1-srG"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="226-SN-hgY">
+                                <rect key="frame" x="242" y="425" width="58" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.30798532209319146" green="0.80548469387755106" blue="0.071899233846048488" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="5Q7-Hs-oG8"/>
+                                    <constraint firstAttribute="width" constant="58" id="kOk-iN-e0n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Entrar">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textField clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="usuario" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lyx-uG-gYM" customClass="BVRutTextField">
+                                <rect key="frame" x="20" y="425" width="107" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="rp3-la-rVC"/>
+                                    <constraint firstAttribute="width" constant="107" id="x77-Ck-Zgb"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="0.99084739963503654" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="slideFrameDown" destination="HwH-Vp-uYK" eventType="editingDidEnd" id="OPN-NX-TZS"/>
+                                    <action selector="slideFrameUp" destination="HwH-Vp-uYK" eventType="editingDidBegin" id="exZ-XX-p28"/>
+                                    <action selector="textFieldReturn:" destination="HwH-Vp-uYK" eventType="editingDidEndOnExit" id="otA-aU-5LF"/>
+                                </connections>
+                            </textField>
+>>>>>>> develop
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leading" constant="20" symbolic="YES" id="62x-JV-TTJ"/>
-                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="centerY" secondItem="MMQ-IT-qOo" secondAttribute="centerY" id="JzS-HC-Rnl"/>
-                            <constraint firstAttribute="trailing" secondItem="Lei-5M-9Gs" secondAttribute="trailing" constant="20" symbolic="YES" id="pXB-RP-Zz6"/>
+                            <constraint firstItem="Lyx-uG-gYM" firstAttribute="leading" secondItem="hZ8-6B-oSo" secondAttribute="leading" constant="20" id="303-zk-CoG"/>
+                            <constraint firstAttribute="bottom" secondItem="KCz-Td-5Wk" secondAttribute="bottom" constant="27" id="DxY-af-Yfa"/>
+                            <constraint firstAttribute="bottom" secondItem="Lyx-uG-gYM" secondAttribute="bottom" constant="27" id="UZf-HM-Bv4"/>
+                            <constraint firstItem="KCz-Td-5Wk" firstAttribute="leading" secondItem="Lyx-uG-gYM" secondAttribute="trailing" constant="4" id="Z2H-a2-xN8"/>
+                            <constraint firstAttribute="bottom" secondItem="226-SN-hgY" secondAttribute="bottom" constant="28" id="txA-Tx-3yp"/>
+                            <constraint firstItem="226-SN-hgY" firstAttribute="leading" secondItem="KCz-Td-5Wk" secondAttribute="trailing" constant="4" id="ygI-bj-Qpr"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+<<<<<<< HEAD
                     <navigationItem key="navigationItem" title="Detail" id="cra-N8-TIN"/>
+=======
+                    <navigationItem key="navigationItem" id="hpg-je-OLp"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+>>>>>>> develop
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="Lei-5M-9Gs" id="sCT-F7-F6f"/>
+                        <outlet property="UIButtonEntrar" destination="226-SN-hgY" id="u6C-Ti-vHr"/>
+                        <outlet property="textFieldPassword" destination="KCz-Td-5Wk" id="gp7-Xj-b1x"/>
+                        <outlet property="textFieldUsuario" destination="Lyx-uG-gYM" id="07G-hs-5Ac"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OXU-r4-oq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902" y="64"/>
+            <point key="canvasLocation" x="447" y="64"/>
         </scene>
     </scenes>
     <classes>
+<<<<<<< HEAD
         <class className="BVDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BVDetailViewController.h"/>
             <relationships>
@@ -108,6 +188,26 @@
         </class>
         <class className="BVMasterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BVMasterViewController.h"/>
+=======
+        <class className="BVLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BVLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="slideFrameDown"/>
+                <relationship kind="action" name="slideFrameUp"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="UIButtonEntrar" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="textFieldPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="textFieldUsuario" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="BVRutTextField" superclassName="UITextField">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BVRutTextField.h"/>
+            <relationships>
+                <relationship kind="action" name="editBegin:"/>
+                <relationship kind="action" name="editChangeEnd:"/>
+                <relationship kind="action" name="editDidEnd:"/>
+            </relationships>
+>>>>>>> develop
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
@@ -116,6 +216,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

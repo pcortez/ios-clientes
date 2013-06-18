@@ -3,19 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E3176C36-03B8-46C2-BC27-2CDB0CA3636F</string>
+	<string>D2EFAB9B-ED58-402F-B87F-A0A90CD92D2E</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ios-clientes</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>81538DF3-4165-4463-8EB1-10D425A4A896</key>
+		<key>B5F99DBD-578D-442A-8059-1750AF242899</key>
 		<string>ssh://github-bicevida/pcortezc/ios-clientes.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ios-clientes.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>81538DF3-4165-4463-8EB1-10D425A4A896</key>
+		<key>B5F99DBD-578D-442A-8059-1750AF242899</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -23,14 +23,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>81538DF3-4165-4463-8EB1-10D425A4A896</string>
+	<string>B5F99DBD-578D-442A-8059-1750AF242899</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>81538DF3-4165-4463-8EB1-10D425A4A896</string>
+			<string>B5F99DBD-578D-442A-8059-1750AF242899</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ios-clientes</string>
 		</dict>
