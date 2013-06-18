@@ -15,4 +15,7 @@
 
 
 -(IBAction)textFieldReturn:(id)sender;
+-(IBAction) slideFrameUp;
+-(IBAction) slideFrameDown;
+-(void) slideFrame:(BOOL) up;
 @end
