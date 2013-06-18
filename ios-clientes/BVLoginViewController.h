@@ -7,15 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BVRutTextFieldDelegate.h"
+#import "BVRutTextField.h"
 
-@interface BVLoginViewController : UIViewController
+@interface BVLoginViewController : UIViewController <BVRutTextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *textFieldUsuario;
+@property (weak, nonatomic) IBOutlet BVRutTextField *textFieldUsuario;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
+@property (weak, nonatomic) IBOutlet UIButton *UIButtonEntrar;
 
 
 -(IBAction)textFieldReturn:(id)sender;
 -(IBAction) slideFrameUp;
 -(IBAction) slideFrameDown;
 -(void) slideFrame:(BOOL) up;
+
+//delegate
+- (void)isCorrectInput:(BOOL) value;
 @end
