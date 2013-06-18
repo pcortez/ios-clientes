@@ -71,7 +71,10 @@
 
 -(void) slideFrame:(BOOL) up
 {
-    const int movementDistance = 200; // tweak as needed
+    
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+
+    const int movementDistance = (orientation==UIDeviceOrientationLandscapeLeft || orientation==UIDeviceOrientationLandscapeRight?150:200); // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);
