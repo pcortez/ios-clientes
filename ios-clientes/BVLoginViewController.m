@@ -8,6 +8,7 @@
 
 #import "BVLoginViewController.h"
 #import "Usuario+Create.h"
+#import "BVApiConnection.h"
 
 @interface BVLoginViewController ()
 
@@ -19,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //Revisando datos de usuario
+    //Revisando datos de usuario en db local
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Usuario"];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"ultimoLogin" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sort];
@@ -50,6 +51,8 @@
     self.textFieldUsuario.customDelegate = self;
     //boton desactivado hasta que se valide el rut
     self.UIButtonEntrar.enabled = NO;
+    //esconder activityIndicator
+    self.activityIndicatorCargando.hidden = YES;
 }
 
 - (void) viewDidUnload
@@ -102,9 +105,66 @@
     [UIView commitAnimations];
 }
 
+
+//boton entrar
+//esconder text field, botones y mostrar activityIndicatorCargando.hidden
+-(IBAction)buttonEntrar:(id)sender {
+    self.textFieldUsuario.hidden = YES;
+    self.textFieldPassword.hidden = YES;
+    self.UIButtonEntrar.hidden = YES;
+    self.activityIndicatorCargando.hidden = NO;
+    [self.activityIndicatorCargando startAnimating];
+    
+    if (userAuthentication([self.textFieldUsuario getRutConVerificador:NO], self.textFieldPassword.text)) {
+        //segue
+        [self.activityIndicatorCargando stopAnimating];
+    }
+    else {
+        [self.activityIndicatorCargando stopAnimating];
+        self.textFieldUsuario.hidden = NO;
+        self.textFieldPassword.hidden = NO;
+        self.UIButtonEntrar.hidden = NO;
+        self.activityIndicatorCargando.hidden = YES;
+        
+        self.textFieldPassword.text = @"";
+        self.textFieldUsuario.text = @"";
+    }
+}
+
 //delegate
 - (void)isCorrectInput:(BOOL) value {
     self.UIButtonEntrar.enabled = value;
 }
+
+//autenticacion
+/*
+- (BOOL)checkLogin
+{
+    NSLog(@"----- %@",self.textFieldUsuario);
+    
+    if (self.textFieldUsuario && [[self.textFieldUsuario getRutConVerificador:NO] length]>4) {
+        NSData* data;
+        NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/login/%@",[self.mainBundle objectForInfoDictionaryKey:@"BiceVidaApiURL"],[self.textFieldUsuario getRutConVerificador:NO]]];
+
+        NSLog(@" +++++ %@",urlPath);
+        NSError *error;
+        data = [NSData dataWithContentsOfURL:urlPath options:NSDataReadingUncached error:&error];
+        if (error) return NO;
+        
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        if (error) return NO;
+        
+        if ([json objectForKey:@"autentificado"]){
+            return [[json objectForKey:@"autentificado"] boolValue];
+        }
+        else {
+            return NO;
+        }
+    }
+    else {
+        return NO;
+    }
+}
+ */
 
 @end

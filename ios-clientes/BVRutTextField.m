@@ -51,10 +51,16 @@
 
 
 
-- (NSString *)getFormatRut
+- (NSString *)getRutConVerificador:(BOOL)verificador
 {
+    self.text = [self.text uppercaseString];
+    //string vacio
     if (!self.text || [self.text isEqualToString:@""]) return @"";
+    //string strint sin formato 1.212.132-1
     if ([self.text rangeOfString:@"-"].location == NSNotFound) {
+        if (!verificador) {
+            return [self.text substringWithRange:NSMakeRange(0,[self.text length]-1)];
+        }
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"es_CL"]];
         [formatter setPositiveFormat:@"#,###,###,##0"];
@@ -65,15 +71,22 @@
         s = [s stringByAppendingString:@"-"];
         return [s stringByAppendingString:[self.text substringWithRange:NSMakeRange([self.text length]-1,1)]];
     }
+    //string con formato 1.212.132-1
     else {
-        return self.text;
+        if(verificador){
+            return self.text;
+        }
+        else{
+            NSString *aux = [self.text substringWithRange:NSMakeRange(0, [self.text rangeOfString:@"-"].location)];
+            return [aux stringByReplacingOccurrencesOfString:@"." withString:@""];
+        }
+        
     }
-    
 }
 
 -(IBAction)editBegin:(id)sender
 {
-    //self.font = [UIFont systemFontOfSize:15.0f];
+    self.text = [self.text uppercaseString];
     if (![self.text isEqualToString:@""]) {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"es_CL"]];
@@ -88,6 +101,7 @@
 
 -(IBAction)editDidEnd:(id)sender
 {
+    self.text = [self.text uppercaseString];
     if (![self.text isEqualToString:@""]){
         //self.font = [UIFont systemFontOfSize:18.0f];
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];

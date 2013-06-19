@@ -12,7 +12,7 @@
 @interface BVRutTextField : UITextField
 
 @property (weak, nonatomic) id<BVRutTextFieldDelegate> customDelegate;
-- (NSString *)getFormatRut;
+- (NSString *)getRutConVerificador:(BOOL)verificador;
 
 -(IBAction)editBegin:(id)sender;
 -(IBAction)editDidEnd:(id)sender;
