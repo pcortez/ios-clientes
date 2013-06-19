@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "BVRutTextFieldDelegate.h"
 #import "BVRutTextField.h"
+#import "Usuario.h"
 
 @interface BVLoginViewController : UIViewController <BVRutTextFieldDelegate>
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSArray *matches;
+@property (strong, nonatomic) Usuario *client;
 
 @property (weak, nonatomic) IBOutlet BVRutTextField *textFieldUsuario;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;

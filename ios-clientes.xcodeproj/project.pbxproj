@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80BDAB7B1772103800431A64 /* Usuario+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB7A1772101A00431A64 /* Usuario+Create.m */; };
+		80BDAB7C1772103800431A64 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB7517720F2A00431A64 /* Usuario.m */; };
 		80E05694176900F100C15EC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05693176900F100C15EC6 /* Foundation.framework */; };
 		80E05696176900F100C15EC6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05695176900F100C15EC6 /* CoreGraphics.framework */; };
 		80E05698176900F100C15EC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05697176900F100C15EC6 /* UIKit.framework */; };
@@ -40,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		80BDAB7417720F2A00431A64 /* Usuario.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Usuario.h; path = ../Usuario.h; sourceTree = "<group>"; };
+		80BDAB7517720F2A00431A64 /* Usuario.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Usuario.m; path = ../Usuario.m; sourceTree = "<group>"; };
+		80BDAB791772101A00431A64 /* Usuario+Create.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Usuario+Create.h"; sourceTree = "<group>"; };
+		80BDAB7A1772101A00431A64 /* Usuario+Create.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Usuario+Create.m"; sourceTree = "<group>"; };
 		80E05690176900F100C15EC6 /* ios-clientes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-clientes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E05693176900F100C15EC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		80E05695176900F100C15EC6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -105,9 +111,30 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		80BDAB7317720EF000431A64 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				80BDAB7817720FC800431A64 /* Categories */,
+				80BDAB7417720F2A00431A64 /* Usuario.h */,
+				80BDAB7517720F2A00431A64 /* Usuario.m */,
+			);
+			name = Models;
+			path = "ios-clientes";
+			sourceTree = "<group>";
+		};
+		80BDAB7817720FC800431A64 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				80BDAB791772101A00431A64 /* Usuario+Create.h */,
+				80BDAB7A1772101A00431A64 /* Usuario+Create.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		80E05687176900F100C15EC6 = {
 			isa = PBXGroup;
 			children = (
+				80BDAB7317720EF000431A64 /* Models */,
 				80E0569B176900F100C15EC6 /* ios-clientes */,
 				80E056C1176900F100C15EC6 /* ios-clientesTests */,
 				80E05692176900F100C15EC6 /* Frameworks */,
@@ -308,6 +335,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80BDAB7B1772103800431A64 /* Usuario+Create.m in Sources */,
+				80BDAB7C1772103800431A64 /* Usuario.m in Sources */,
 				80FFB4D91770DF2E005DB06F /* CommonAlgorithm.m in Sources */,
 				80FFB4D31770CD01005DB06F /* BVRutTextField.m in Sources */,
 				80E056AC176900F100C15EC6 /* ios_clientes.xcdatamodeld in Sources */,

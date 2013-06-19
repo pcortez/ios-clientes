@@ -7,6 +7,7 @@
 //
 
 #import "BVLoginViewController.h"
+#import "Usuario+Create.h"
 
 @interface BVLoginViewController ()
 
@@ -18,9 +19,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //Revisando datos de usuario
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Usuario"];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"ultimoLogin" ascending:YES];
+    request.sortDescriptors = [NSArray arrayWithObject:sort];
+    
+    NSError *error;
+    self.matches = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (self.matches && [self.matches count]>0){
+        self.client = [self.matches lastObject];
+        if (self.client.autoLogin) {
+            self.textFieldUsuario.text = self.client.rut;
+            self.textFieldPassword.text = self.client.password;
+            [self performSegueWithIdentifier:@"LoadingSegue" sender:self];
+        }
+        else {
+            self.client = nil;
+        }
+    }
+    
 	// Gesto para esconder teclado al momento de tocar el background
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
-    
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:gestureRecognizer];
     
