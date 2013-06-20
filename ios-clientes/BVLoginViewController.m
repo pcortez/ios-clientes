@@ -115,56 +115,40 @@
     self.activityIndicatorCargando.hidden = NO;
     [self.activityIndicatorCargando startAnimating];
     
-    if (userAuthentication([self.textFieldUsuario getRutConVerificador:NO], self.textFieldPassword.text)) {
-        //segue
-        [self.activityIndicatorCargando stopAnimating];
-    }
-    else {
-        [self.activityIndicatorCargando stopAnimating];
-        self.textFieldUsuario.hidden = NO;
-        self.textFieldPassword.hidden = NO;
-        self.UIButtonEntrar.hidden = NO;
-        self.activityIndicatorCargando.hidden = YES;
-        
-        self.textFieldPassword.text = @"";
-        self.textFieldUsuario.text = @"";
-    }
+    //thread autentificacion
+    dispatch_queue_t downloadQueue = dispatch_queue_create("autentificacion web service", NULL);
+    dispatch_async(downloadQueue, ^{
+        BOOL isValidado = userAuthentication([self.textFieldUsuario getRutConVerificador:NO], self.textFieldPassword.text);
+        //este thread no se ejecuta antes de terminar el primer thread creado
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (isValidado) {
+                //segue
+                [self.activityIndicatorCargando stopAnimating];
+            }
+            else {
+                [self.activityIndicatorCargando stopAnimating];
+                self.textFieldUsuario.hidden = NO;
+                self.textFieldPassword.hidden = NO;
+                self.UIButtonEntrar.hidden = NO;
+                self.activityIndicatorCargando.hidden = YES;
+            
+                self.textFieldPassword.text = @"";
+                self.textFieldUsuario.text = @"";
+            }
+        });
+    });
 }
 
 //delegate
 - (void)isCorrectInput:(BOOL) value {
     self.UIButtonEntrar.enabled = value;
-}
-
-//autenticacion
-/*
-- (BOOL)checkLogin
-{
-    NSLog(@"----- %@",self.textFieldUsuario);
-    
-    if (self.textFieldUsuario && [[self.textFieldUsuario getRutConVerificador:NO] length]>4) {
-        NSData* data;
-        NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/login/%@",[self.mainBundle objectForInfoDictionaryKey:@"BiceVidaApiURL"],[self.textFieldUsuario getRutConVerificador:NO]]];
-
-        NSLog(@" +++++ %@",urlPath);
-        NSError *error;
-        data = [NSData dataWithContentsOfURL:urlPath options:NSDataReadingUncached error:&error];
-        if (error) return NO;
-        
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        if (error) return NO;
-        
-        if ([json objectForKey:@"autentificado"]){
-            return [[json objectForKey:@"autentificado"] boolValue];
-        }
-        else {
-            return NO;
-        }
+    if(!value){
+        [self.UIButtonEntrar setBackgroundColor:[UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f]];
     }
-    else {
-        return NO;
+    else{
+        [self.UIButtonEntrar setBackgroundColor:[UIColor colorWithRed:(79.0f / 255.0f) green:(205.0f / 255.0f) blue:(18.0f / 255.0f) alpha:1.0f]];
     }
 }
- */
+
 
 @end
