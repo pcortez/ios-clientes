@@ -44,20 +44,14 @@
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:gestureRecognizer];
     
-    //screen config
-    [self.view setBackgroundColor:[[UIColor alloc]initWithPatternImage:[UIImage imageNamed:@"backgroundLogin"]]];
-    
     //la vista como delegate
     self.textFieldUsuario.customDelegate = self;
     //boton desactivado hasta que se valide el rut
     self.UIButtonEntrar.enabled = NO;
     //esconder activityIndicator
     self.activityIndicatorCargando.hidden = YES;
-}
-
-- (void) viewDidUnload
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    //scroll view
+    [self.scrollViewContenedor setBackgroundColor: [[UIColor alloc]initWithPatternImage:[UIImage imageNamed:@"backgroundLogin"]]];
 }
 
 - (void)hideKeyboard:(UIGestureRecognizer *)gestureRecognizer
@@ -73,36 +67,58 @@
 }
 
 //esconder teclado
+- (void)viewWillAppear:(BOOL)animated
+{
+    // register for keyboard notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // unregister for keyboard notifications while not visible.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+-(void)keyboardWillShow:(NSNotification*)notification
+{
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+    
+    self.scrollViewContenedor.contentInset = contentInsets;
+    self.scrollViewContenedor.scrollIndicatorInsets = contentInsets;
+    
+    CGRect rect = self.view.frame;
+    rect.size.height -= keyboardSize.height;
+    if (!CGRectContainsPoint(rect, self.textFieldUsuario.frame.origin)) {
+        CGPoint scrollPoint=CGPointMake(0.0, self.textFieldUsuario.frame.origin.y-(keyboardSize.height-15));
+        [self.scrollViewContenedor setContentOffset:scrollPoint animated:YES];
+    }
+
+}
+
+-(void)keyboardWillHide:(NSNotification*)notification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: 0.2f];
+    self.scrollViewContenedor.contentInset = contentInsets;
+    self.scrollViewContenedor.scrollIndicatorInsets = contentInsets;
+    [UIView commitAnimations];
+}
+
 -(IBAction)textFieldReturn:(id)sender
 {
     [sender resignFirstResponder];
-}
-
--(IBAction) slideFrameUp
-{
-    [self slideFrame:YES];
-}
-
--(IBAction) slideFrameDown
-{
-    [self slideFrame:NO];
-}
-
--(void) slideFrame:(BOOL) up
-{
-    
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-
-    const int movementDistance = (orientation==UIDeviceOrientationLandscapeLeft || orientation==UIDeviceOrientationLandscapeRight?150:200); // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
-    
-    int movement = (up ? -movementDistance : movementDistance);
-    
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
 }
 
 
@@ -115,7 +131,7 @@
     self.activityIndicatorCargando.hidden = NO;
     [self.activityIndicatorCargando startAnimating];
     
-    //thread autentificacion
+    //thread autenticacion
     dispatch_queue_t downloadQueue = dispatch_queue_create("autentificacion web service", NULL);
     dispatch_async(downloadQueue, ^{
         BOOL isValidado = userAuthentication([self.textFieldUsuario getRutConVerificador:NO], self.textFieldPassword.text);
