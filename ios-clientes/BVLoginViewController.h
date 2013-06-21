@@ -22,13 +22,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
 @property (weak, nonatomic) IBOutlet UIButton *UIButtonEntrar;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorCargando;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewContenedor;
 
 
 
 -(IBAction)textFieldReturn:(id)sender;
--(IBAction) slideFrameUp;
--(IBAction) slideFrameDown;
--(void) slideFrame:(BOOL) up;
 -(IBAction)buttonEntrar:(id)sender;
 
 
