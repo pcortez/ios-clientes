@@ -59,7 +59,9 @@
     //string strint sin formato 1.212.132-1
     if ([self.text rangeOfString:@"-"].location == NSNotFound) {
         if (!verificador) {
-            return [self.text substringWithRange:NSMakeRange(0,[self.text length]-1)];
+            NSString *aux = [self.text substringWithRange:NSMakeRange(0,[self.text length]-1)];
+            aux = [aux stringByAppendingString:@"-"];
+            return [aux stringByAppendingString:[self.text substringWithRange:NSMakeRange([self.text length]-1,1)]];
         }
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"es_CL"]];
@@ -73,13 +75,11 @@
     }
     //string con formato 1.212.132-1
     else {
-        if(verificador){
+        if(verificador)
             return self.text;
-        }
-        else{
-            NSString *aux = [self.text substringWithRange:NSMakeRange(0, [self.text rangeOfString:@"-"].location)];
-            return [aux stringByReplacingOccurrencesOfString:@"." withString:@""];
-        }
+        else
+            return [self.text stringByReplacingOccurrencesOfString:@"." withString:@""];
+        
         
     }
 }
