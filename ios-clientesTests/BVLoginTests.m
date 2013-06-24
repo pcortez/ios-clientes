@@ -56,14 +56,23 @@
     rutTextField.text = @"160957832";
     NSString *s = [rutTextField.text substringWithRange:NSMakeRange(0,[rutTextField.text length]-1)];
     XCTAssertTrue(rutValidator([s integerValue],[rutTextField.text characterAtIndex:[rutTextField.text length]-1]));
+    rutTextField.text = @"16095783K";
+    s = [rutTextField.text substringWithRange:NSMakeRange(0,[rutTextField.text length]-1)];
+    XCTAssertFalse(rutValidator([s integerValue],[rutTextField.text characterAtIndex:[rutTextField.text length]-1]));
     
     rutTextField.text = @"6066675K";
     s = [rutTextField.text substringWithRange:NSMakeRange(0,[rutTextField.text length]-1)];
     XCTAssertTrue(rutValidator([s integerValue],[rutTextField.text characterAtIndex:[rutTextField.text length]-1]));
+    rutTextField.text = @"60666753";
+    s = [rutTextField.text substringWithRange:NSMakeRange(0,[rutTextField.text length]-1)];
+    XCTAssertFalse(rutValidator([s integerValue],[rutTextField.text characterAtIndex:[rutTextField.text length]-1]));
     
     rutTextField.text = @"62273518";
     s = [rutTextField.text substringWithRange:NSMakeRange(0,[rutTextField.text length]-1)];
     XCTAssertTrue(rutValidator([s integerValue],[rutTextField.text characterAtIndex:[rutTextField.text length]-1]));
+    rutTextField.text = @"62273512";
+    s = [rutTextField.text substringWithRange:NSMakeRange(0,[rutTextField.text length]-1)];
+    XCTAssertFalse(rutValidator([s integerValue],[rutTextField.text characterAtIndex:[rutTextField.text length]-1]));
 }
 
 - (void)testAutentificacionExist
