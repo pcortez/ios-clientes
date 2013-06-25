@@ -13,23 +13,35 @@
 BOOL userAuthentication(NSString *usuario, NSString *password)
 {
     if (usuario && [usuario length]>4) {
-        NSBundle* mainBundle;
-        mainBundle = [NSBundle mainBundle];
-        
-        NSData* data;
-        NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/login/%@",[mainBundle objectForInfoDictionaryKey:@"BiceVidaApiURL"],usuario]];
-        
         NSError *error;
-        data = [NSData dataWithContentsOfURL:urlPath options:NSDataReadingUncached error:&error];
-        if (error) return NO;
         
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        if (error) return NO;
+        NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/login/",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"]]];
         
-        if ([json objectForKey:@"autentificado"]){
-            return [[json objectForKey:@"autentificado"] boolValue];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:20];
+        
+        [request setHTTPMethod:@"POST"];
+        // This is how we set header fields
+        [request setValue:@"application/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        // Convert your data and set your request's HTTPBody property
+        request.HTTPBody = [[NSString stringWithFormat:@"rut=%@&password=%@",usuario,password] dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSHTTPURLResponse *responseCode = nil;
+        NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+        
+        if (error) return NO;
+        if([responseCode statusCode] != 200){
+            NSLog(@"Error getting %@, HTTP status code %i", urlPath, [responseCode statusCode]);
+            return NO;
         }
-        else return NO;
+        else{
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
+            if (error) return NO;
+            if ([json objectForKey:@"autentificado"])
+                return [[json objectForKey:@"autentificado"] boolValue];
+            else return NO;
+        }
+
     }
     else return NO;
 }
