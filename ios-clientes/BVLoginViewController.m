@@ -30,8 +30,8 @@
     if (self.matches && [self.matches count]>0){
         self.client = [self.matches lastObject];
         if (self.client.autoLogin) {
-            self.textFieldUsuario.text = self.client.rut;
-            self.textFieldPassword.text = self.client.password;
+            self.usuario.text = self.client.rut;
+            self.password.text = self.client.password;
             [self performSegueWithIdentifier:@"LoadingSegue" sender:self];
         }
         else {
@@ -44,21 +44,92 @@
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:gestureRecognizer];
     
-    //la vista como delegate
-    self.textFieldUsuario.customDelegate = self;
-    //boton desactivado hasta que se valide el rut
-    self.UIButtonEntrar.enabled = NO;
-    //esconder activityIndicator
-    self.activityIndicatorCargando.hidden = YES;
     //scroll view
+    self.scrollViewContenedor.contentSize = self.view.frame.size;
     [self.scrollViewContenedor setBackgroundColor: [[UIColor alloc]initWithPatternImage:[UIImage imageNamed:@"backgroundLogin"]]];
+    
+    [self crearFormulario];
 }
+
+
+- (void)crearFormulario
+{
+    //password
+    self.password = [[UITextField alloc] initWithFrame:CGRectMake(131.0f, self.view.frame.size.height-70.0f, 107.0f, 40.0f)];
+    self.password.placeholder = @"contraseña";
+    self.password.backgroundColor = [UIColor darkGrayColor];
+    [self.password setAlpha:0.7f];
+    [self.password setTextColor:[UIColor whiteColor]];
+    [self.password setTextAlignment:NSTextAlignmentCenter];
+    [self.password setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+    [self.password setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+    [self.password setBorderStyle:UITextBorderStyleNone];
+    self.password.secureTextEntry = YES;
+    [self.password addTarget:self action:@selector(buttonEntrar:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.password addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingDidBegin];
+    [self.password addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
+    
+    [self.scrollViewContenedor addSubview:self.password];
+    
+    //usuario
+    self.usuario = [[BVRutTextField alloc] initWithFrame:CGRectMake(20.0f, self.view.frame.size.height-70.0f, 107.0f, 40.0f)];
+    self.usuario.customDelegate = self;
+    self.usuario.placeholder = @"usuario";
+    self.usuario.backgroundColor = [UIColor darkGrayColor];
+    [self.usuario setAlpha:0.7f];
+    [self.usuario setTextColor:[UIColor whiteColor]];
+    [self.usuario setTextAlignment:NSTextAlignmentCenter];
+    [self.usuario setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+    [self.usuario setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+    [self.usuario setBorderStyle:UITextBorderStyleNone];
+    //[self.usuario addTarget:self action:@selector(hideOneKeyboard:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.usuario addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingDidBegin];
+    [self.usuario addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
+    [self.scrollViewContenedor addSubview:self.usuario];
+    
+    //Entrar
+    self.entrar = [[UIButton alloc]initWithFrame:CGRectMake(242.0f, self.view.frame.size.height-70.0f, 58.0f, 40.0f)];
+    [self.entrar setTitle:@"Entrar" forState:UIControlStateNormal];
+    [self.entrar setTitleColor:[UIColor colorWithRed:50.0f/255.0f green:79.0f/255.0f blue:133.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+
+    self.entrar.backgroundColor = [UIColor colorWithRed:79.0f/255.0f green:205.0f/255.0f blue:18.0f/255.0f alpha:0.7f];
+    [self.entrar.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.entrar setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+    [self.entrar setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+    self.entrar.enabled = NO;
+    [self.entrar addTarget:self action:@selector(buttonEntrar:) forControlEvents:UIControlEventTouchDown];
+    [self.scrollViewContenedor addSubview:self.entrar];
+    
+    //loading
+    self.loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.loading.frame = CGRectMake(self.view.bounds.size.width/2-20.0f, self.view.frame.size.height-70.0f, 40.0f, 40.0f);
+    self.loading.hidden = YES;
+    self.loading.color = [UIColor whiteColor];
+    [self.scrollViewContenedor addSubview:self.loading];
+    
+}
+
 
 - (void)hideKeyboard:(UIGestureRecognizer *)gestureRecognizer
 {
-    [self.textFieldUsuario resignFirstResponder];
-    [self.textFieldPassword resignFirstResponder];
+    [self.activeField resignFirstResponder];
 }
+
+-(IBAction)hideOneKeyboard:(id)sender {
+    [sender resignFirstResponder];
+}
+
+//guardar text field activo
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.activeField = nil;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -87,9 +158,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-
 -(void)keyboardWillShow:(NSNotification*)notification
 {
+    
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
     
@@ -98,11 +169,10 @@
     
     CGRect rect = self.view.frame;
     rect.size.height -= keyboardSize.height;
-    if (!CGRectContainsPoint(rect, self.textFieldUsuario.frame.origin)) {
-        CGPoint scrollPoint=CGPointMake(0.0, self.textFieldUsuario.frame.origin.y-(keyboardSize.height-15));
+    if (!CGRectContainsPoint(rect, self.activeField.frame.origin)) {
+        CGPoint scrollPoint=CGPointMake(0.0, self.view.frame.origin.y+(keyboardSize.height));
         [self.scrollViewContenedor setContentOffset:scrollPoint animated:YES];
     }
-
 }
 
 -(void)keyboardWillHide:(NSNotification*)notification
@@ -116,40 +186,34 @@
     [UIView commitAnimations];
 }
 
--(IBAction)textFieldReturn:(id)sender
-{
-    [sender resignFirstResponder];
-}
-
 
 //boton entrar
 //esconder text field, botones y mostrar activityIndicatorCargando.hidden
 -(IBAction)buttonEntrar:(id)sender {
-    self.textFieldUsuario.hidden = YES;
-    self.textFieldPassword.hidden = YES;
-    self.UIButtonEntrar.hidden = YES;
-    self.activityIndicatorCargando.hidden = NO;
-    [self.activityIndicatorCargando startAnimating];
+    self.usuario.hidden = YES;
+    self.password.hidden = YES;
+    self.entrar.hidden = YES;
+    self.loading.hidden = NO;
+    [self.loading startAnimating];
     
     //thread autenticacion
     dispatch_queue_t downloadQueue = dispatch_queue_create("autentificacion web service", NULL);
     dispatch_async(downloadQueue, ^{
-        BOOL isValidado = userAuthentication([self.textFieldUsuario getRutConVerificador:NO], self.textFieldPassword.text);
+        BOOL isValidado = userAuthentication([self.usuario getRutConVerificador:NO], self.password.text);
         //este thread no se ejecuta antes de terminar el primer thread creado
         dispatch_async(dispatch_get_main_queue(), ^{
             if (isValidado) {
                 //segue
-                [self.activityIndicatorCargando stopAnimating];
+                [self.loading stopAnimating];
             }
             else {
-                [self.activityIndicatorCargando stopAnimating];
-                self.textFieldUsuario.hidden = NO;
-                self.textFieldPassword.hidden = NO;
-                self.UIButtonEntrar.hidden = NO;
-                self.activityIndicatorCargando.hidden = YES;
-            
-                self.textFieldPassword.text = @"";
-                self.textFieldUsuario.text = @"";
+                self.password.text = @"";
+                self.usuario.text = @"";
+                [self.loading stopAnimating];
+                self.usuario.hidden = NO;
+                self.password.hidden = NO;
+                self.entrar.hidden = NO;
+                self.loading.hidden = YES;
             }
         });
     });
@@ -157,12 +221,12 @@
 
 //delegate
 - (void)isCorrectInput:(BOOL) value {
-    self.UIButtonEntrar.enabled = value;
+    self.entrar.enabled = value;
     if(!value){
-        [self.UIButtonEntrar setBackgroundColor:[UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f]];
+        [self.entrar setBackgroundColor:[UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f]];
     }
     else{
-        [self.UIButtonEntrar setBackgroundColor:[UIColor colorWithRed:(79.0f / 255.0f) green:(205.0f / 255.0f) blue:(18.0f / 255.0f) alpha:1.0f]];
+        [self.entrar setBackgroundColor:[UIColor colorWithRed:(79.0f / 255.0f) green:(205.0f / 255.0f) blue:(18.0f / 255.0f) alpha:1.0f]];
     }
 }
 
