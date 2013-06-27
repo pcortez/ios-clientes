@@ -23,14 +23,14 @@
 @property (nonatomic, retain) NSString * rut;
 @property (nonatomic, retain) NSDate * ultimaModificacion;
 @property (nonatomic, retain) NSDate * ultimoLogin;
-@property (nonatomic, retain) NSSet *tieneMuchos;
+@property (nonatomic, retain) NSSet *tieneMuchosProductos;
 @end
 
 @interface Usuario (CoreDataGeneratedAccessors)
 
-- (void)addTieneMuchosObject:(Productos *)value;
-- (void)removeTieneMuchosObject:(Productos *)value;
-- (void)addTieneMuchos:(NSSet *)values;
-- (void)removeTieneMuchos:(NSSet *)values;
+- (void)addTieneMuchosProductosObject:(Productos *)value;
+- (void)removeTieneMuchosProductosObject:(Productos *)value;
+- (void)addTieneMuchosProductos:(NSSet *)values;
+- (void)removeTieneMuchosProductos:(NSSet *)values;
 
 @end

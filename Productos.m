@@ -12,16 +12,16 @@
 
 @implementation Productos
 
-@dynamic negocioNombre;
-@dynamic negocioCodigo;
 @dynamic codigo;
 @dynamic contratoCodigo;
 @dynamic contratoEstado;
+@dynamic contratoEstadoCodigo;
+@dynamic negocioCodigo;
+@dynamic negocioNombre;
 @dynamic nombre;
 @dynamic rentabilidad;
 @dynamic vigenciaInicio;
 @dynamic vigenciaTermino;
-@dynamic contratoEstadoCodigo;
-@dynamic tieneUn;
+@dynamic tieneUnCliente;
 
 @end

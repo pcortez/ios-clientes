@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8019A44E177CA985000E372C /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A448177CA8DB000E372C /* Usuario.m */; };
 		8019A451177CA9A2000E372C /* Productos+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A450177CA999000E372C /* Productos+Create.m */; };
-		8019A454177CBA4D000E372C /* Productos.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A453177CB944000E372C /* Productos.m */; };
+		8019A456177CC682000E372C /* BVProductosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A455177CC663000E372C /* BVProductosTests.m */; };
+		8019A45B177CC8E5000E372C /* Productos.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A45A177CC8C3000E372C /* Productos.m */; };
+		8019A45C177CC8E5000E372C /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A458177CC8C3000E372C /* Usuario.m */; };
 		80BDAB7E177221E100431A64 /* BVLoginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB7D1772217300431A64 /* BVLoginTests.m */; };
 		80BDAB811772500300431A64 /* BVApiConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB8017724FDF00431A64 /* BVApiConnection.m */; };
 		80C7BF35177B7D1000936A2C /* BVProductosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C7BF34177B73C700936A2C /* BVProductosViewController.m */; };
@@ -46,12 +47,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8019A447177CA8DB000E372C /* Usuario.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Usuario.h; path = ../Usuario.h; sourceTree = "<group>"; };
-		8019A448177CA8DB000E372C /* Usuario.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Usuario.m; path = ../Usuario.m; sourceTree = "<group>"; };
 		8019A44F177CA999000E372C /* Productos+Create.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Productos+Create.h"; sourceTree = "<group>"; };
 		8019A450177CA999000E372C /* Productos+Create.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Productos+Create.m"; sourceTree = "<group>"; };
-		8019A452177CB944000E372C /* Productos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Productos.h; path = ../Productos.h; sourceTree = "<group>"; };
-		8019A453177CB944000E372C /* Productos.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Productos.m; path = ../Productos.m; sourceTree = "<group>"; };
+		8019A455177CC663000E372C /* BVProductosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductosTests.m; sourceTree = "<group>"; };
+		8019A457177CC8C3000E372C /* Usuario.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Usuario.h; sourceTree = SOURCE_ROOT; };
+		8019A458177CC8C3000E372C /* Usuario.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = SOURCE_ROOT; };
+		8019A459177CC8C3000E372C /* Productos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Productos.h; sourceTree = SOURCE_ROOT; };
+		8019A45A177CC8C3000E372C /* Productos.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Productos.m; sourceTree = SOURCE_ROOT; };
 		80BDAB791772101A00431A64 /* Usuario+Create.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Usuario+Create.h"; sourceTree = "<group>"; };
 		80BDAB7A1772101A00431A64 /* Usuario+Create.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Usuario+Create.m"; sourceTree = "<group>"; };
 		80BDAB7D1772217300431A64 /* BVLoginTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVLoginTests.m; sourceTree = "<group>"; };
@@ -129,10 +131,10 @@
 			isa = PBXGroup;
 			children = (
 				80BDAB7817720FC800431A64 /* Categories */,
-				8019A447177CA8DB000E372C /* Usuario.h */,
-				8019A448177CA8DB000E372C /* Usuario.m */,
-				8019A452177CB944000E372C /* Productos.h */,
-				8019A453177CB944000E372C /* Productos.m */,
+				8019A459177CC8C3000E372C /* Productos.h */,
+				8019A45A177CC8C3000E372C /* Productos.m */,
+				8019A457177CC8C3000E372C /* Usuario.h */,
+				8019A458177CC8C3000E372C /* Usuario.m */,
 			);
 			name = Models;
 			path = "ios-clientes";
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				80BDAB7D1772217300431A64 /* BVLoginTests.m */,
+				8019A455177CC663000E372C /* BVProductosTests.m */,
 				80E056C2176900F100C15EC6 /* Supporting Files */,
 			);
 			path = "ios-clientesTests";
@@ -355,9 +358,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8019A454177CBA4D000E372C /* Productos.m in Sources */,
+				8019A45B177CC8E5000E372C /* Productos.m in Sources */,
+				8019A45C177CC8E5000E372C /* Usuario.m in Sources */,
 				8019A451177CA9A2000E372C /* Productos+Create.m in Sources */,
-				8019A44E177CA985000E372C /* Usuario.m in Sources */,
 				80C7BF38177B922B00936A2C /* Usuario+Create.m in Sources */,
 				80C7BF35177B7D1000936A2C /* BVProductosViewController.m in Sources */,
 				80BDAB811772500300431A64 /* BVApiConnection.m in Sources */,
@@ -375,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8019A456177CC682000E372C /* BVProductosTests.m in Sources */,
 				80BDAB7E177221E100431A64 /* BVLoginTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

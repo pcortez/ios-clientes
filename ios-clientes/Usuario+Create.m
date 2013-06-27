@@ -86,7 +86,7 @@
             [p addInsuranceObject:[InsuranceItem fromDictionary:item contractCode:p.contractCode isOldData:[client.lastModification compare:date] inManagedObjectContext:context]];
         }
          */
-        [client addTieneMuchosObject:p];
+        [client addTieneMuchosProductosObject:p];
     }
     
     return client;
