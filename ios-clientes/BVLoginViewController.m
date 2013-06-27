@@ -211,6 +211,7 @@
                     self.cliente=[Usuario updateFromDictionary:jsonData client:self.cliente inManagedObjectContext:self.managedObjectContext];
                     self.cliente.ultimoLogin = [NSDate date];
                     self.cliente.autoLogin = [NSNumber numberWithBool:YES];
+                    [self.managedObjectContext save:nil];
                     
                     [self performSegueWithIdentifier:@"ProductosSegue" sender:self];
                     [self.loading stopAnimating];
