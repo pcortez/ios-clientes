@@ -11,6 +11,8 @@
 #import "BVRutTextField.h"
 #import "CommonAlgorithm.h"
 #import "BVApiConnection.h"
+#import "Usuario+Create.h"
+
 
 @interface BVLoginTests : XCTestCase
 
@@ -20,6 +22,12 @@
 {
     BVRutTextField *rutTextField;
     UITextField *passwordTextField;
+    //core data
+    NSPersistentStoreCoordinator *persistentStoreCoordinator;
+    NSManagedObjectContext *managedObjectContext;
+    NSManagedObjectModel *managedObjectModel;
+    NSPersistentStore *persistentStore;
+
 }
 
 - (void)setUp
@@ -28,6 +36,13 @@
     // Put setup code here; it will be run once, before the first test case.
     rutTextField = [[BVRutTextField alloc] init];
     passwordTextField = [[UITextField alloc] init];
+    //core data init
+    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: managedObjectModel];
+    persistentStore = [persistentStoreCoordinator addPersistentStoreWithType: NSInMemoryStoreType configuration: nil URL: nil options: nil error: NULL];
+    managedObjectContext = [[NSManagedObjectContext alloc] init];
+    [managedObjectContext setPersistentStoreCoordinator: persistentStoreCoordinator];
+
 }
 
 - (void)tearDown
@@ -35,6 +50,13 @@
     // Put teardown code here; it will be run once, after the last test case.
     [super tearDown];
 }
+
+
+- (void)testThatEnvironmentWorks
+{
+    XCTAssertNotNil(persistentStore, @"no persistent store");
+}
+
 
 - (void)testRutFormat
 {
@@ -88,6 +110,26 @@
     rutTextField.text = @"62273518";
     passwordTextField.text = @"PASSWORD_FALSO";
     XCTAssertFalse(userAuthentication([rutTextField getRutConVerificador:NO], passwordTextField.text));
+    XCTAssertFalse(userAuthentication([rutTextField getRutConVerificador:NO], @""));
+    XCTAssertFalse(userAuthentication(@"", @""));
 }
+
+
+- (void)testDictionnaryToModelWithConnection
+{
+    rutTextField.text = @"116100878";
+    NSDictionary *data = userData([rutTextField getRutConVerificador:NO]);
+    XCTAssertNotNil(data);
+    Usuario *cliente = [Usuario fromDictionary:data inManagedObjectContext:managedObjectContext];
+    
+    XCTAssertTrue(![cliente.rut isEqualToString:@""]);
+    XCTAssertTrue([cliente.rut isEqualToString:[data objectForKey:@"rut"]]);
+    XCTAssertTrue([cliente.nombre isEqualToString:[data objectForKey:@"nombre"]]);
+    XCTAssertTrue([cliente.celular isEqualToString:[data objectForKey:@"celular"]]);
+    XCTAssertTrue([cliente.email isEqualToString:[data objectForKey:@"email"]]);
+    XCTAssertTrue([cliente.id isEqual:[data objectForKey:@"id"]]);
+    
+}
+
 
 @end

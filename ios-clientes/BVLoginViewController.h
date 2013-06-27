@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "BVRutTextFieldDelegate.h"
 #import "BVRutTextField.h"
-#import "Usuario.h"
+#import "Usuario+Create.h"
 
 @interface BVLoginViewController : UIViewController <BVRutTextFieldDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSArray *matches;
-@property (strong, nonatomic) Usuario *client;
+//@property (strong, nonatomic) NSArray *matches;
+@property (strong, nonatomic) Usuario *cliente;
 
 //lo tuve que hacer programaticamente por que el scrollview no me permitia hacer
 //correcto autolayout para iphone 5
