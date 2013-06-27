@@ -9,6 +9,7 @@
 #import "BVLoginViewController.h"
 #import "Usuario+Create.h"
 #import "BVApiConnection.h"
+#import "BVProductosViewController.h"
 
 @interface BVLoginViewController ()
 
@@ -20,35 +21,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //scroll view
+    self.scrollViewContenedor.contentSize = self.view.frame.size;
+    [self.scrollViewContenedor setBackgroundColor: [[UIColor alloc]initWithPatternImage:[UIImage imageNamed:@"backgroundLogin"]]];
+    
+    [self crearFormulario];
+	// Gesto para esconder teclado al momento de tocar el background
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
+    gestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:gestureRecognizer];
+    
     //Revisando datos de usuario en db local
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Usuario"];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"ultimoLogin" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sort];
     
     NSError *error;
-    self.matches = [self.managedObjectContext executeFetchRequest:request error:&error];
-    if (self.matches && [self.matches count]>0){
-        self.client = [self.matches lastObject];
-        if (self.client.autoLogin) {
-            self.usuario.text = self.client.rut;
-            self.password.text = self.client.password;
-            [self performSegueWithIdentifier:@"LoadingSegue" sender:self];
-        }
-        else {
-            self.client = nil;
+    NSArray *matches = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (matches && [matches count]>0){
+        self.cliente = [matches lastObject];
+        if (self.cliente.autoLogin) {
+            self.usuario.text = self.cliente.rut;
+            self.password.text = self.cliente.password;
+            [self login];
         }
     }
-    
-	// Gesto para esconder teclado al momento de tocar el background
-    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
-    gestureRecognizer.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:gestureRecognizer];
-    
-    //scroll view
-    self.scrollViewContenedor.contentSize = self.view.frame.size;
-    [self.scrollViewContenedor setBackgroundColor: [[UIColor alloc]initWithPatternImage:[UIImage imageNamed:@"backgroundLogin"]]];
-    
-    [self crearFormulario];
 }
 
 
@@ -190,6 +187,11 @@
 //boton entrar
 //esconder text field, botones y mostrar activityIndicatorCargando.hidden
 -(IBAction)buttonEntrar:(id)sender {
+    [self login];
+}
+
+- (void) login
+{
     self.usuario.hidden = YES;
     self.password.hidden = YES;
     self.entrar.hidden = YES;
@@ -204,16 +206,34 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if (isValidado) {
                 //segue
-                [self.loading stopAnimating];
+                NSDictionary *jsonData = userData([self.usuario getRutConVerificador:NO]);
+                if (jsonData) {
+                    self.cliente=[Usuario updateFromDictionary:jsonData client:self.cliente inManagedObjectContext:self.managedObjectContext];
+                    self.cliente.ultimoLogin = [NSDate date];
+                    self.cliente.autoLogin = [NSNumber numberWithBool:YES];
+                    
+                    [self performSegueWithIdentifier:@"ProductosSegue" sender:self];
+                    [self.loading stopAnimating];
+                }
+                else {
+                    self.password.text = @"";
+                    self.usuario.text = @"";
+                    [self.loading stopAnimating];
+                    self.loading.hidden = YES;
+                    self.usuario.hidden = NO;
+                    self.password.hidden = NO;
+                    self.entrar.hidden = NO;
+                }
+                
             }
             else {
                 self.password.text = @"";
                 self.usuario.text = @"";
                 [self.loading stopAnimating];
+                self.loading.hidden = YES;
                 self.usuario.hidden = NO;
                 self.password.hidden = NO;
                 self.entrar.hidden = NO;
-                self.loading.hidden = YES;
             }
         });
     });
@@ -230,5 +250,15 @@
     }
 }
 
+
+//segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"ProductosSegue"]) {
+        //UINavigationController* navController = [segue destinationViewController];
+        //BVProductosViewController *vc = (BVProductosViewController*) [navController topViewController];
+        //[vc setClientId:self.client.id];
+    }
+}
 
 @end

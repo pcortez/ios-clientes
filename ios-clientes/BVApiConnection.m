@@ -46,4 +46,33 @@ BOOL userAuthentication(NSString *usuario, NSString *password)
     else return NO;
 }
 
+NSDictionary* userData(NSString *usuario)
+{
+    usuario = [usuario substringWithRange:NSMakeRange(0,[usuario length]-2)];
+    if (usuario && [usuario length]>4) {
+        NSError *error;
+        
+        NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"],usuario]];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:20];
+        
+        NSHTTPURLResponse *responseCode = nil;
+        NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+        
+        if (error) return nil;
+        if([responseCode statusCode] != 200){
+            NSLog(@"Error getting %@, HTTP status code %i", urlPath, [responseCode statusCode]);
+            return nil;
+        }
+        else{
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
+            if (error) return nil;
+            if ([json objectForKey:@"rut"] && [json objectForKey:@"id"])
+                return json;
+            else return nil;
+        }
+    }
+    else return nil;
+}
+
 @end

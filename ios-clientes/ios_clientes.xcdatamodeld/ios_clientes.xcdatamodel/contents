@@ -5,6 +5,7 @@
         <attribute name="autoLogin" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="celular" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rut" optional="YES" attributeType="String" syncable="YES"/>

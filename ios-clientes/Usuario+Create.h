@@ -10,4 +10,9 @@
 
 @interface Usuario (Create)
 
++(Usuario *)fromDictionary:(NSDictionary *)data inManagedObjectContext:(NSManagedObjectContext *)context;
++(Usuario *)updateFromDictionary:(NSDictionary *)data client:(Usuario *)client inManagedObjectContext:(NSManagedObjectContext *)context;
+
+-(NSString *)convertUltimaModificacionToURLFormat;
+
 @end

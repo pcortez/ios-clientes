@@ -11,4 +11,5 @@
 @interface BVApiConnection : NSObject
 
 BOOL userAuthentication(NSString *usuario, NSString *password);
+NSDictionary* userData(NSString *usuario);
 @end
