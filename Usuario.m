@@ -22,6 +22,6 @@
 @dynamic rut;
 @dynamic ultimaModificacion;
 @dynamic ultimoLogin;
-@dynamic tieneMuchos;
+@dynamic tieneMuchosProductos;
 
 @end

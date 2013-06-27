@@ -35,7 +35,7 @@
         product.nombre = [data objectForKey:@"nombreProducto"];
         product.codigo = [data objectForKey:@"codigoProducto"];
         product.contratoCodigo = [data objectForKey:@"codigoContrato"];
-        product.contratoEstado = [data objectForKey:@"codigoContrato"];
+        product.contratoEstado = [data objectForKey:@"estadoContrato"];
         product.contratoEstadoCodigo = [data objectForKey:@"estadoContratoCodigo"];
         product.negocioNombre = [data objectForKey:@"nombreNegocio"];
         product.negocioCodigo = [data objectForKey:@"codigoNegocio"];
@@ -61,6 +61,7 @@
             if([data objectForKey:@"rentabilidadFondo"]) product.rentabilidad = [data objectForKey:@"rentabilidadFondo"];
             if([data objectForKey:@"codigoContrato"]) product.contratoEstado = [data objectForKey:@"codigoContrato"];
             if([data objectForKey:@"estadoContratoCodigo"]) product.contratoEstadoCodigo = [data objectForKey:@"estadoContratoCodigo"];
+            if([data objectForKey:@"estadoContrato"]) product.contratoEstado = [data objectForKey:@"estadoContrato"];
             
             if([data objectForKey:@"inicioVigencia"]){
                 NSString *aux = [data objectForKey:@"inicioVigencia"];
