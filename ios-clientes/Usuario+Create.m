@@ -7,6 +7,7 @@
 //
 
 #import "Usuario+Create.h"
+#import "Productos+Create.h"
 
 @implementation Usuario (Create)
 
@@ -73,17 +74,20 @@
         //send data to server
     }
     
-    /*
+    
     for (NSDictionary *product in [data objectForKey:@"productos"]) {
-        Product *p = [Product fromDictionary:product isOldData:[client.lastModification compare:date] inManagedObjectContext:context];
+        Productos *p = [Productos fromDictionary:product isOldData:[client.ultimaModificacion compare:date] inManagedObjectContext:context];
+        /*
         for (NSDictionary *fund in [product objectForKey:@"portafolio"])
             [p addPortfolioObject:[Fund fromDictionary:fund contractCode:p.contractCode isOldData:[client.lastModification compare:date] inManagedObjectContext:context]];
+         */
+        /*
         for (NSDictionary *item in [product objectForKey:@"poliza"]){
             [p addInsuranceObject:[InsuranceItem fromDictionary:item contractCode:p.contractCode isOldData:[client.lastModification compare:date] inManagedObjectContext:context]];
         }
-        [client addProductsObject:p];
+         */
+        [client addTieneMuchosProductosObject:p];
     }
-    */
     
     return client;
 }
