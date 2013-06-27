@@ -11,6 +11,7 @@
 		8019A456177CC682000E372C /* BVProductosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A455177CC663000E372C /* BVProductosTests.m */; };
 		8019A45B177CC8E5000E372C /* Productos.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A45A177CC8C3000E372C /* Productos.m */; };
 		8019A45C177CC8E5000E372C /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A458177CC8C3000E372C /* Usuario.m */; };
+		809556A3177CEF8700DACAA0 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556A2177CEF3E00DACAA0 /* CoreDataTableViewController.m */; };
 		80BDAB7E177221E100431A64 /* BVLoginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB7D1772217300431A64 /* BVLoginTests.m */; };
 		80BDAB811772500300431A64 /* BVApiConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB8017724FDF00431A64 /* BVApiConnection.m */; };
 		80C7BF35177B7D1000936A2C /* BVProductosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C7BF34177B73C700936A2C /* BVProductosViewController.m */; };
@@ -54,6 +55,8 @@
 		8019A458177CC8C3000E372C /* Usuario.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = SOURCE_ROOT; };
 		8019A459177CC8C3000E372C /* Productos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Productos.h; sourceTree = SOURCE_ROOT; };
 		8019A45A177CC8C3000E372C /* Productos.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Productos.m; sourceTree = SOURCE_ROOT; };
+		809556A1177CEF3D00DACAA0 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		809556A2177CEF3E00DACAA0 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		80BDAB791772101A00431A64 /* Usuario+Create.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Usuario+Create.h"; sourceTree = "<group>"; };
 		80BDAB7A1772101A00431A64 /* Usuario+Create.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Usuario+Create.m"; sourceTree = "<group>"; };
 		80BDAB7D1772217300431A64 /* BVLoginTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVLoginTests.m; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 				80FFB4D81770DDA5005DB06F /* CommonAlgorithm.m */,
 				80BDAB7F17724FDF00431A64 /* BVApiConnection.h */,
 				80BDAB8017724FDF00431A64 /* BVApiConnection.m */,
+				809556A1177CEF3D00DACAA0 /* CoreDataTableViewController.h */,
+				809556A2177CEF3E00DACAA0 /* CoreDataTableViewController.m */,
 			);
 			name = Libs;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				809556A3177CEF8700DACAA0 /* CoreDataTableViewController.m in Sources */,
 				8019A45B177CC8E5000E372C /* Productos.m in Sources */,
 				8019A45C177CC8E5000E372C /* Usuario.m in Sources */,
 				8019A451177CA9A2000E372C /* Productos+Create.m in Sources */,

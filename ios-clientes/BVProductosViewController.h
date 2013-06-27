@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
+#import "Usuario.h"
 
-@interface BVProductosViewController : UITableViewController
+@interface BVProductosViewController: CoreDataTableViewController//<GradientBackgroundDelegate>
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) Usuario *cliente;
 
 @end
