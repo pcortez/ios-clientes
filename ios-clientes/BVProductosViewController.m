@@ -55,22 +55,14 @@
 }
 
 #pragma mark - Table view data source
-
-/*
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 40.0;
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (CGFloat) tableView: (UITableView *) tableView heightForRowAtIndexPath: (NSIndexPath *) indexPath
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return 65.0;
 }
-*/
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -84,7 +76,11 @@
 {
     Productos *producto = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [producto.nombre capitalizedString];
-    //cell.detailTextLabel.text = [NSString stringWithFormat:@"Póliza: %@",[producto.contratoCodigo uppercaseString]];
+    //[UIFont preferredFontForTextStyle:UIFontDescriptorTraitExpanded];
+    cell.textLabel.font = [UIFont systemFontOfSize:20.0f];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Póliza: %@",[producto.contratoCodigo uppercaseString]];
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:14.0f];
+    
 }
 
 
