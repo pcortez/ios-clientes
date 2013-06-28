@@ -28,7 +28,6 @@
 		80E056A6176900F100C15EC6 /* BVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E056A5176900F100C15EC6 /* BVAppDelegate.m */; };
 		80E056A9176900F100C15EC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80E056A7176900F100C15EC6 /* Main.storyboard */; };
 		80E056AC176900F100C15EC6 /* ios_clientes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80E056AA176900F100C15EC6 /* ios_clientes.xcdatamodeld */; };
-		80E056AF176900F100C15EC6 /* BVMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E056AE176900F100C15EC6 /* BVMasterViewController.m */; };
 		80E056B2176900F100C15EC6 /* BVLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E056B1176900F100C15EC6 /* BVLoginViewController.m */; };
 		80E056B4176900F100C15EC6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80E056B3176900F100C15EC6 /* Images.xcassets */; };
 		80E056BB176900F100C15EC6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E056BA176900F100C15EC6 /* XCTest.framework */; };
@@ -87,8 +86,6 @@
 		80E056A5176900F100C15EC6 /* BVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVAppDelegate.m; sourceTree = "<group>"; };
 		80E056A8176900F100C15EC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		80E056AB176900F100C15EC6 /* ios_clientes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ios_clientes.xcdatamodel; sourceTree = "<group>"; };
-		80E056AD176900F100C15EC6 /* BVMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVMasterViewController.h; sourceTree = "<group>"; };
-		80E056AE176900F100C15EC6 /* BVMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVMasterViewController.m; sourceTree = "<group>"; };
 		80E056B0176900F100C15EC6 /* BVLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVLoginViewController.h; sourceTree = "<group>"; };
 		80E056B1176900F100C15EC6 /* BVLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVLoginViewController.m; sourceTree = "<group>"; };
 		80E056B3176900F100C15EC6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -218,8 +215,6 @@
 				80E056A4176900F100C15EC6 /* BVAppDelegate.h */,
 				80E056A5176900F100C15EC6 /* BVAppDelegate.m */,
 				80E056A7176900F100C15EC6 /* Main.storyboard */,
-				80E056AD176900F100C15EC6 /* BVMasterViewController.h */,
-				80E056AE176900F100C15EC6 /* BVMasterViewController.m */,
 				80E056B3176900F100C15EC6 /* Images.xcassets */,
 				80E056AA176900F100C15EC6 /* ios_clientes.xcdatamodeld */,
 				80E0569C176900F100C15EC6 /* Supporting Files */,
@@ -282,10 +277,10 @@
 				80FFB4D81770DDA5005DB06F /* CommonAlgorithm.m */,
 				80BDAB7F17724FDF00431A64 /* BVApiConnection.h */,
 				80BDAB8017724FDF00431A64 /* BVApiConnection.m */,
-				809556A1177CEF3D00DACAA0 /* CoreDataTableViewController.h */,
-				809556A2177CEF3E00DACAA0 /* CoreDataTableViewController.m */,
 				809556AA177DDF9C00DACAA0 /* CommonDrawing.h */,
 				809556AB177DDFD100DACAA0 /* CommonDrawing.m */,
+				809556A1177CEF3D00DACAA0 /* CoreDataTableViewController.h */,
+				809556A2177CEF3E00DACAA0 /* CoreDataTableViewController.m */,
 			);
 			name = Libs;
 			sourceTree = "<group>";
@@ -402,7 +397,6 @@
 				80FFB4D31770CD01005DB06F /* BVRutTextField.m in Sources */,
 				80E056AC176900F100C15EC6 /* ios_clientes.xcdatamodeld in Sources */,
 				80E056A6176900F100C15EC6 /* BVAppDelegate.m in Sources */,
-				80E056AF176900F100C15EC6 /* BVMasterViewController.m in Sources */,
 				80E056B2176900F100C15EC6 /* BVLoginViewController.m in Sources */,
 				80E056A2176900F100C15EC6 /* main.m in Sources */,
 			);
