@@ -8,6 +8,8 @@
 
 #import "BVProductosViewController.h"
 #import "Productos+Create.h"
+#import "GradientBackground.h"
+#import "GradientBackgroundHeader.h"
 
 @interface BVProductosViewController ()
 
@@ -64,10 +66,22 @@
     return 65.0;
 }
 
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    GradientBackgroundHeader *header = [[GradientBackgroundHeader alloc]initWithDelegate:self labelHeight:40.0];
+    [header setLeftLabelText:[[[[self.fetchedResultsController sections]objectAtIndex:section] name] capitalizedString] isFontSizeBig:YES];
+    header.haveTopBorder = section==0;
+    return header;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:@"ProductoCell" forIndexPath:indexPath];    
+    cell = [tableView dequeueReusableCellWithIdentifier:@"ProductoCell" forIndexPath:indexPath];
+    GradientBackground *cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
+    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
+    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
+    cell.backgroundView = cellBackgroundView;
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -95,5 +109,11 @@
 }
 
  */
+
+#pragma mark - Gradient UIView delegate
+-(float)getWidth
+{
+    return self.tableView.frame.size.width;
+}
 
 @end

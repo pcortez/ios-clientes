@@ -56,6 +56,7 @@
 
 - (void)testDictionnaryToModelWithConnection
 {
+    NSLog(@"%@",data);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Productos"];
     request.predicate = [NSPredicate predicateWithFormat:@"tieneUnCliente.id == %@",[data objectForKey:@"id"]];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"negocioNombre" ascending:YES]];

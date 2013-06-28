@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreDataTableViewController.h"
+#import "GradientBackgroundDelegate.h"
 #import "Usuario.h"
 
-@interface BVProductosViewController: CoreDataTableViewController//<GradientBackgroundDelegate>
+@interface BVProductosViewController: CoreDataTableViewController<GradientBackgroundDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) Usuario *cliente;
 
+-(float)getWidth;
 @end
