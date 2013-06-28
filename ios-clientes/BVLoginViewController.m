@@ -256,9 +256,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"ProductosSegue"]) {
-        //UINavigationController* navController = [segue destinationViewController];
-        //BVProductosViewController *vc = (BVProductosViewController*) [navController topViewController];
-        //[vc setClientId:self.client.id];
+        UINavigationController* navController = [segue destinationViewController];
+        //BVProductosViewController *vc = [segue destinationViewController];
+        BVProductosViewController *vc = (BVProductosViewController*) [navController topViewController];
+        [vc setCliente:self.cliente];
     }
 }
 
