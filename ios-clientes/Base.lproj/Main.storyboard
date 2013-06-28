@@ -116,38 +116,6 @@
             <point key="canvasLocation" x="-531" y="739"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="BVLoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BVLoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonEntrar:"/>
-                <relationship kind="action" name="hideOneKeyboard:"/>
-                <relationship kind="outlet" name="activeField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="entrar" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="loading" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="scrollViewContenedor" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="usuario" candidateClass="BVRutTextField"/>
-            </relationships>
-        </class>
-        <class className="BVProductosViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BVProductosViewController.h"/>
-        </class>
-        <class className="BVRutTextField" superclassName="UITextField">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BVRutTextField.h"/>
-            <relationships>
-                <relationship kind="action" name="editBegin:"/>
-                <relationship kind="action" name="editChangeEnd:"/>
-                <relationship kind="action" name="editDidEnd:"/>
-            </relationships>
-        </class>
-        <class className="CoreDataTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
