@@ -256,9 +256,16 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"ProductosSegue"]) {
-        UINavigationController* navController = [segue destinationViewController];
-        //BVProductosViewController *vc = [segue destinationViewController];
-        BVProductosViewController *vc = (BVProductosViewController*) [navController topViewController];
+        
+        UITabBarController *tabBarViewController = (UITabBarController *) [segue destinationViewController];
+        UINavigationController *navController = [[tabBarViewController viewControllers] objectAtIndex:0];
+        BVProductosViewController *vc = (BVProductosViewController *) [[navController viewControllers] objectAtIndex:0];
+        //receiptsListViewController.managedObjectContext = self.managedObjectContext;
+        
+        
+        //UINavigationController* navController = [segue destinationViewController];
+        //BVInicioViewController *vc = (BVInicioViewController *) [navController topViewController];
+        //BVProductosViewController *vc = (BVProductosViewController*) [navController topViewController];
         [vc setCliente:self.cliente];
     }
 }
