@@ -59,7 +59,7 @@
 #pragma mark - Table view data source
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 40.0;
+    return 30.0;
 }
 - (CGFloat) tableView: (UITableView *) tableView heightForRowAtIndexPath: (NSIndexPath *) indexPath
 {
@@ -68,8 +68,8 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    GradientBackgroundHeader *header = [[GradientBackgroundHeader alloc]initWithDelegate:self labelHeight:40.0];
-    [header setLeftLabelText:[[[[self.fetchedResultsController sections]objectAtIndex:section] name] capitalizedString] isFontSizeBig:YES];
+    GradientBackgroundHeader *header = [[GradientBackgroundHeader alloc]initWithDelegate:self labelHeight:30.0];
+    [header setLeftLabelText:[[[[self.fetchedResultsController sections]objectAtIndex:section] name] capitalizedString] isFontSizeBig:NO];
     header.haveTopBorder = section==0;
     return header;
 }
@@ -82,6 +82,7 @@
     cellBackgroundView.colorGradientTop = [UIColor whiteColor];
     cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
     cell.backgroundView = cellBackgroundView;
+
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
