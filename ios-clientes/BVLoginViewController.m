@@ -10,6 +10,7 @@
 #import "Usuario+Create.h"
 #import "BVApiConnection.h"
 #import "BVProductosViewController.h"
+#import "BVPerfilViewController.h"
 
 @interface BVLoginViewController ()
 
@@ -260,6 +261,7 @@
         UITabBarController *tabBarViewController = (UITabBarController *) [segue destinationViewController];
         UINavigationController *navController = [[tabBarViewController viewControllers] objectAtIndex:0];
         BVProductosViewController *vc = (BVProductosViewController *) [[navController viewControllers] objectAtIndex:0];
+        BVPerfilViewController *perfilVc = (BVPerfilViewController *) [[navController viewControllers] objectAtIndex:1];
         //receiptsListViewController.managedObjectContext = self.managedObjectContext;
         
         
@@ -267,6 +269,7 @@
         //BVInicioViewController *vc = (BVInicioViewController *) [navController topViewController];
         //BVProductosViewController *vc = (BVProductosViewController*) [navController topViewController];
         [vc setCliente:self.cliente];
+        [perfilVc setCliente:self.cliente];
     }
 }
 
