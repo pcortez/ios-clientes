@@ -59,6 +59,14 @@
             client = [matches lastObject];
         }
     }
+    else{
+        if (![client.id isEqualToNumber:[data objectForKey:@"id"]]) {
+            client = [NSEntityDescription insertNewObjectForEntityForName:@"Usuario" inManagedObjectContext:context];
+            client.rut = [data objectForKey:@"rut"];
+            client.id = [data objectForKey:@"id"];
+            client.ultimaModificacion = [NSDate distantPast];
+        }
+    }
     
     //client.lastModification is later than date
     if ([client.ultimaModificacion compare:date]==NSOrderedAscending) {

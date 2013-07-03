@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelParametro;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldValor;
 
-@property (weak, nonatomic) IBOutlet UITableViewCell *cellParametro;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellValor;
 
 
