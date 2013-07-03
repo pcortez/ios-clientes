@@ -44,9 +44,17 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tabBarController setTitle:@"Productos"];
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tableView  setContentInset:UIEdgeInsetsMake(self.tableView.contentInset.top, self.tableView.contentInset.left, self.tableView.contentInset.bottom+48, self.tableView.contentInset.right)];
+    
     self.managedObjectContext = [self managedObjectContext];
     [self setupFetchResultsController];
 }
@@ -98,19 +106,6 @@
     cell.detailTextLabel.font = [UIFont systemFontOfSize:14.0f];
     
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 #pragma mark - Gradient UIView delegate
 -(float)getWidth
