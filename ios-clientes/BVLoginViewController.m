@@ -33,6 +33,7 @@
     [self.view addGestureRecognizer:gestureRecognizer];
     
     //Revisando datos de usuario en db local
+    /*
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Usuario"];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"ultimoLogin" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sort];
@@ -47,6 +48,7 @@
             [self login];
         }
     }
+    */
 }
 
 
@@ -199,6 +201,9 @@
     self.loading.hidden = NO;
     [self.loading startAnimating];
     
+    NSLog(@"user: %@",[self.usuario getRutConVerificador:NO]);
+    NSLog(@"password: %@",self.password.text);
+    
     //thread autenticacion
     dispatch_queue_t downloadQueue = dispatch_queue_create("autentificacion web service", NULL);
     dispatch_async(downloadQueue, ^{
@@ -219,7 +224,7 @@
                 }
                 else {
                     self.password.text = @"";
-                    self.usuario.text = @"";
+                    //self.usuario.text = @"";
                     [self.loading stopAnimating];
                     self.loading.hidden = YES;
                     self.usuario.hidden = NO;
@@ -230,7 +235,7 @@
             }
             else {
                 self.password.text = @"";
-                self.usuario.text = @"";
+                //self.usuario.text = @"";
                 [self.loading stopAnimating];
                 self.loading.hidden = YES;
                 self.usuario.hidden = NO;
