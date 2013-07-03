@@ -68,7 +68,7 @@
         //if ([data objectForKey:@"apellidoMaterno"]) client.maternalName = [data objectForKey:@"apellidoMaterno"];
         if ([data objectForKey:@"nombre"]) client.ultimaModificacion = date;
         if ([data objectForKey:@"celular"]) client.celular = [data objectForKey:@"celular"];
-        if ([data objectForKey:@"email"]) client.email = [data objectForKey:@"email"];
+        if ([data objectForKey:@"email"]) client.email = [[data objectForKey:@"email"] lowercaseString];
     }
     else if([client.ultimaModificacion compare:date]==NSOrderedDescending){
         //send data to server

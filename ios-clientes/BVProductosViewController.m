@@ -7,6 +7,7 @@
 //
 
 #import "BVProductosViewController.h"
+#import "BVEditarPerfilViewController.h"
 #import "Productos+Create.h"
 #import "GradientBackground.h"
 #import "GradientBackgroundHeader.h"
