@@ -201,9 +201,6 @@
     self.loading.hidden = NO;
     [self.loading startAnimating];
     
-    NSLog(@"user: %@",[self.usuario getRutConVerificador:NO]);
-    NSLog(@"password: %@",self.password.text);
-    
     //thread autenticacion
     dispatch_queue_t downloadQueue = dispatch_queue_create("autentificacion web service", NULL);
     dispatch_async(downloadQueue, ^{
