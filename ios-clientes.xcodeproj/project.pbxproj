@@ -12,6 +12,7 @@
 		8019A45B177CC8E5000E372C /* Productos.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A45A177CC8C3000E372C /* Productos.m */; };
 		8019A45C177CC8E5000E372C /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A458177CC8C3000E372C /* Usuario.m */; };
 		80225ECC1782197B004C61C0 /* BVPerfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80225ECB1782196F004C61C0 /* BVPerfilViewController.m */; };
+		8091C3891783768B0025F418 /* BVEditarPerfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8091C388178376790025F418 /* BVEditarPerfilViewController.m */; };
 		809556A3177CEF8700DACAA0 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556A2177CEF3E00DACAA0 /* CoreDataTableViewController.m */; };
 		809556AC177DDFFF00DACAA0 /* CommonDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556AB177DDFD100DACAA0 /* CommonDrawing.m */; };
 		809556AD177DE36400DACAA0 /* GradientBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556A9177DDF3D00DACAA0 /* GradientBackground.m */; };
@@ -60,6 +61,8 @@
 		8019A45A177CC8C3000E372C /* Productos.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Productos.m; sourceTree = SOURCE_ROOT; };
 		80225ECA1782196F004C61C0 /* BVPerfilViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVPerfilViewController.h; sourceTree = "<group>"; };
 		80225ECB1782196F004C61C0 /* BVPerfilViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVPerfilViewController.m; sourceTree = "<group>"; };
+		8091C387178376780025F418 /* BVEditarPerfilViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVEditarPerfilViewController.h; sourceTree = "<group>"; };
+		8091C388178376790025F418 /* BVEditarPerfilViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVEditarPerfilViewController.m; sourceTree = "<group>"; };
 		809556A1177CEF3D00DACAA0 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		809556A2177CEF3E00DACAA0 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		809556A6177DDE6F00DACAA0 /* GradientBackgroundDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GradientBackgroundDelegate.h; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 				80C7BF34177B73C700936A2C /* BVProductosViewController.m */,
 				80225ECA1782196F004C61C0 /* BVPerfilViewController.h */,
 				80225ECB1782196F004C61C0 /* BVPerfilViewController.m */,
+				8091C387178376780025F418 /* BVEditarPerfilViewController.h */,
+				8091C388178376790025F418 /* BVEditarPerfilViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8091C3891783768B0025F418 /* BVEditarPerfilViewController.m in Sources */,
 				80225ECC1782197B004C61C0 /* BVPerfilViewController.m in Sources */,
 				809556B0177DE42600DACAA0 /* GradientBackgroundHeader.m in Sources */,
 				809556AD177DE36400DACAA0 /* GradientBackground.m in Sources */,

@@ -260,16 +260,12 @@
         
         UITabBarController *tabBarViewController = (UITabBarController *) [segue destinationViewController];
         UINavigationController *navController = [[tabBarViewController viewControllers] objectAtIndex:0];
-        BVProductosViewController *vc = (BVProductosViewController *) [[navController viewControllers] objectAtIndex:0];
+        
+        BVProductosViewController *ProductosVc = (BVProductosViewController *) [[navController viewControllers] objectAtIndex:0];
         BVPerfilViewController *perfilVc = (BVPerfilViewController *) [[navController viewControllers] objectAtIndex:1];
-        //receiptsListViewController.managedObjectContext = self.managedObjectContext;
-        
-        
-        //UINavigationController* navController = [segue destinationViewController];
-        //BVInicioViewController *vc = (BVInicioViewController *) [navController topViewController];
-        //BVProductosViewController *vc = (BVProductosViewController*) [navController topViewController];
-        [vc setCliente:self.cliente];
-        [perfilVc setCliente:self.cliente];
+
+        [ProductosVc performSelector:@selector(setCliente:) withObject:self.cliente];
+        [perfilVc performSelector:@selector(setCliente:) withObject:self.cliente];
     }
 }
 

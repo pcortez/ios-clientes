@@ -126,7 +126,7 @@
     XCTAssertTrue([cliente.rut isEqualToString:[data objectForKey:@"rut"]]);
     XCTAssertTrue([cliente.nombre isEqualToString:[data objectForKey:@"nombre"]]);
     XCTAssertTrue([cliente.celular isEqualToString:[data objectForKey:@"celular"]]);
-    XCTAssertTrue([cliente.email isEqualToString:[data objectForKey:@"email"]]);
+    XCTAssertTrue([cliente.email isEqualToString:[[data objectForKey:@"email"] lowercaseString]]);
     XCTAssertTrue([cliente.id isEqual:[data objectForKey:@"id"]]);
     
 }
