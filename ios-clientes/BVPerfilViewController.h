@@ -13,15 +13,16 @@
 @interface BVPerfilViewController : UITableViewController<GradientBackgroundDelegate>
 
 @property (strong, nonatomic) Usuario *cliente;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cellNombre;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cellApellido;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cellRut;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cellEmail;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cellDireccion;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cellComuna;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cellCelular;
 
-/*
-@property (weak, nonatomic) IBOutlet UITableViewCell *nombreCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *apellidoCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *rutCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *emailCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *comunaCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *direccionCell;
-*/
 -(float)getWidth;
+- (IBAction)unwindToViewControllerProductosGuardar:(UIStoryboardSegue *)segue;
+- (IBAction)unwindToViewControllerProductosCancelar:(UIStoryboardSegue *)segue;
 
 @end

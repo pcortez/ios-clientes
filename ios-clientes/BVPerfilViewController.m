@@ -7,6 +7,7 @@
 //
 
 #import "BVPerfilViewController.h"
+#import "BVEditarPerfilViewController.h"
 #import "GradientBackground.h"
 #import "GradientBackgroundHeader.h"
 
@@ -28,21 +29,52 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    /*
-    self.nombreCell.detailTextLabel.text = [self.cliente.nombre capitalizedString];
-    self.apellidoCell.detailTextLabel.text = [self.cliente.apellido capitalizedString];
-    self.rutCell.detailTextLabel.text = [self.cliente.rut uppercaseString];
-    self.emailCell.detailTextLabel.text = [self.cliente.email lowercaseString];
-    self.direccionCell.detailTextLabel.text = @"Los Juncos 171";
-    self.comunaCell.detailTextLabel.text = @"Las Condes";
-     */
+    [self.tableView setContentInset:UIEdgeInsetsMake(64, self.tableView.contentInset.left, self.tableView.contentInset.bottom, self.tableView.contentInset.right)];
     
+    GradientBackground *cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
+    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
+    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
+    
+    
+    self.cellNombre.detailTextLabel.text = [self.cliente.nombre capitalizedString];
+    self.cellNombre.backgroundView = cellBackgroundView;
+    
+    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
+    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
+    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
+    self.cellApellido.detailTextLabel.text = [self.cliente.apellido capitalizedString];
+    self.cellApellido.backgroundView = cellBackgroundView;
+
+    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
+    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
+    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
+    self.cellRut.detailTextLabel.text = [self.cliente.rut uppercaseString];
+    self.cellRut.backgroundView = cellBackgroundView;
+    
+    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
+    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
+    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
+    self.cellEmail.detailTextLabel.text = [self.cliente.email lowercaseString];
+    self.cellEmail.backgroundView = cellBackgroundView;
+    
+    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
+    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
+    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
+    self.cellDireccion.detailTextLabel.text = @"Los Juncos 171";
+    self.cellDireccion.backgroundView = cellBackgroundView;
+    
+    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
+    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
+    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
+    self.cellComuna.detailTextLabel.text = @"Las Condes";
+    self.cellComuna.backgroundView = cellBackgroundView;
+    
+    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
+    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
+    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
+    self.cellCelular.detailTextLabel.text = self.cliente.celular;
+    self.cellCelular.backgroundView = cellBackgroundView;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,116 +92,61 @@
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     GradientBackgroundHeader *header = [[GradientBackgroundHeader alloc]initWithDelegate:self labelHeight:30.0];
-
     [header setLeftLabelText:(section==0?@"Cliente":@"Información") isFontSizeBig:NO];
     header.haveTopBorder = NO;
     return header;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return (section==0?3:3);
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([indexPath section]==0) {
-        if ([indexPath row]==0) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"NombreCell" forIndexPath:indexPath];
-            cell.detailTextLabel.text = [self.cliente.nombre capitalizedString];
-        }
-        else if ([indexPath row]==1){
-            cell = [tableView dequeueReusableCellWithIdentifier:@"ApellidoCell" forIndexPath:indexPath];
-            cell.detailTextLabel.text = [self.cliente.apellido capitalizedString];
-        }
-        else {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"RutCell" forIndexPath:indexPath];
-            cell.detailTextLabel.text = [self.cliente.rut uppercaseString];
-        }
+    if ([segue.identifier isEqualToString:@"EmailEditarSegue"]) {
+        [[segue destinationViewController] performSelector:@selector(setParametro:) withObject:@"E-mail"];
+        [[segue destinationViewController] performSelector:@selector(setValor:)withObject:[self.cliente.email lowercaseString]];
     }
-    else {
-        if ([indexPath row]==0) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"EmailCell" forIndexPath:indexPath];
-            cell.detailTextLabel.text = [self.cliente.email lowercaseString];
-        }
-        else if ([indexPath row]==1){
-            cell = [tableView dequeueReusableCellWithIdentifier:@"DireccionCell" forIndexPath:indexPath];
-            cell.detailTextLabel.text = @"Los Juncos 171";
-        }
-        else {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"ComunaCell" forIndexPath:indexPath];
-            cell.detailTextLabel.text = @"Las Condes";
-        }
+    else if ([segue.identifier isEqualToString:@"DireccionEditarSegue"]){
+        [[segue destinationViewController] performSelector:@selector(setParametro:) withObject:@"Direccion"];
+        [[segue destinationViewController] performSelector:@selector(setValor:)withObject:@"Los Juncos 171"];
     }
-
-    GradientBackground *cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
-    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
-    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
-    cell.backgroundView = cellBackgroundView;
+    else if ([segue.identifier isEqualToString:@"ComunaEditarSegue"]){
+        [[segue destinationViewController] performSelector:@selector(setParametro:) withObject:@"Comuna"];
+        [[segue destinationViewController] performSelector:@selector(setValor:)withObject:@"Las Condes"];
+    }
+    else if ([segue.identifier isEqualToString:@"CelularEditarSegue"]){
+        [[segue destinationViewController] performSelector:@selector(setParametro:) withObject:@"Celular"];
+        [[segue destinationViewController] performSelector:@selector(setValor:)withObject:self.cliente.celular];
+    }
     
-    return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (IBAction)unwindToViewControllerProductosCancelar:(UIStoryboardSegue *)segue
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (IBAction)unwindToViewControllerProductosGuardar:(UIStoryboardSegue *)segue
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    BVEditarPerfilViewController *vc = segue.sourceViewController;
+    if ([vc.parametro isEqualToString:@"E-mail"]) {
+        self.cliente.email = [vc.valor lowercaseString];
+        self.cellEmail.detailTextLabel.text = [vc.valor lowercaseString];
+    }
+    else if ([vc.parametro isEqualToString:@"Direccion"]) {
+        //self.cliente.direccion = [vc.valor capitalizedString];
+        self.cellDireccion.detailTextLabel.text = [vc.valor capitalizedString];
+    }
+    else if ([vc.parametro isEqualToString:@"Comuna"]) {
+        //self.cliente.direccion = [vc.valor capitalizedString];
+        self.cellComuna.detailTextLabel.text = [vc.valor capitalizedString];
+    }
+    else if ([vc.parametro isEqualToString:@"Celular"]) {
+        self.cliente.celular = [vc.valor lowercaseString];
+        self.cellCelular.detailTextLabel.text = [vc.valor lowercaseString];
+    }
+    
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
-
 
 -(float)getWidth{
     return self.view.frame.size.width;
 }
+
+
 @end
