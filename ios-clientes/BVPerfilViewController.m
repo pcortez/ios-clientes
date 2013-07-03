@@ -26,6 +26,12 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tabBarController setTitle:@"Configuración"];
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
