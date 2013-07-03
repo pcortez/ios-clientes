@@ -53,6 +53,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tableView  setContentInset:UIEdgeInsetsMake(self.tableView.contentInset.top, self.tableView.contentInset.left, self.tableView.contentInset.bottom+48, self.tableView.contentInset.right)];
+    
     self.managedObjectContext = [self managedObjectContext];
     [self setupFetchResultsController];
 }
