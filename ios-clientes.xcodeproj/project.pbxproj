@@ -99,6 +99,10 @@
 		80E056BA176900F100C15EC6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		80E056C3176900F100C15EC6 /* ios-clientesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios-clientesTests-Info.plist"; sourceTree = "<group>"; };
 		80E056C5176900F100C15EC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		80F14D9C1785BCF800667F71 /* Sucursal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Sucursal.h; path = ../Sucursal.h; sourceTree = "<group>"; };
+		80F14D9D1785BCF800667F71 /* Sucursal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Sucursal.m; path = ../Sucursal.m; sourceTree = "<group>"; };
+		80F14D9E1785BD2500667F71 /* Sucursal+Create.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sucursal+Create.h"; sourceTree = "<group>"; };
+		80F14D9F1785BD2500667F71 /* Sucursal+Create.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Sucursal+Create.m"; sourceTree = "<group>"; };
 		80FC577917709278008CC3EB /* BVRutTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRutTextField.h; sourceTree = "<group>"; };
 		80FC577A17709278008CC3EB /* BVRutTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVRutTextField.m; sourceTree = "<group>"; };
 		80FFB4D41770CF90005DB06F /* BVRutTextFieldDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRutTextFieldDelegate.h; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				8019A45A177CC8C3000E372C /* Productos.m */,
 				8019A457177CC8C3000E372C /* Usuario.h */,
 				8019A458177CC8C3000E372C /* Usuario.m */,
+				80F14D9C1785BCF800667F71 /* Sucursal.h */,
+				80F14D9D1785BCF800667F71 /* Sucursal.m */,
 			);
 			name = Models;
 			path = "ios-clientes";
@@ -178,6 +184,8 @@
 				80BDAB7A1772101A00431A64 /* Usuario+Create.m */,
 				8019A44F177CA999000E372C /* Productos+Create.h */,
 				8019A450177CA999000E372C /* Productos+Create.m */,
+				80F14D9E1785BD2500667F71 /* Sucursal+Create.h */,
+				80F14D9F1785BD2500667F71 /* Sucursal+Create.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
