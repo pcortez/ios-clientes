@@ -30,9 +30,9 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.title = [self.sucursal.nombre capitalizedString];
     self.cellEncargado.textLabel.text = [self.sucursal.encargado capitalizedString];
-    self.cellDireccion.textLabel.text = self.sucursal.direccion;
+    [(UILabel *)[self.cellDireccion viewWithTag:1] setText:self.sucursal.direccion];
     self.cellRegion.detailTextLabel.text = self.sucursal.region;
-    self.cellTelefono.detailTextLabel.text = self.sucursal.fono;
+    [(UILabel *)[self.cellTelefono viewWithTag:1] setText:self.sucursal.fono];
     self.cellFax.detailTextLabel.text = self.sucursal.fax;
     self.cellHorarioA.detailTextLabel.text = self.sucursal.horario1;
     self.cellHorarioB.detailTextLabel.text = self.sucursal.horario2;
