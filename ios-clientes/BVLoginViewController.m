@@ -228,8 +228,8 @@
                                     @"Nueva York 3, Santiago",@"direccion",
                                     @"8:30 a 18:30 hrs.",@"horario1",
                                     @"8:30 a 16:00 hrs.",@"horario2",
-                                    @"+562 25896400",@"fono",
-                                    @"+562 258950-21",@"fax",
+                                    @"+56225896400",@"fono",
+                                    @"+562258950-21",@"fax",
                                     @"Marcela Carmona",@"encargado",nil];
                     [Sucursal fromDictionary:dict1 inManagedObjectContext:self.managedObjectContext];
                     
@@ -242,8 +242,8 @@
                                            @"Providencia 1822, Providencia",@"direccion",
                                            @"8:30 a 18:30 hrs.",@"horario1",
                                            @"8:30 a 16:00 hrs.",@"horario2",
-                                           @"+562 228283000",@"fono",
-                                           @"+562 228283373",@"fax",
+                                           @"+562228283000",@"fono",
+                                           @"+562228283373",@"fax",
                                            @"Jorge Monsalva",@"encargado",nil];
                     
                     [Sucursal fromDictionary:dict2 inManagedObjectContext:self.managedObjectContext];
