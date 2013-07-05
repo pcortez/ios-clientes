@@ -67,22 +67,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([indexPath section]==0 && indexPath.row==1){
-        //NSString *phoneURLString = [NSString stringWithFormat:@"tel:%@", self.sucursal.fono];
-        //NSURL *phoneURL = [NSURL URLWithString:phoneURLString];
-        //[[UIApplication sharedApplication] openURL:phoneURL];
-        NSLog(@"llamar");
-    }
+    if ([indexPath section]==0 && indexPath.row==1)
+        [self hacerLlamadaA:self.sucursal.fono];
     else if ([indexPath section]==1 && indexPath.row==0){
         NSLog(@"apple map");
     }
     
 }
 
+-(void)hacerLlamadaA:(NSString *)numero
+{
+    NSString *phoneNumber = [@"telprompt://" stringByAppendingString:numero];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+}
+
+- (IBAction)llamar:(id)sender
+{
+    [self hacerLlamadaA:self.sucursal.fono];
+}
+
 -(float)getWidth
 {
     return self.tableView.frame.size.width;
 }
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation

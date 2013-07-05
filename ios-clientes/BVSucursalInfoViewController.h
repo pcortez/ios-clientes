@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellHorarioB;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellRegion;
 
+- (IBAction)llamar:(id)sender;
 
 -(float)getWidth;
 @end
