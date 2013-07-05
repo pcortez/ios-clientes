@@ -7,7 +7,6 @@
 //
 
 #import "BVEditarPerfilViewController.h"
-#import "GradientBackground.h"
 
 @interface BVEditarPerfilViewController ()
 
@@ -27,16 +26,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.labelParametro.text = [self.parametro stringByAppendingString:@":"];
     self.labelParametro.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline1];//systemFontOfSize:20.0f];
     self.textFieldValor.placeholder = self.valor;
-    
-    GradientBackground *cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
-    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
-    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
-    cellBackgroundView.haveTopBorder = NO;
-    self.cellValor.backgroundView = cellBackgroundView;
     
     //gestos
     // Gesto para esconder teclado al momento de tocar el background

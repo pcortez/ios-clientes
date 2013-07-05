@@ -9,7 +9,6 @@
 #import "BVProductosViewController.h"
 #import "BVEditarPerfilViewController.h"
 #import "Productos+Create.h"
-#import "GradientBackground.h"
 #import "GradientBackgroundHeader.h"
 
 @interface BVProductosViewController ()
@@ -53,8 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView  setContentInset:UIEdgeInsetsMake(self.tableView.contentInset.top, self.tableView.contentInset.left, self.tableView.contentInset.bottom+48, self.tableView.contentInset.right)];
-    
     self.managedObjectContext = [self managedObjectContext];
     [self setupFetchResultsController];
 }
@@ -85,13 +84,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:@"ProductoCell" forIndexPath:indexPath];
-    GradientBackground *cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
-    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
-    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
-    cell.backgroundView = cellBackgroundView;
-
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProductoCell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }

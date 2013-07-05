@@ -226,10 +226,11 @@
                                     [NSNumber numberWithDouble:-70.650977],@"longitud",
                                     @"Metropolitana",@"region",
                                     @"Nueva York 3, Santiago Chile",@"direccion",
-                                    @"L-J: 8:30 a 18:30 hrs.",@"horario1",
-                                    @"V: 8:30 a 16:00 hrs.",@"horario2",
-                                    @"+562 25896400",@"fono1",
-                                    @"+562 258950-21",@"fono2",nil];
+                                    @"8:30 a 18:30 hrs.",@"horario1",
+                                    @"8:30 a 16:00 hrs.",@"horario2",
+                                    @"+562 25896400",@"fono",
+                                    @"+562 258950-21",@"fax",
+                                    @"Marcela Carmona",@"encargado",nil];
                     [Sucursal fromDictionary:dict1 inManagedObjectContext:self.managedObjectContext];
                     
                     NSDictionary *dict2 = [[NSDictionary alloc]initWithObjectsAndKeys:
@@ -239,10 +240,11 @@
                                            [NSNumber numberWithDouble:-70.614542],@"longitud",
                                            @"Metropolitana",@"region",
                                            @"Providencia 1822, Povidencia, Chile",@"direccion",
-                                           @"L-J: 8:30 a 18:30 hrs.",@"horario1",
-                                           @"V: 8:30 a 16:00 hrs.",@"horario2",
-                                           @"+562 228283000",@"fono1",
-                                           @"+562 228283373",@"fono2",nil];
+                                           @"8:30 a 18:30 hrs.",@"horario1",
+                                           @"8:30 a 16:00 hrs.",@"horario2",
+                                           @"+562 228283000",@"fono",
+                                           @"+562 228283373",@"fax",
+                                           @"Jorge Monsalva",@"encargado",nil];
                     
                     [Sucursal fromDictionary:dict2 inManagedObjectContext:self.managedObjectContext];
                     [self.managedObjectContext save:nil];

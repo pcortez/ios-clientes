@@ -12,6 +12,8 @@
 		8019A45B177CC8E5000E372C /* Productos.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A45A177CC8C3000E372C /* Productos.m */; };
 		8019A45C177CC8E5000E372C /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A458177CC8C3000E372C /* Usuario.m */; };
 		80225ECC1782197B004C61C0 /* BVPerfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80225ECB1782196F004C61C0 /* BVPerfilViewController.m */; };
+		80851A9817871200004F3CC5 /* BVSucursalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80851A971787115F004F3CC5 /* BVSucursalInfoViewController.m */; };
+		80851A9B17872152004F3CC5 /* Sucursal.m in Sources */ = {isa = PBXBuildFile; fileRef = 80851A9A17872092004F3CC5 /* Sucursal.m */; };
 		8091C3891783768B0025F418 /* BVEditarPerfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8091C388178376790025F418 /* BVEditarPerfilViewController.m */; };
 		809556A3177CEF8700DACAA0 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556A2177CEF3E00DACAA0 /* CoreDataTableViewController.m */; };
 		809556AC177DDFFF00DACAA0 /* CommonDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556AB177DDFD100DACAA0 /* CommonDrawing.m */; };
@@ -22,7 +24,6 @@
 		80B3AD9D1785E5A800D60604 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B3AD9C1785E5A800D60604 /* CoreLocation.framework */; };
 		80B3ADA0178611E700D60604 /* Sucursal+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B3AD9B1785C4B800D60604 /* Sucursal+Create.m */; };
 		80B3ADA1178611E700D60604 /* Sucursal+MKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B3AD9F1786119B00D60604 /* Sucursal+MKAnnotation.m */; };
-		80B3ADA41786161400D60604 /* Sucursal.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B3ADA31786160100D60604 /* Sucursal.m */; };
 		80BDAB7E177221E100431A64 /* BVLoginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB7D1772217300431A64 /* BVLoginTests.m */; };
 		80BDAB811772500300431A64 /* BVApiConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB8017724FDF00431A64 /* BVApiConnection.m */; };
 		80C7BF35177B7D1000936A2C /* BVProductosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C7BF34177B73C700936A2C /* BVProductosViewController.m */; };
@@ -67,6 +68,10 @@
 		8019A45A177CC8C3000E372C /* Productos.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Productos.m; sourceTree = SOURCE_ROOT; };
 		80225ECA1782196F004C61C0 /* BVPerfilViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVPerfilViewController.h; sourceTree = "<group>"; };
 		80225ECB1782196F004C61C0 /* BVPerfilViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVPerfilViewController.m; sourceTree = "<group>"; };
+		80851A961787115F004F3CC5 /* BVSucursalInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSucursalInfoViewController.h; sourceTree = "<group>"; };
+		80851A971787115F004F3CC5 /* BVSucursalInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSucursalInfoViewController.m; sourceTree = "<group>"; };
+		80851A9917872092004F3CC5 /* Sucursal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Sucursal.h; path = ../Sucursal.h; sourceTree = "<group>"; };
+		80851A9A17872092004F3CC5 /* Sucursal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Sucursal.m; path = ../Sucursal.m; sourceTree = "<group>"; };
 		8091C387178376780025F418 /* BVEditarPerfilViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVEditarPerfilViewController.h; sourceTree = "<group>"; };
 		8091C388178376790025F418 /* BVEditarPerfilViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVEditarPerfilViewController.m; sourceTree = "<group>"; };
 		809556A1177CEF3D00DACAA0 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
@@ -86,8 +91,6 @@
 		80B3AD9C1785E5A800D60604 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		80B3AD9E1786119B00D60604 /* Sucursal+MKAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sucursal+MKAnnotation.h"; sourceTree = "<group>"; };
 		80B3AD9F1786119B00D60604 /* Sucursal+MKAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Sucursal+MKAnnotation.m"; sourceTree = "<group>"; };
-		80B3ADA21786160100D60604 /* Sucursal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Sucursal.h; path = ../Sucursal.h; sourceTree = "<group>"; };
-		80B3ADA31786160100D60604 /* Sucursal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Sucursal.m; path = ../Sucursal.m; sourceTree = "<group>"; };
 		80BDAB791772101A00431A64 /* Usuario+Create.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Usuario+Create.h"; sourceTree = "<group>"; };
 		80BDAB7A1772101A00431A64 /* Usuario+Create.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Usuario+Create.m"; sourceTree = "<group>"; };
 		80BDAB7D1772217300431A64 /* BVLoginTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVLoginTests.m; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 				8091C388178376790025F418 /* BVEditarPerfilViewController.m */,
 				80B3AD901785C2CF00D60604 /* BVSucursalesViewController.h */,
 				80B3AD911785C2CF00D60604 /* BVSucursalesViewController.m */,
+				80851A961787115F004F3CC5 /* BVSucursalInfoViewController.h */,
+				80851A971787115F004F3CC5 /* BVSucursalInfoViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -186,8 +191,8 @@
 				8019A45A177CC8C3000E372C /* Productos.m */,
 				8019A457177CC8C3000E372C /* Usuario.h */,
 				8019A458177CC8C3000E372C /* Usuario.m */,
-				80B3ADA21786160100D60604 /* Sucursal.h */,
-				80B3ADA31786160100D60604 /* Sucursal.m */,
+				80851A9917872092004F3CC5 /* Sucursal.h */,
+				80851A9A17872092004F3CC5 /* Sucursal.m */,
 			);
 			name = Models;
 			path = "ios-clientes";
@@ -421,7 +426,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80B3ADA41786161400D60604 /* Sucursal.m in Sources */,
+				80851A9B17872152004F3CC5 /* Sucursal.m in Sources */,
+				80851A9817871200004F3CC5 /* BVSucursalInfoViewController.m in Sources */,
 				80B3ADA0178611E700D60604 /* Sucursal+Create.m in Sources */,
 				80B3ADA1178611E700D60604 /* Sucursal+MKAnnotation.m in Sources */,
 				80B3AD941785C32A00D60604 /* BVSucursalesViewController.m in Sources */,
