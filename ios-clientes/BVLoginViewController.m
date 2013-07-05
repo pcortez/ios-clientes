@@ -7,10 +7,14 @@
 //
 
 #import "BVLoginViewController.h"
-#import "Usuario+Create.h"
-#import "BVApiConnection.h"
 #import "BVProductosViewController.h"
 #import "BVPerfilViewController.h"
+
+#import "BVApiConnection.h"
+
+#import "Sucursal+Create.h"
+#import "Usuario+Create.h"
+
 
 @interface BVLoginViewController ()
 
@@ -214,8 +218,34 @@
                     self.cliente=[Usuario updateFromDictionary:jsonData client:self.cliente inManagedObjectContext:self.managedObjectContext];
                     self.cliente.ultimoLogin = [NSDate date];
                     self.cliente.autoLogin = [NSNumber numberWithBool:YES];
-                    [self.managedObjectContext save:nil];
                     
+                    NSDictionary *dict1 = [[NSDictionary alloc]initWithObjectsAndKeys:
+                                    @"Santiago Centro",@"nombre",
+                                    @"S1",@"codigo",
+                                    [NSNumber numberWithDouble: -33.443797],@"latitud",
+                                    [NSNumber numberWithDouble:-70.650977],@"longitud",
+                                    @"Metropolitana",@"region",
+                                    @"Nueva York 3, Santiago Chile",@"direccion",
+                                    @"L-J: 8:30 a 18:30 hrs.",@"horario1",
+                                    @"V: 8:30 a 16:00 hrs.",@"horario2",
+                                    @"+562 25896400",@"fono1",
+                                    @"+562 258950-21",@"fono2",nil];
+                    [Sucursal fromDictionary:dict1 inManagedObjectContext:self.managedObjectContext];
+                    
+                    NSDictionary *dict2 = [[NSDictionary alloc]initWithObjectsAndKeys:
+                                           @"Casa Matriz",@"nombre",
+                                           @"S2",@"codigo",
+                                           [NSNumber numberWithDouble:-33.425227],@"latitud",
+                                           [NSNumber numberWithDouble:-70.614542],@"longitud",
+                                           @"Metropolitana",@"region",
+                                           @"Providencia 1822, Povidencia, Chile",@"direccion",
+                                           @"L-J: 8:30 a 18:30 hrs.",@"horario1",
+                                           @"V: 8:30 a 16:00 hrs.",@"horario2",
+                                           @"+562 228283000",@"fono1",
+                                           @"+562 228283373",@"fono2",nil];
+                    
+                    [Sucursal fromDictionary:dict2 inManagedObjectContext:self.managedObjectContext];
+                    [self.managedObjectContext save:nil];
                     [self performSegueWithIdentifier:@"ProductosSegue" sender:self];
                     [self.loading stopAnimating];
                 }

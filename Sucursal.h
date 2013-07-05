@@ -12,14 +12,15 @@
 
 @interface Sucursal : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * lat;
-@property (nonatomic, retain) NSNumber * long;
-@property (nonatomic, retain) NSString * nombre;
 @property (nonatomic, retain) NSString * direccion;
-@property (nonatomic, retain) NSString * region;
 @property (nonatomic, retain) NSString * fono1;
 @property (nonatomic, retain) NSString * fono2;
 @property (nonatomic, retain) NSString * horario1;
 @property (nonatomic, retain) NSString * horario2;
+@property (nonatomic, retain) NSNumber * latitud;
+@property (nonatomic, retain) NSNumber * longitud;
+@property (nonatomic, retain) NSString * nombre;
+@property (nonatomic, retain) NSString * region;
+@property (nonatomic, retain) NSString * codigo;
 
 @end

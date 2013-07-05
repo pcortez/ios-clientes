@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Bice Vida. All rights reserved.
 //
 
-
+#import "Sucursal.h"
 
 @interface Sucursal (Create)
-
++(Sucursal *)fromDictionary:(NSDictionary *)data inManagedObjectContext:(NSManagedObjectContext *)context;
 @end
