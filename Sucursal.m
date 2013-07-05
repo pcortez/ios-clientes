@@ -11,14 +11,15 @@
 
 @implementation Sucursal
 
-@dynamic lat;
-@dynamic long;
-@dynamic nombre;
 @dynamic direccion;
-@dynamic region;
 @dynamic fono1;
 @dynamic fono2;
 @dynamic horario1;
 @dynamic horario2;
+@dynamic latitud;
+@dynamic longitud;
+@dynamic nombre;
+@dynamic region;
+@dynamic codigo;
 
 @end
