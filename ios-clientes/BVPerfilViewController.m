@@ -8,7 +8,6 @@
 
 #import "BVPerfilViewController.h"
 #import "BVEditarPerfilViewController.h"
-#import "GradientBackground.h"
 #import "GradientBackgroundHeader.h"
 
 @interface BVPerfilViewController ()
@@ -35,52 +34,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView setContentInset:UIEdgeInsetsMake(64, self.tableView.contentInset.left, self.tableView.contentInset.bottom+48, self.tableView.contentInset.right)];
     
-    GradientBackground *cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
-    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
-    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
-    
-    
     self.cellNombre.detailTextLabel.text = [self.cliente.nombre capitalizedString];
-    self.cellNombre.backgroundView = cellBackgroundView;
-    
-    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
-    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
-    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
     self.cellApellido.detailTextLabel.text = [self.cliente.apellido capitalizedString];
-    self.cellApellido.backgroundView = cellBackgroundView;
-
-    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
-    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
-    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
     self.cellRut.detailTextLabel.text = [self.cliente.rut uppercaseString];
-    self.cellRut.backgroundView = cellBackgroundView;
-    
-    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
-    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
-    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
     self.cellEmail.detailTextLabel.text = [self.cliente.email lowercaseString];
-    self.cellEmail.backgroundView = cellBackgroundView;
-    
-    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
-    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
-    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
     self.cellDireccion.detailTextLabel.text = @"Los Juncos 171";
-    self.cellDireccion.backgroundView = cellBackgroundView;
-    
-    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
-    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
-    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
     self.cellComuna.detailTextLabel.text = @"Las Condes";
-    self.cellComuna.backgroundView = cellBackgroundView;
-    
-    cellBackgroundView = [[GradientBackground alloc] initWithDelegate:self];
-    cellBackgroundView.colorGradientTop = [UIColor whiteColor];
-    cellBackgroundView.colorGradientBottom = [UIColor whiteColor];
     self.cellCelular.detailTextLabel.text = self.cliente.celular;
-    self.cellCelular.backgroundView = cellBackgroundView;
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,11 +56,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 30.0;
-}
-
-- (CGFloat) tableView: (UITableView *) tableView heightForRowAtIndexPath: (NSIndexPath *) indexPath
-{
-    return 65.0;
 }
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

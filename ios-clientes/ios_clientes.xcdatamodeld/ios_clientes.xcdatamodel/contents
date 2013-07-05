@@ -16,8 +16,9 @@
     <entity name="Sucursal" representedClassName="Sucursal" syncable="YES">
         <attribute name="codigo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="direccion" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fono1" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fono2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="encargado" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fax" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fono" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="horario1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="horario2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitud" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>

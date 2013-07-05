@@ -7,6 +7,7 @@
 //
 
 #import "BVSucursalesViewController.h"
+#import "BVSucursalInfoViewController.h"
 #import "Sucursal+MKAnnotation.h"
 
 @interface BVSucursalesViewController (){
@@ -130,7 +131,7 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    //[self performSegueWithIdentifier:@"setPhotographer:" sender:view];
+    [self performSegueWithIdentifier:@"InfoSegue" sender:view];
 }
 
 - (void)didReceiveMemoryWarning
@@ -151,4 +152,18 @@
     [self.mapa addAnnotations:sucursales];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"InfoSegue"]) {
+        if ([sender isKindOfClass:[MKAnnotationView class]]) {
+            MKAnnotationView *aView = sender;
+            if ([aView.annotation isKindOfClass:[Sucursal class]]) {
+                Sucursal *auxSucursal = aView.annotation;
+                if ([segue.destinationViewController respondsToSelector:@selector(setSucursal:)]) {
+                    [segue.destinationViewController performSelector:@selector(setSucursal:) withObject:auxSucursal];
+                }
+            }
+        }
+    }
+}
 @end
