@@ -75,17 +75,15 @@
     if ([self.colorGradientTop isEqual:self.colorGradientBottom])
         drawFillRect(context, paperRect, self.colorGradientBottom.CGColor);
     else
-        drawLinearGradient(context, paperRect, self.colorGradientTop.CGColor, self.colorGradientBottom.CGColor);
-    
-    // Lines
-    draw1PxStroke(context,
-                  CGPointMake(paperRect.origin.x+paperRect.size.width,paperRect.origin.y),
-                  CGPointMake(paperRect.origin.x + paperRect.size.width,paperRect.origin.y + paperRect.size.height),
-                  self.colorSeparatorLine.CGColor);
-    
+        drawLinearGradient(context,paperRect,self.colorGradientTop.CGColor, self.colorGradientBottom.CGColor);
     
     //white rect
     if (self.backgroundWidth != -1.0){
+        // Lines
+        draw1PxStroke(context,
+                      CGPointMake(paperRect.origin.x+paperRect.size.width,paperRect.origin.y),
+                      CGPointMake(paperRect.origin.x + paperRect.size.width,paperRect.origin.y + paperRect.size.height),
+                      self.colorSeparatorLine.CGColor);
         paperRect = CGRectMake(bgWidth+1, self.bounds.origin.y, self.bounds.size.width-bgWidth-1, self.bounds.size.height);
     
         drawFillRect(context, paperRect, self.colorRightSection.CGColor);
