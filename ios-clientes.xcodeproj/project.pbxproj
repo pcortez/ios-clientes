@@ -17,6 +17,12 @@
 		809556AC177DDFFF00DACAA0 /* CommonDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556AB177DDFD100DACAA0 /* CommonDrawing.m */; };
 		809556AD177DE36400DACAA0 /* GradientBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556A9177DDF3D00DACAA0 /* GradientBackground.m */; };
 		809556B0177DE42600DACAA0 /* GradientBackgroundHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556AF177DE3EE00DACAA0 /* GradientBackgroundHeader.m */; };
+		80B3AD941785C32A00D60604 /* BVSucursalesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B3AD911785C2CF00D60604 /* BVSucursalesViewController.m */; };
+		80B3AD961785C35C00D60604 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B3AD951785C35C00D60604 /* MapKit.framework */; };
+		80B3AD9D1785E5A800D60604 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B3AD9C1785E5A800D60604 /* CoreLocation.framework */; };
+		80B3ADA0178611E700D60604 /* Sucursal+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B3AD9B1785C4B800D60604 /* Sucursal+Create.m */; };
+		80B3ADA1178611E700D60604 /* Sucursal+MKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B3AD9F1786119B00D60604 /* Sucursal+MKAnnotation.m */; };
+		80B3ADA41786161400D60604 /* Sucursal.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B3ADA31786160100D60604 /* Sucursal.m */; };
 		80BDAB7E177221E100431A64 /* BVLoginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB7D1772217300431A64 /* BVLoginTests.m */; };
 		80BDAB811772500300431A64 /* BVApiConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB8017724FDF00431A64 /* BVApiConnection.m */; };
 		80C7BF35177B7D1000936A2C /* BVProductosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C7BF34177B73C700936A2C /* BVProductosViewController.m */; };
@@ -72,6 +78,16 @@
 		809556AB177DDFD100DACAA0 /* CommonDrawing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonDrawing.m; sourceTree = "<group>"; };
 		809556AE177DE3EE00DACAA0 /* GradientBackgroundHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GradientBackgroundHeader.h; sourceTree = "<group>"; };
 		809556AF177DE3EE00DACAA0 /* GradientBackgroundHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GradientBackgroundHeader.m; sourceTree = "<group>"; };
+		80B3AD901785C2CF00D60604 /* BVSucursalesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSucursalesViewController.h; sourceTree = "<group>"; };
+		80B3AD911785C2CF00D60604 /* BVSucursalesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSucursalesViewController.m; sourceTree = "<group>"; };
+		80B3AD951785C35C00D60604 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		80B3AD9A1785C4B800D60604 /* Sucursal+Create.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sucursal+Create.h"; sourceTree = "<group>"; };
+		80B3AD9B1785C4B800D60604 /* Sucursal+Create.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Sucursal+Create.m"; sourceTree = "<group>"; };
+		80B3AD9C1785E5A800D60604 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		80B3AD9E1786119B00D60604 /* Sucursal+MKAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sucursal+MKAnnotation.h"; sourceTree = "<group>"; };
+		80B3AD9F1786119B00D60604 /* Sucursal+MKAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Sucursal+MKAnnotation.m"; sourceTree = "<group>"; };
+		80B3ADA21786160100D60604 /* Sucursal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Sucursal.h; path = ../Sucursal.h; sourceTree = "<group>"; };
+		80B3ADA31786160100D60604 /* Sucursal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Sucursal.m; path = ../Sucursal.m; sourceTree = "<group>"; };
 		80BDAB791772101A00431A64 /* Usuario+Create.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Usuario+Create.h"; sourceTree = "<group>"; };
 		80BDAB7A1772101A00431A64 /* Usuario+Create.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Usuario+Create.m"; sourceTree = "<group>"; };
 		80BDAB7D1772217300431A64 /* BVLoginTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVLoginTests.m; sourceTree = "<group>"; };
@@ -111,6 +127,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80B3AD9D1785E5A800D60604 /* CoreLocation.framework in Frameworks */,
+				80B3AD961785C35C00D60604 /* MapKit.framework in Frameworks */,
 				80E05694176900F100C15EC6 /* Foundation.framework in Frameworks */,
 				80E05696176900F100C15EC6 /* CoreGraphics.framework in Frameworks */,
 				80E0569A176900F100C15EC6 /* CoreData.framework in Frameworks */,
@@ -143,6 +161,8 @@
 				80225ECB1782196F004C61C0 /* BVPerfilViewController.m */,
 				8091C387178376780025F418 /* BVEditarPerfilViewController.h */,
 				8091C388178376790025F418 /* BVEditarPerfilViewController.m */,
+				80B3AD901785C2CF00D60604 /* BVSucursalesViewController.h */,
+				80B3AD911785C2CF00D60604 /* BVSucursalesViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -166,6 +186,8 @@
 				8019A45A177CC8C3000E372C /* Productos.m */,
 				8019A457177CC8C3000E372C /* Usuario.h */,
 				8019A458177CC8C3000E372C /* Usuario.m */,
+				80B3ADA21786160100D60604 /* Sucursal.h */,
+				80B3ADA31786160100D60604 /* Sucursal.m */,
 			);
 			name = Models;
 			path = "ios-clientes";
@@ -178,6 +200,10 @@
 				80BDAB7A1772101A00431A64 /* Usuario+Create.m */,
 				8019A44F177CA999000E372C /* Productos+Create.h */,
 				8019A450177CA999000E372C /* Productos+Create.m */,
+				80B3AD9A1785C4B800D60604 /* Sucursal+Create.h */,
+				80B3AD9B1785C4B800D60604 /* Sucursal+Create.m */,
+				80B3AD9E1786119B00D60604 /* Sucursal+MKAnnotation.h */,
+				80B3AD9F1786119B00D60604 /* Sucursal+MKAnnotation.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -205,6 +231,8 @@
 		80E05692176900F100C15EC6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				80B3AD9C1785E5A800D60604 /* CoreLocation.framework */,
+				80B3AD951785C35C00D60604 /* MapKit.framework */,
 				80E05693176900F100C15EC6 /* Foundation.framework */,
 				80E05695176900F100C15EC6 /* CoreGraphics.framework */,
 				80E05697176900F100C15EC6 /* UIKit.framework */,
@@ -393,6 +421,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80B3ADA41786161400D60604 /* Sucursal.m in Sources */,
+				80B3ADA0178611E700D60604 /* Sucursal+Create.m in Sources */,
+				80B3ADA1178611E700D60604 /* Sucursal+MKAnnotation.m in Sources */,
+				80B3AD941785C32A00D60604 /* BVSucursalesViewController.m in Sources */,
 				8091C3891783768B0025F418 /* BVEditarPerfilViewController.m in Sources */,
 				80225ECC1782197B004C61C0 /* BVPerfilViewController.m in Sources */,
 				809556B0177DE42600DACAA0 /* GradientBackgroundHeader.m in Sources */,

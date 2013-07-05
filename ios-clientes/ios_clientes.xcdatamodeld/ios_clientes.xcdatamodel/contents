@@ -13,6 +13,18 @@
         <attribute name="vigenciaTermino" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="tieneUnCliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Usuario" inverseName="tieneMuchosProductos" inverseEntity="Usuario" syncable="YES"/>
     </entity>
+    <entity name="Sucursal" representedClassName="Sucursal" syncable="YES">
+        <attribute name="codigo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="direccion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fono1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fono2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="horario1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="horario2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitud" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitud" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Usuario" representedClassName="Usuario">
         <attribute name="apellido" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="autoLogin" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -31,6 +43,7 @@
     </entity>
     <elements>
         <element name="Productos" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Sucursal" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Usuario" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
