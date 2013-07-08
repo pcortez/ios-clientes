@@ -128,21 +128,34 @@
     NSMutableString *obj = [NSMutableString stringWithString:input];
     NSString *output;
     NSUInteger len = input.length;
-    
+
+    /*
     if (len >= 8 && len <= 10) {
         NSString *areaCode  = [obj substringToIndex:3];
         NSString *lastSeven = [self parseLastSevenDigits:[obj substringFromIndex:3]];
         output = [NSString stringWithFormat:@"(%@) %@", areaCode, lastSeven];
-    } else if (len <= 10) {
-        output = [self parseLastSevenDigits:obj];
+     */
+    if (len == 8) {
+        NSString *lastEight = [self parseLastEightDigits:obj];
+        output = [NSString stringWithFormat:@"%@", lastEight];
+    } else if (len == 9) {
+        NSString *areaCode  = [obj substringToIndex:1];
+        NSString *lastEight = [self parseLastEightDigits:[obj substringFromIndex:1]];
+        output = [NSString stringWithFormat:@"(%@) %@", areaCode, lastEight];
+    } else if (len == 10) {
+        NSString *areaCode  = [obj substringToIndex:2];
+        NSString *lastEight = [self parseLastEightDigits:[obj substringFromIndex:2]];
+        output = [NSString stringWithFormat:@"(%@) %@", areaCode, lastEight];
     } else if (len == 11) {
         NSString *areaCode  = [obj substringToIndex:3];
         NSString *lastEight = [self parseLastEightDigits:[obj substringFromIndex:3]];
         output = [NSString stringWithFormat:@"(+%@) %@", areaCode, lastEight];
+    /*
     } else if (len == 12) {
         NSString *areaCode  = [obj substringToIndex:4];
         NSString *lastEight = [self parseLastEightDigits:[obj substringFromIndex:4]];
         output = [NSString stringWithFormat:@"(+%@) %@", areaCode, lastEight];
+     */
     } else {
         output = obj;
     }
