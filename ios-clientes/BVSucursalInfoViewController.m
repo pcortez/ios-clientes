@@ -36,11 +36,12 @@
     self.cellEncargado.textLabel.text = [self.sucursal.encargado capitalizedString];
     [(UILabel *)[self.cellDireccion viewWithTag:1] setText:self.sucursal.direccion];
     self.cellRegion.detailTextLabel.text = self.sucursal.region;
+    
     PhoneNumberFormatter *formatter = [[PhoneNumberFormatter alloc] init];
     NSString *formattedNumber = [formatter stringForObjectValue:self.sucursal.fono];
-    
     [(UILabel *)[self.cellTelefono viewWithTag:1] setText:formattedNumber];
     self.cellFax.detailTextLabel.text = [formatter stringForObjectValue:self.sucursal.fax];
+    
     self.cellHorarioA.detailTextLabel.text = self.sucursal.horario1;
     self.cellHorarioB.detailTextLabel.text = self.sucursal.horario2;
 }
