@@ -8,6 +8,7 @@
 
 #import "BVSucursalInfoViewController.h"
 #import "GradientBackgroundHeader.h"
+#import <MapKit/MapKit.h>
 
 @interface BVSucursalInfoViewController ()
 
@@ -70,9 +71,23 @@
     if ([indexPath section]==0 && indexPath.row==1)
         [self hacerLlamadaA:self.sucursal.fono];
     else if ([indexPath section]==1 && indexPath.row==0){
-        NSLog(@"apple map");
+        [self recorridoA:[self.sucursal.latitud doubleValue] and:[self.sucursal.latitud doubleValue]];
     }
     
+}
+
+- (void)recorridoA:(double)latitud and:(double)longitud
+{
+    NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey :   MKLaunchOptionsDirectionsModeDriving };
+    MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+    
+    CLLocationCoordinate2D aux = CLLocationCoordinate2DMake(latitud , longitud);
+
+    NSLog(@"lat: %f - %f",latitud,longitud);
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:aux addressDictionary:nil];
+    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+    [mapItem setName:@"Destino"];
+    [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
 }
 
 -(void)hacerLlamadaA:(NSString *)numero
@@ -84,6 +99,11 @@
 - (IBAction)llamar:(id)sender
 {
     [self hacerLlamadaA:self.sucursal.fono];
+}
+
+- (IBAction)recorrido:(id)sender
+{
+    [self recorridoA:[self.sucursal.latitud doubleValue] and:[self.sucursal.latitud doubleValue]];
 }
 
 -(float)getWidth
