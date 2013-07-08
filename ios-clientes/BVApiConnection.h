@@ -12,4 +12,5 @@
 
 BOOL userAuthentication(NSString *usuario, NSString *password);
 NSDictionary* userData(NSString *usuario);
+NSDictionary* getSucursales();
 @end
