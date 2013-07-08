@@ -6,9 +6,12 @@
 //  Copyright (c) 2013 Bice Vida. All rights reserved.
 //
 
-#import "BVSucursalInfoViewController.h"
-#import "GradientBackgroundHeader.h"
 #import <MapKit/MapKit.h>
+
+#import "BVSucursalInfoViewController.h"
+
+#import "GradientBackgroundHeader.h"
+#import "PhoneNumberFormatter.h"
 
 @interface BVSucursalInfoViewController ()
 
@@ -33,8 +36,11 @@
     self.cellEncargado.textLabel.text = [self.sucursal.encargado capitalizedString];
     [(UILabel *)[self.cellDireccion viewWithTag:1] setText:self.sucursal.direccion];
     self.cellRegion.detailTextLabel.text = self.sucursal.region;
-    [(UILabel *)[self.cellTelefono viewWithTag:1] setText:self.sucursal.fono];
-    self.cellFax.detailTextLabel.text = self.sucursal.fax;
+    PhoneNumberFormatter *formatter = [[PhoneNumberFormatter alloc] init];
+    NSString *formattedNumber = [formatter stringForObjectValue:self.sucursal.fono];
+    
+    [(UILabel *)[self.cellTelefono viewWithTag:1] setText:formattedNumber];
+    self.cellFax.detailTextLabel.text = [formatter stringForObjectValue:self.sucursal.fax];
     self.cellHorarioA.detailTextLabel.text = self.sucursal.horario1;
     self.cellHorarioB.detailTextLabel.text = self.sucursal.horario2;
 }
@@ -83,7 +89,6 @@
     
     CLLocationCoordinate2D aux = CLLocationCoordinate2DMake(latitud , longitud);
 
-    NSLog(@"lat: %f - %f",latitud,longitud);
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:aux addressDictionary:nil];
     MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
     [mapItem setName:@"Destino"];
@@ -110,6 +115,7 @@
 {
     return self.tableView.frame.size.width;
 }
+
 
 #pragma mark - Navigation
 

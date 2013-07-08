@@ -112,8 +112,6 @@
 }
 
 
-
-
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     static NSString *reuseId = @"BVSucursalesViewController";
@@ -152,6 +150,7 @@
     [self.mapa addAnnotations:sucursales];
 }
 
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"InfoSegue"]) {
@@ -166,4 +165,5 @@
         }
     }
 }
+
 @end

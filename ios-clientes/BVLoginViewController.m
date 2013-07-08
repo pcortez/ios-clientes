@@ -242,8 +242,8 @@
                                            @"Providencia 1822, Providencia",@"direccion",
                                            @"8:30 a 18:30 hrs.",@"horario1",
                                            @"8:30 a 16:00 hrs.",@"horario2",
-                                           @"+562228283000",@"fono",
-                                           @"+562228283373",@"fax",
+                                           @"+56228283000",@"fono",
+                                           @"+56228283373",@"fax",
                                            @"Jorge Monsalva",@"encargado",nil];
                     
                     [Sucursal fromDictionary:dict2 inManagedObjectContext:self.managedObjectContext];
