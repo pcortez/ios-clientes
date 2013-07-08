@@ -38,14 +38,18 @@
     [managedObjectContext setPersistentStoreCoordinator: persistentStoreCoordinator];
     
     data = userData(@"11610087-8");
-    [Usuario fromDictionary:data inManagedObjectContext:managedObjectContext];
-    [managedObjectContext save:nil];
 }
 
 - (void)tearDown
 {
     // Put teardown code here; it will be run once, after the last test case.
     [super tearDown];
+}
+
+- (void)testLoadData
+{
+    XCTAssertTrue([Usuario fromDictionary:data inManagedObjectContext:managedObjectContext]);
+    XCTAssertNoThrow([managedObjectContext save:nil]);
 }
 
 - (void)testThatEnvironmentWorks
