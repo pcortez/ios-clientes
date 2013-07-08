@@ -44,6 +44,7 @@
 		80E056BD176900F100C15EC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05697176900F100C15EC6 /* UIKit.framework */; };
 		80E056BE176900F100C15EC6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05699176900F100C15EC6 /* CoreData.framework */; };
 		80E056C6176900F100C15EC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80E056C4176900F100C15EC6 /* InfoPlist.strings */; };
+		80F76A9F178AFF2E00EBD503 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F76A9E178AFF0400EBD503 /* PhoneNumberFormatter.m */; };
 		80FFB4D31770CD01005DB06F /* BVRutTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FC577A17709278008CC3EB /* BVRutTextField.m */; };
 		80FFB4D91770DF2E005DB06F /* CommonAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFB4D81770DDA5005DB06F /* CommonAlgorithm.m */; };
 /* End PBXBuildFile section */
@@ -118,6 +119,8 @@
 		80E056BA176900F100C15EC6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		80E056C3176900F100C15EC6 /* ios-clientesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios-clientesTests-Info.plist"; sourceTree = "<group>"; };
 		80E056C5176900F100C15EC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		80F76A9D178AFF0400EBD503 /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
+		80F76A9E178AFF0400EBD503 /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberFormatter.m; sourceTree = "<group>"; };
 		80FC577917709278008CC3EB /* BVRutTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRutTextField.h; sourceTree = "<group>"; };
 		80FC577A17709278008CC3EB /* BVRutTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVRutTextField.m; sourceTree = "<group>"; };
 		80FFB4D41770CF90005DB06F /* BVRutTextFieldDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRutTextFieldDelegate.h; sourceTree = "<group>"; };
@@ -250,6 +253,7 @@
 		80E0569B176900F100C15EC6 /* ios-clientes */ = {
 			isa = PBXGroup;
 			children = (
+				80F76A9C178AFED600EBD503 /* Formatter */,
 				80FFB4D61770DD80005DB06F /* Libs */,
 				809556A4177DDE0E00DACAA0 /* Views */,
 				80FC577B17709298008CC3EB /* Delegates */,
@@ -293,6 +297,15 @@
 				80E056C4176900F100C15EC6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80F76A9C178AFED600EBD503 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				80F76A9D178AFF0400EBD503 /* PhoneNumberFormatter.h */,
+				80F76A9E178AFF0400EBD503 /* PhoneNumberFormatter.m */,
+			);
+			name = Formatter;
 			sourceTree = "<group>";
 		};
 		80FC5778177090FA008CC3EB /* TextFields */ = {
@@ -426,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80F76A9F178AFF2E00EBD503 /* PhoneNumberFormatter.m in Sources */,
 				80851A9B17872152004F3CC5 /* Sucursal.m in Sources */,
 				80851A9817871200004F3CC5 /* BVSucursalInfoViewController.m in Sources */,
 				80B3ADA0178611E700D60604 /* Sucursal+Create.m in Sources */,
