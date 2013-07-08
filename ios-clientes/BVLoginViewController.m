@@ -209,58 +209,21 @@
     dispatch_queue_t downloadQueue = dispatch_queue_create("autentificacion web service", NULL);
     dispatch_async(downloadQueue, ^{
         BOOL isValidado = userAuthentication([self.usuario getRutConVerificador:NO], self.password.text);
+        NSDictionary *jsonData = nil;
+        if (isValidado) jsonData = userData([self.usuario getRutConVerificador:NO]);
+        
         //este thread no se ejecuta antes de terminar el primer thread creado
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (isValidado) {
+            if (isValidado && jsonData) {
                 //segue
-                NSDictionary *jsonData = userData([self.usuario getRutConVerificador:NO]);
-                if (jsonData) {
-                    self.cliente=[Usuario updateFromDictionary:jsonData client:self.cliente inManagedObjectContext:self.managedObjectContext];
-                    self.cliente.ultimoLogin = [NSDate date];
-                    self.cliente.autoLogin = [NSNumber numberWithBool:YES];
-                    
-                    NSDictionary *dict1 = [[NSDictionary alloc]initWithObjectsAndKeys:
-                                    @"Santiago Centro",@"nombre",
-                                    @"S1",@"codigo",
-                                    [NSNumber numberWithDouble: -33.443797],@"latitud",
-                                    [NSNumber numberWithDouble:-70.650977],@"longitud",
-                                    @"Metropolitana",@"region",
-                                    @"Nueva York 3, Santiago",@"direccion",
-                                    @"8:30 a 18:30 hrs.",@"horario1",
-                                    @"8:30 a 16:00 hrs.",@"horario2",
-                                    @"+56225896400",@"fono",
-                                    @"+562258950-21",@"fax",
-                                    @"Marcela Carmona",@"encargado",nil];
-                    [Sucursal fromDictionary:dict1 inManagedObjectContext:self.managedObjectContext];
-                    
-                    NSDictionary *dict2 = [[NSDictionary alloc]initWithObjectsAndKeys:
-                                           @"Casa Matriz",@"nombre",
-                                           @"S2",@"codigo",
-                                           [NSNumber numberWithDouble:-33.425227],@"latitud",
-                                           [NSNumber numberWithDouble:-70.614542],@"longitud",
-                                           @"Metropolitana",@"region",
-                                           @"Providencia 1822, Providencia",@"direccion",
-                                           @"8:30 a 18:30 hrs.",@"horario1",
-                                           @"8:30 a 16:00 hrs.",@"horario2",
-                                           @"+56228283000",@"fono",
-                                           @"+56228283373",@"fax",
-                                           @"Jorge Monsalva",@"encargado",nil];
-                    
-                    [Sucursal fromDictionary:dict2 inManagedObjectContext:self.managedObjectContext];
-                    [self.managedObjectContext save:nil];
-                    [self performSegueWithIdentifier:@"ProductosSegue" sender:self];
-                    [self.loading stopAnimating];
-                }
-                else {
-                    self.password.text = @"";
-                    //self.usuario.text = @"";
-                    [self.loading stopAnimating];
-                    self.loading.hidden = YES;
-                    self.usuario.hidden = NO;
-                    self.password.hidden = NO;
-                    self.entrar.hidden = NO;
-                }
-                
+                //NSDictionary *jsonData = userData([self.usuario getRutConVerificador:NO]);
+                self.cliente=[Usuario updateFromDictionary:jsonData client:self.cliente inManagedObjectContext:self.managedObjectContext];
+                self.cliente.ultimoLogin = [NSDate date];
+                self.cliente.autoLogin = [NSNumber numberWithBool:YES];
+
+                [self.managedObjectContext save:nil];
+                [self.loading stopAnimating];
+                [self performSegueWithIdentifier:@"ProductosSegue" sender:self];
             }
             else {
                 self.password.text = @"";

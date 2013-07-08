@@ -9,6 +9,8 @@
 #import "BVSucursalesViewController.h"
 #import "BVSucursalInfoViewController.h"
 #import "Sucursal+MKAnnotation.h"
+#import "Sucursal+Create.h"
+#import "BVApiConnection.h"
 
 @interface BVSucursalesViewController (){
     CLLocationManager *locationManager;
@@ -55,6 +57,24 @@
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    
+    //thread
+    //se cargan aqui ya que cambian muy poco los datos
+    dispatch_queue_t downloadQueue = dispatch_queue_create("autentificacion web service", NULL);
+    dispatch_async(downloadQueue, ^{
+        NSDictionary *jsonSucursales = getSucursales();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //sucursales
+            if (jsonSucursales) {
+                NSArray *sucursales = [jsonSucursales objectForKey:@"sucursales"];
+                for (NSDictionary *sucursal in sucursales) {
+                    [Sucursal fromDictionary:sucursal inManagedObjectContext:self.managedObjectContext];
+                }
+                [self.managedObjectContext save:nil];
+                [self reload];
+            }
+        });
+    });
 
 }
 
@@ -148,6 +168,7 @@
     NSArray *sucursales = [self.managedObjectContext executeFetchRequest:request error:&error];
     [self.mapa removeAnnotations:self.mapa.annotations];
     [self.mapa addAnnotations:sucursales];
+    
 }
 
 

@@ -10,7 +10,6 @@
 
 @implementation Sucursal (Create)
 
-
 +(Sucursal *)fromDictionary:(NSDictionary *)data inManagedObjectContext:(NSManagedObjectContext *)context
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Sucursal"];
@@ -21,7 +20,6 @@
     NSError *error;
     NSArray *matches = [context executeFetchRequest:request error:&error];
     
-    
     Sucursal *sucursal;
     
     if (!matches || [matches count]>1) {
@@ -30,8 +28,8 @@
         sucursal = [NSEntityDescription insertNewObjectForEntityForName:@"Sucursal" inManagedObjectContext:context];
         sucursal.nombre = [[data objectForKey:@"nombre"] capitalizedString];
         sucursal.codigo = [data objectForKey:@"codigo"];
-        sucursal.latitud = [data objectForKey:@"latitud"];
-        sucursal.longitud = [data objectForKey:@"longitud"];
+        sucursal.latitud = [NSNumber numberWithDouble:[[data objectForKey:@"latitud"] doubleValue]];
+        sucursal.longitud = [NSNumber numberWithDouble:[[data objectForKey:@"longitud"] doubleValue]];
         sucursal.region = [[data objectForKey:@"region"] capitalizedString];
         sucursal.direccion = [[data objectForKey:@"direccion"] capitalizedString];
         sucursal.horario1 = [data objectForKey:@"horario1"];
@@ -43,8 +41,8 @@
         sucursal = [matches lastObject];
         //if (isOldData == NSOrderedAscending) {
             if([data objectForKey:@"nombre"]) sucursal.nombre = [[data objectForKey:@"nombre"] capitalizedString];
-            if([data objectForKey:@"latitud"]) sucursal.latitud = [data objectForKey:@"latitud"];
-            if([data objectForKey:@"longitud"]) sucursal.longitud = [data objectForKey:@"longitud"];
+            if([data objectForKey:@"latitud"]) sucursal.latitud = [NSNumber numberWithDouble:[[data objectForKey:@"latitud"] doubleValue]];
+            if([data objectForKey:@"longitud"]) sucursal.longitud = [NSNumber numberWithDouble:[[data objectForKey:@"longitud"] doubleValue]];
             if([data objectForKey:@"region"]) sucursal.region = [[data objectForKey:@"region"] capitalizedString];
             if([data objectForKey:@"direccion"]) sucursal.direccion = [[data objectForKey:@"direccion"] capitalizedString];
             if([data objectForKey:@"horario1"]) sucursal.horario1 = [data objectForKey:@"horario1"];
@@ -59,6 +57,7 @@
     
     return sucursal;
 }
+
 
 
 

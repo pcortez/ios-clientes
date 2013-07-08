@@ -54,7 +54,7 @@ NSDictionary* userData(NSString *usuario)
         
         NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"],usuario]];
         
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:20];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
         
         NSHTTPURLResponse *responseCode = nil;
         NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
@@ -73,6 +73,37 @@ NSDictionary* userData(NSString *usuario)
         }
     }
     else return nil;
+}
+
+NSDictionary* getSucursales()
+{
+    NSError *error;
+        
+    NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/sucursales",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"]]];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
+        
+        NSHTTPURLResponse *responseCode = nil;
+        NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+        
+        if (error){
+            NSLog(@"error: %@",error.description);
+            return nil;
+        }
+        if([responseCode statusCode] != 200){
+            NSLog(@"Error getting %@, HTTP status code %i", urlPath, [responseCode statusCode]);
+            return nil;
+        }
+        else{
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
+            if (error){
+                NSLog(@"error: %@",error.description);
+                return nil;
+            }
+     
+            return json;
+        
+        }
 }
 
 @end
