@@ -78,7 +78,7 @@
 {
     GradientBackgroundHeader *header = [[GradientBackgroundHeader alloc]initWithDelegate:self labelHeight:30.0];
     [header setLeftLabelText:[[[[self.fetchedResultsController sections]objectAtIndex:section] name] capitalizedString] isFontSizeBig:NO];
-    header.haveTopBorder = NO;
+    header.haveTopBorder = !(section==0);
     return header;
 }
 

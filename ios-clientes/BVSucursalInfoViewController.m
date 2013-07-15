@@ -61,7 +61,7 @@
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     GradientBackgroundHeader *header = [[GradientBackgroundHeader alloc]initWithDelegate:self labelHeight:30.0];
-    header.haveTopBorder = NO;
+    header.haveTopBorder = !(section==0);
     
     if (section==0)
         [header setLeftLabelText:@"Información" isFontSizeBig:NO];
@@ -116,16 +116,5 @@
 {
     return self.tableView.frame.size.width;
 }
-
-
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
 
 @end
