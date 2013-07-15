@@ -62,10 +62,11 @@
 {
     //password
     self.password = [[UITextField alloc] initWithFrame:CGRectMake(131.0f, self.view.frame.size.height-70.0f, 107.0f, 40.0f)];
-    self.password.placeholder = @"contraseña";
+    self.password.placeholder = @"Contraseña";
     self.password.backgroundColor = [UIColor darkGrayColor];
     [self.password setAlpha:0.7f];
     [self.password setTextColor:[UIColor whiteColor]];
+    [self.password setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.password setTextAlignment:NSTextAlignmentCenter];
     [self.password setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
     [self.password setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
@@ -80,10 +81,11 @@
     //usuario
     self.usuario = [[BVRutTextField alloc] initWithFrame:CGRectMake(20.0f, self.view.frame.size.height-70.0f, 107.0f, 40.0f)];
     self.usuario.customDelegate = self;
-    self.usuario.placeholder = @"usuario";
+    self.usuario.placeholder = @"Usuario";
     self.usuario.backgroundColor = [UIColor darkGrayColor];
     [self.usuario setAlpha:0.7f];
     [self.usuario setTextColor:[UIColor whiteColor]];
+    [self.usuario setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.usuario setTextAlignment:NSTextAlignmentCenter];
     [self.usuario setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
     [self.usuario setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];

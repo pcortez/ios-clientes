@@ -33,7 +33,7 @@
 
 - (void) initValue {
     [self setKeyboardType:UIKeyboardTypeNumberPad];
-    self.placeholder = @"usuario";
+    self.placeholder = @"Usuario";
     [self addTarget:self action:@selector(editBegin:) forControlEvents:UIControlEventEditingDidBegin];
     [self addTarget:self action:@selector(editDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
     [self addTarget:self action:@selector(editChangeEnd:) forControlEvents:UIControlEventEditingChanged];
