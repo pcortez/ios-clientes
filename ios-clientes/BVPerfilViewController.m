@@ -62,7 +62,7 @@
 {
     GradientBackgroundHeader *header = [[GradientBackgroundHeader alloc]initWithDelegate:self labelHeight:30.0];
     [header setLeftLabelText:(section==0?@"Cliente":@"Información") isFontSizeBig:NO];
-    header.haveTopBorder = NO;
+    header.haveTopBorder = !(section==0);
     return header;
 }
 

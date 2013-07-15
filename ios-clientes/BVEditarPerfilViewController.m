@@ -29,7 +29,7 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.labelParametro.text = [self.parametro stringByAppendingString:@":"];
-    self.labelParametro.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline1];//systemFontOfSize:20.0f];
+    self.labelParametro.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];//systemFontOfSize:20.0f];
     self.textFieldValor.placeholder = self.valor;
     
     //gestos

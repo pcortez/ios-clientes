@@ -23,9 +23,11 @@
 @implementation BVLoginViewController
 
 #pragma mark - Managing the detail item
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     //scroll view
     self.scrollViewContenedor.contentSize = self.view.frame.size;
     [self.scrollViewContenedor setBackgroundColor: [[UIColor alloc]initWithPatternImage:[UIImage imageNamed:@"backgroundLogin"]]];
@@ -144,6 +146,9 @@
 //esconder teclado
 - (void)viewWillAppear:(BOOL)animated
 {
+    //scroll view
+    self.scrollViewContenedor.contentInset = UIEdgeInsetsZero;
+    self.scrollViewContenedor.scrollIndicatorInsets = UIEdgeInsetsZero;
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
