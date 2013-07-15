@@ -29,6 +29,7 @@
 		80BDAB811772500300431A64 /* BVApiConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB8017724FDF00431A64 /* BVApiConnection.m */; };
 		80C7BF35177B7D1000936A2C /* BVProductosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C7BF34177B73C700936A2C /* BVProductosViewController.m */; };
 		80C7BF38177B922B00936A2C /* Usuario+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB7A1772101A00431A64 /* Usuario+Create.m */; };
+		80DDF8B317947D2400801817 /* BVEjecutivoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DDF8B217947D2400801817 /* BVEjecutivoViewController.m */; };
 		80E05694176900F100C15EC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05693176900F100C15EC6 /* Foundation.framework */; };
 		80E05696176900F100C15EC6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05695176900F100C15EC6 /* CoreGraphics.framework */; };
 		80E05698176900F100C15EC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05697176900F100C15EC6 /* UIKit.framework */; };
@@ -101,6 +102,8 @@
 		80BDAB8017724FDF00431A64 /* BVApiConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVApiConnection.m; sourceTree = "<group>"; };
 		80C7BF33177B73C700936A2C /* BVProductosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductosViewController.h; sourceTree = "<group>"; };
 		80C7BF34177B73C700936A2C /* BVProductosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductosViewController.m; sourceTree = "<group>"; };
+		80DDF8B117947D2400801817 /* BVEjecutivoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVEjecutivoViewController.h; sourceTree = "<group>"; };
+		80DDF8B217947D2400801817 /* BVEjecutivoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVEjecutivoViewController.m; sourceTree = "<group>"; };
 		80E05690176900F100C15EC6 /* ios-clientes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-clientes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E05693176900F100C15EC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		80E05695176900F100C15EC6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -173,6 +176,8 @@
 				80B3AD911785C2CF00D60604 /* BVSucursalesViewController.m */,
 				80851A961787115F004F3CC5 /* BVSucursalInfoViewController.h */,
 				80851A971787115F004F3CC5 /* BVSucursalInfoViewController.m */,
+				80DDF8B117947D2400801817 /* BVEjecutivoViewController.h */,
+				80DDF8B217947D2400801817 /* BVEjecutivoViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 				80FFB4D31770CD01005DB06F /* BVRutTextField.m in Sources */,
 				80E056AC176900F100C15EC6 /* ios_clientes.xcdatamodeld in Sources */,
 				80E056A6176900F100C15EC6 /* BVAppDelegate.m in Sources */,
+				80DDF8B317947D2400801817 /* BVEjecutivoViewController.m in Sources */,
 				80E056B2176900F100C15EC6 /* BVLoginViewController.m in Sources */,
 				80E056A2176900F100C15EC6 /* main.m in Sources */,
 			);
