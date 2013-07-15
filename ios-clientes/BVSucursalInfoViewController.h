@@ -16,7 +16,6 @@
 @property (strong,nonatomic) CLLocation *currentLocation;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellEncargado;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellTelefono;
-@property (weak, nonatomic) IBOutlet UITableViewCell *cellFax;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellDireccion;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellHorarioA;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellHorarioB;

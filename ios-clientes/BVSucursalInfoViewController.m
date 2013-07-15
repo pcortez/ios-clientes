@@ -39,8 +39,7 @@
     
     PhoneNumberFormatter *formatter = [[PhoneNumberFormatter alloc] init];
     NSString *formattedNumber = [formatter stringForObjectValue:self.sucursal.fono];
-    [(UILabel *)[self.cellTelefono viewWithTag:1] setText:formattedNumber];
-    self.cellFax.detailTextLabel.text = [formatter stringForObjectValue:self.sucursal.fax];
+    [(UILabel *)[self.cellTelefono viewWithTag:10] setText:formattedNumber];
     
     self.cellHorarioA.detailTextLabel.text = self.sucursal.horario1;
     self.cellHorarioB.detailTextLabel.text = self.sucursal.horario2;
