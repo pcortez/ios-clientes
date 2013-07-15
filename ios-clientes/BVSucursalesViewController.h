@@ -14,5 +14,6 @@
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet MKMapView *mapa;
+@property (strong,nonatomic) CLLocation *currentLocation;
 
 @end

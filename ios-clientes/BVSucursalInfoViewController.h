@@ -12,7 +12,8 @@
 
 @interface BVSucursalInfoViewController : UITableViewController<GradientBackgroundDelegate>
 
-@property (nonatomic, strong) Sucursal *sucursal;
+@property (strong, nonatomic) Sucursal *sucursal;
+@property (strong,nonatomic) CLLocation *currentLocation;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellEncargado;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellTelefono;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cellFax;

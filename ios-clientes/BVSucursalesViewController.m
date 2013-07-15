@@ -80,12 +80,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     [locationManager stopUpdatingLocation];
-    CLLocation *location = [locations lastObject];
-    
-    
-    //NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
-    
-    //MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:location.coordinate addressDictionary:nil];
+    //CLLocation *location = [locations lastObject];
+    self.currentLocation = [locations lastObject];
     
     CLLocation *minLocation;
     CLLocation *auxLocation;
@@ -95,12 +91,12 @@
     for (id <MKAnnotation> annotation in self.mapa.annotations) {
         if (first) {
             minLocation = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
-            minDistanceInMeters = [location distanceFromLocation:minLocation];
+            minDistanceInMeters = [self.currentLocation distanceFromLocation:minLocation];
             first = NO;
         }
         else{
             auxLocation = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
-            distanceInMeters = [location distanceFromLocation:auxLocation];
+            distanceInMeters = [self.currentLocation distanceFromLocation:auxLocation];
             if (minDistanceInMeters>distanceInMeters) {
                 minLocation = [[CLLocation alloc]initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
                 minDistanceInMeters = distanceInMeters;
@@ -109,7 +105,8 @@
     }
     
     CGRect boundingRect = CGRectMake(minLocation.coordinate.latitude, minLocation.coordinate.longitude, 0, 0);
-    boundingRect = CGRectUnion(boundingRect, CGRectMake(location.coordinate.latitude, location.coordinate.longitude, 0, 0));
+    boundingRect = CGRectUnion(boundingRect, CGRectMake(self.currentLocation.coordinate.latitude, self.currentLocation
+                                                        .coordinate.longitude, 0, 0));
     
     boundingRect = CGRectInset(boundingRect, -0.002, -0.002);
     MKCoordinateRegion region;
@@ -119,15 +116,6 @@
     region.span.longitudeDelta = boundingRect.size.height;
     
     [self.mapa setRegion:region animated:YES];
-    
-    /*
-    NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey :   MKLaunchOptionsDirectionsModeDriving };
-    MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
-    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:minLocation.coordinate addressDictionary:nil];
-    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-    [mapItem setName:@"Destino"];
-    [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
-    */
     
 }
 
@@ -179,8 +167,9 @@
             MKAnnotationView *aView = sender;
             if ([aView.annotation isKindOfClass:[Sucursal class]]) {
                 Sucursal *auxSucursal = aView.annotation;
-                if ([segue.destinationViewController respondsToSelector:@selector(setSucursal:)]) {
+                if ([segue.destinationViewController respondsToSelector:@selector(setSucursal:)] && [segue.destinationViewController respondsToSelector:@selector(setCurrentLocation:)]) {
                     [segue.destinationViewController performSelector:@selector(setSucursal:) withObject:auxSucursal];
+                    [segue.destinationViewController performSelector:@selector(setCurrentLocation:) withObject:self.currentLocation];
                 }
             }
         }

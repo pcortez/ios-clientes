@@ -78,21 +78,26 @@
     if ([indexPath section]==0 && indexPath.row==1)
         [self hacerLlamadaA:self.sucursal.fono];
     else if ([indexPath section]==1 && indexPath.row==0){
-        [self recorridoA:[self.sucursal.latitud doubleValue] and:[self.sucursal.latitud doubleValue]];
+        [self recorridoA:[self.sucursal.latitud doubleValue] and:[self.sucursal.longitud doubleValue]];
     }
     
 }
 
 - (void)recorridoA:(double)latitud and:(double)longitud
 {
-    NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey :   MKLaunchOptionsDirectionsModeDriving };
-    MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+    NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking};
+    //current location
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:self.currentLocation.coordinate addressDictionary:nil];
+    MKMapItem *currentLocationMapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+    [currentLocationMapItem setName:@"Yo"];
     
-    CLLocationCoordinate2D aux = CLLocationCoordinate2DMake(latitud , longitud);
-
-    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:aux addressDictionary:nil];
-    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-    [mapItem setName:@"Destino"];
+    //posicion sucursal
+    CLLocationCoordinate2D aux = CLLocationCoordinate2DMake(latitud, longitud);
+    
+    MKPlacemark *placemarkSucursal = [[MKPlacemark alloc] initWithCoordinate:aux addressDictionary:nil];
+    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemarkSucursal];
+    [mapItem setName:self.sucursal.direccion];
+    
     [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
 }
 
@@ -109,7 +114,7 @@
 
 - (IBAction)recorrido:(id)sender
 {
-    [self recorridoA:[self.sucursal.latitud doubleValue] and:[self.sucursal.latitud doubleValue]];
+    [self recorridoA:[self.sucursal.latitud doubleValue] and:[self.sucursal.longitud doubleValue]];
 }
 
 -(float)getWidth
