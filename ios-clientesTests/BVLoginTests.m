@@ -120,7 +120,10 @@
     rutTextField.text = @"116100878";
     NSDictionary *data = userData([rutTextField getRutConVerificador:NO]);
     XCTAssertNotNil(data);
+    
     Usuario *cliente = [Usuario fromDictionary:data inManagedObjectContext:managedObjectContext];
+    XCTAssertNotNil(cliente);
+    XCTAssertNoThrow([managedObjectContext save:nil]);
     
     XCTAssertTrue(![cliente.rut isEqualToString:@""]);
     XCTAssertTrue([cliente.rut isEqualToString:[data objectForKey:@"rut"]]);
