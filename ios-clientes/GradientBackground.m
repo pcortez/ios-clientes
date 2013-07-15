@@ -67,7 +67,7 @@
     
     float bgWidth = self.backgroundWidth;
     if (self.backgroundWidth == -1.0) {
-        bgWidth = [self.delegate getWidth];
+        bgWidth = [self.delegate getWidth]+1;
     }
     
     CGRect paperRect = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, bgWidth, self.bounds.size.height);
@@ -89,11 +89,13 @@
         drawFillRect(context, paperRect, self.colorRightSection.CGColor);
     }
     
+    //bottom line
     draw1PxStroke(context,
                   CGPointMake(self.bounds.origin.x,self.bounds.origin.y + self.bounds.size.height - 1),
                   CGPointMake(self.bounds.origin.x + self.frame.size.width,self.bounds.origin.y + self.bounds.size.height - 1),
                   self.colorSeparatorLine.CGColor);
     
+    //top lines
     if (self.haveTopBorder) {
         draw1PxStroke(context,
                       CGPointMake(self.bounds.origin.x,self.bounds.origin.y),
