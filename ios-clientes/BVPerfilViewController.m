@@ -9,6 +9,7 @@
 #import "BVPerfilViewController.h"
 #import "BVEditarPerfilViewController.h"
 #import "GradientBackgroundHeader.h"
+#import "PhoneNumberFormatter.h"
 
 @interface BVPerfilViewController ()
 
@@ -40,10 +41,24 @@
     self.cellNombre.detailTextLabel.text = [self.cliente.nombre capitalizedString];
     self.cellApellido.detailTextLabel.text = [self.cliente.apellido capitalizedString];
     self.cellRut.detailTextLabel.text = [self.cliente.rut uppercaseString];
-    self.cellEmail.detailTextLabel.text = [self.cliente.email lowercaseString];
-    self.cellDireccion.detailTextLabel.text = @"Los Juncos 171";
-    self.cellComuna.detailTextLabel.text = @"Las Condes";
-    self.cellCelular.detailTextLabel.text = self.cliente.celular;
+    
+    if (!self.cliente.email || [self.cliente.email isEqualToString:@""])
+        [(UILabel *)[self.cellEmail viewWithTag:10] setText:@"editar e-mail"];
+    else
+        [(UILabel *)[self.cellEmail viewWithTag:10] setText:[self.cliente.email lowercaseString]];
+    
+    [(UILabel *)[self.cellDireccion viewWithTag:10] setText: @"Los Juncos 171"];
+    [(UILabel *)[self.cellComuna viewWithTag:10] setText: @"Las Condes"];
+
+    if (!self.cliente.celular || [self.cliente.celular isEqualToString:@""]) {
+        [(UILabel *)[self.cellCelular viewWithTag:10] setText: @"editar celular"];
+    }
+    else{
+        PhoneNumberFormatter *formatter = [[PhoneNumberFormatter alloc] init];
+        NSString *formattedNumber = [formatter stringForObjectValue:self.cliente.celular];
+        [(UILabel *)[self.cellCelular viewWithTag:10] setText: formattedNumber];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,7 +75,7 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    GradientBackgroundHeader *header = [[GradientBackgroundHeader alloc]initWithDelegate:self labelHeight:30.0];
+    GradientBackgroundHeader *header=[[GradientBackgroundHeader alloc]initWithDelegate:self labelHeight:30.0];
     [header setLeftLabelText:(section==0?@"Cliente":@"Información") isFontSizeBig:NO];
     header.haveTopBorder = !(section==0);
     return header;
@@ -68,47 +83,60 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    
+    UINavigationController *navController = (UINavigationController *) [segue destinationViewController];
+    
+    BVEditarPerfilViewController *vc = (BVEditarPerfilViewController *) [[navController viewControllers] objectAtIndex:0];
+    
+    
     if ([segue.identifier isEqualToString:@"EmailEditarSegue"]) {
-        [[segue destinationViewController] performSelector:@selector(setParametro:) withObject:@"E-mail"];
-        [[segue destinationViewController] performSelector:@selector(setValor:)withObject:[self.cliente.email lowercaseString]];
+        [vc performSelector:@selector(setParametro:) withObject:@"E-mail"];
+        [vc performSelector:@selector(setValor:)withObject:[self.cliente.email lowercaseString]];
     }
     else if ([segue.identifier isEqualToString:@"DireccionEditarSegue"]){
-        [[segue destinationViewController] performSelector:@selector(setParametro:) withObject:@"Direccion"];
-        [[segue destinationViewController] performSelector:@selector(setValor:)withObject:@"Los Juncos 171"];
+        [vc performSelector:@selector(setParametro:) withObject:@"Direccion"];
+        [vc performSelector:@selector(setValor:)withObject:@"Los Juncos 171"];
     }
     else if ([segue.identifier isEqualToString:@"ComunaEditarSegue"]){
-        [[segue destinationViewController] performSelector:@selector(setParametro:) withObject:@"Comuna"];
-        [[segue destinationViewController] performSelector:@selector(setValor:)withObject:@"Las Condes"];
+        [vc performSelector:@selector(setParametro:) withObject:@"Comuna"];
+        [vc performSelector:@selector(setValor:)withObject:@"Las Condes"];
     }
     else if ([segue.identifier isEqualToString:@"CelularEditarSegue"]){
-        [[segue destinationViewController] performSelector:@selector(setParametro:) withObject:@"Celular"];
-        [[segue destinationViewController] performSelector:@selector(setValor:)withObject:self.cliente.celular];
+        [vc performSelector:@selector(setParametro:) withObject:@"Celular"];
+        [vc performSelector:@selector(setValor:)withObject:self.cliente.celular];
     }
     
 }
 
-- (IBAction)unwindToViewControllerProductosCancelar:(UIStoryboardSegue *)segue
-{
-    
-}
+- (IBAction) editEmail:(id)sender{[self performSegueWithIdentifier:@"EmailEditarSegue" sender:self];}
+- (IBAction) editDireccion:(id)sender{[self performSegueWithIdentifier:@"DireccionEditarSegue" sender:self];}
+- (IBAction) editComuna:(id)sender{[self performSegueWithIdentifier:@"ComunaEditarSegue" sender:self];}
+- (IBAction) editCeluar:(id)sender{ [self performSegueWithIdentifier:@"CelularEditarSegue" sender:self]; }
+
+- (IBAction)unwindToViewControllerProductosCancelar:(UIStoryboardSegue *)segue{}
 - (IBAction)unwindToViewControllerProductosGuardar:(UIStoryboardSegue *)segue
 {
+    
     BVEditarPerfilViewController *vc = segue.sourceViewController;
+    if ([vc.valor isEqualToString:@""]) return;
+    
     if ([vc.parametro isEqualToString:@"E-mail"]) {
         self.cliente.email = [vc.valor lowercaseString];
-        self.cellEmail.detailTextLabel.text = [vc.valor lowercaseString];
+        [(UILabel *)[self.cellEmail viewWithTag:10] setText:[vc.valor lowercaseString]];
     }
     else if ([vc.parametro isEqualToString:@"Direccion"]) {
-        //self.cliente.direccion = [vc.valor capitalizedString];
-        self.cellDireccion.detailTextLabel.text = [vc.valor capitalizedString];
+        //self.cliente.email = [vc.valor lowercaseString];
+        [(UILabel *)[self.cellDireccion viewWithTag:10] setText: [vc.valor capitalizedString]];
     }
     else if ([vc.parametro isEqualToString:@"Comuna"]) {
-        //self.cliente.direccion = [vc.valor capitalizedString];
-        self.cellComuna.detailTextLabel.text = [vc.valor capitalizedString];
+        //self.cliente.email = [vc.valor lowercaseString];
+        [(UILabel *)[self.cellComuna viewWithTag:10] setText: [vc.valor capitalizedString]];
     }
     else if ([vc.parametro isEqualToString:@"Celular"]) {
         self.cliente.celular = [vc.valor lowercaseString];
-        self.cellCelular.detailTextLabel.text = [vc.valor lowercaseString];
+        PhoneNumberFormatter *formatter = [[PhoneNumberFormatter alloc] init];
+        NSString *formattedNumber = [formatter stringForObjectValue:[vc.valor lowercaseString]];
+        [(UILabel *)[self.cellCelular viewWithTag:10] setText: formattedNumber];
     }
     
 }

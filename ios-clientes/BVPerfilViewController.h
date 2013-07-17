@@ -24,5 +24,9 @@
 -(float)getWidth;
 - (IBAction)unwindToViewControllerProductosGuardar:(UIStoryboardSegue *)segue;
 - (IBAction)unwindToViewControllerProductosCancelar:(UIStoryboardSegue *)segue;
+- (IBAction) editEmail:(id)sender;
+- (IBAction) editDireccion:(id)sender;
+- (IBAction) editComuna:(id)sender;
+- (IBAction) editCeluar:(id)sender;
 
 @end

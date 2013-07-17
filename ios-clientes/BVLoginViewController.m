@@ -266,7 +266,7 @@
         UINavigationController *navController = [[tabBarViewController viewControllers] objectAtIndex:0];
         
         BVProductosViewController *ProductosVc = (BVProductosViewController *) [[navController viewControllers] objectAtIndex:0];
-        BVPerfilViewController *perfilVc = (BVPerfilViewController *) [[navController viewControllers] objectAtIndex:1];
+        BVPerfilViewController *perfilVc = (BVPerfilViewController *) [[navController viewControllers] objectAtIndex:3];
 
         [ProductosVc performSelector:@selector(setCliente:) withObject:self.cliente];
         [perfilVc performSelector:@selector(setCliente:) withObject:self.cliente];
