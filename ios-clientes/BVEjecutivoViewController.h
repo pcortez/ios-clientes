@@ -10,6 +10,8 @@
 #import "GradientBackgroundDelegate.h"
 @interface BVEjecutivoViewController : UITableViewController<GradientBackgroundDelegate>
 
-
+-(void)hacerLlamadaA:(NSString *)numero;
+- (IBAction)llamar:(id)sender;
+- (IBAction)llamarJefe:(id)sender;
 -(float)getWidth;
 @end

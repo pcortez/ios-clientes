@@ -169,7 +169,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="editEmail:" destination="xra-JF-M0c" eventType="touchUpInside" id="fdk-8a-BvO"/>
-                                                        <action selector="llamar:" destination="Zov-gN-OkM" eventType="touchUpInside" id="uKj-NC-Vgi"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -204,7 +203,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="editDireccion:" destination="xra-JF-M0c" eventType="touchUpInside" id="2mG-xs-H4p"/>
-                                                        <action selector="llamar:" destination="Zov-gN-OkM" eventType="touchUpInside" id="HCQ-8e-Xhm"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -239,7 +237,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="editComuna:" destination="xra-JF-M0c" eventType="touchUpInside" id="2Y2-NA-t1z"/>
-                                                        <action selector="llamar:" destination="Zov-gN-OkM" eventType="touchUpInside" id="UGW-sZ-BJk"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -274,7 +271,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="editCeluar:" destination="xra-JF-M0c" eventType="touchUpInside" id="qPD-e5-e6R"/>
-                                                        <action selector="llamar:" destination="Zov-gN-OkM" eventType="touchUpInside" id="Fa2-4S-4ow"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -670,7 +666,7 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="llamar:" destination="Zov-gN-OkM" eventType="touchUpInside" id="Yz5-76-M8F"/>
+                                                        <action selector="llamar:" destination="bKF-9a-0Mn" eventType="touchUpInside" id="Rsg-Mi-Y9D"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -700,9 +696,6 @@
                                                     <state key="highlighted">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="llamar:" destination="Zov-gN-OkM" eventType="touchUpInside" id="8MN-fY-vrq"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -736,9 +729,6 @@
                                                     <state key="highlighted">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="llamar:" destination="Zov-gN-OkM" eventType="touchUpInside" id="Yeb-PE-Ick"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -813,7 +803,7 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="llamar:" destination="Zov-gN-OkM" eventType="touchUpInside" id="WoJ-75-1jl"/>
+                                                        <action selector="llamarJefe:" destination="bKF-9a-0Mn" eventType="touchUpInside" id="vMO-79-lNd"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -843,9 +833,6 @@
                                                     <state key="highlighted">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="llamar:" destination="Zov-gN-OkM" eventType="touchUpInside" id="IWv-Pl-2dL"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>

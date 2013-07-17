@@ -67,6 +67,30 @@
     return header;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath section]==1 && indexPath.row==0)
+        [self hacerLlamadaA:@"+56982093175"];
+    else if ([indexPath section]==3 && indexPath.row==1)
+        [self hacerLlamadaA:@"+56982093175"];
+}
+
+
+-(void)hacerLlamadaA:(NSString *)numero
+{
+    NSString *phoneNumber = [@"telprompt://" stringByAppendingString:numero];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+}
+
+- (IBAction)llamar:(id)sender
+{
+    [self hacerLlamadaA:@"+56982093175"];
+}
+
+- (IBAction)llamarJefe:(id)sender
+{
+    [self hacerLlamadaA:@"+56982093175"];
+}
 
 -(float)getWidth
 {
