@@ -13,5 +13,8 @@
 -(void)hacerLlamadaA:(NSString *)numero;
 - (IBAction)llamar:(id)sender;
 - (IBAction)llamarJefe:(id)sender;
+- (IBAction)email:(id)sender;
+- (IBAction)emailJefe:(id)sender;
+
 -(float)getWidth;
 @end

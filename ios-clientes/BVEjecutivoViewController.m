@@ -71,8 +71,12 @@
 {
     if ([indexPath section]==1 && indexPath.row==0)
         [self hacerLlamadaA:@"+56982093175"];
+    else if ([indexPath section]==1 && indexPath.row==1)
+        [self mandarEmailA:@"pcortez@gmail.com"];
     else if ([indexPath section]==3 && indexPath.row==1)
         [self hacerLlamadaA:@"+56982093175"];
+    else if ([indexPath section]==3 && indexPath.row==2)
+        [self mandarEmailA:@"pcortez@gmail.com"];
 }
 
 
@@ -82,15 +86,20 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
 }
 
-- (IBAction)llamar:(id)sender
+-(void)mandarEmailA:(NSString *)direccion
 {
-    [self hacerLlamadaA:@"+56982093175"];
+    NSString *url = [@"mailto:" stringByAppendingString:direccion];
+    url = [url stringByAppendingString:@"?subject=Bice%20Vida%20Ayuda"];
+    ///NSString *url = [NSString stringWithString: @"mailto:foo@example.com?cc=bar@example.com&subject=Greetings%20from%20Cupertino!&body=Wish%20you%20were%20here!"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
-- (IBAction)llamarJefe:(id)sender
-{
-    [self hacerLlamadaA:@"+56982093175"];
-}
+
+- (IBAction)email:(id)sender{ [self mandarEmailA:@"pcortez@gmail.com"];}
+- (IBAction)emailJefe:(id)sender{ [self mandarEmailA:@"pcortez@gmail.com"];}
+
+- (IBAction)llamar:(id)sender{[self hacerLlamadaA:@"+56982093175"];}
+- (IBAction)llamarJefe:(id)sender{[self hacerLlamadaA:@"+56982093175"];}
 
 -(float)getWidth
 {
