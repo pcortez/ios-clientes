@@ -83,8 +83,6 @@
     if (section==1)
         [header setLeftLabelText:@"Información" isFontSizeBig:NO];
     else if (section==2)
-        [header setLeftLabelText:@"Sucursal" isFontSizeBig:NO];
-    else if (section==3)
         [header setLeftLabelText:@"Jefe de Unidad" isFontSizeBig:NO];
     
     return header;
@@ -96,7 +94,7 @@
         [self hacerLlamadaA:@"+56982093175"];
     else if ([indexPath section]==1 && indexPath.row==1)
         [self mandarEmailA:@"pcortez@gmail.com"];
-    else if ([indexPath section]==2 && indexPath.row==0)
+    else if ([indexPath section]==1 && indexPath.row==2)
         [self recorridoA:-33.425227 and: -70.614542];
     else if ([indexPath section]==3 && indexPath.row==1)
         [self hacerLlamadaA:@"+56982093175"];
