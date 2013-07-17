@@ -17,6 +17,8 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+@synthesize locationManager = _locationManager;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -66,6 +68,22 @@
             abort();
         } 
     }
+}
+
+#pragma mark - Core Location stack
+- (CLLocationManager *)locationManager
+{
+    if (_locationManager != nil) {
+        return _locationManager;
+    }
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    
+    [_locationManager stopUpdatingLocation];
+    
+    return _locationManager;
 }
 
 #pragma mark - Core Data stack

@@ -12,7 +12,7 @@
 #import "Sucursal+Create.h"
 #import "BVApiConnection.h"
 
-@interface BVSucursalesViewController (){
+@interface BVSucursalesViewController(){
     CLLocationManager *locationManager;
 }
 
@@ -25,6 +25,15 @@
     id delegate = [[UIApplication sharedApplication] delegate];
     if ([delegate performSelector:@selector(managedObjectContext)]) {
         context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
+- (CLLocationManager *)locationManager {
+    CLLocationManager *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(locationManager)]) {
+        context = [delegate locationManager];
     }
     return context;
 }
@@ -44,6 +53,7 @@
 {
     [self.tabBarController setTitle:@"Sucursales"];
     [super viewWillAppear:animated];
+    locationManager.delegate = self;
     [locationManager startUpdatingLocation];
 }
 
@@ -53,10 +63,10 @@
     self.managedObjectContext = [self managedObjectContext];
     [self reload];
 	self.mapa.delegate = self;
-    locationManager = [[CLLocationManager alloc] init];
+    locationManager = [self locationManager];//[[CLLocationManager alloc] init];
     locationManager.delegate = self;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    //locationManager.distanceFilter = kCLDistanceFilterNone;
+    //locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     
     //thread
     //se cargan aqui ya que cambian muy poco los datos
