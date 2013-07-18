@@ -2,11 +2,12 @@
 //  Usuario.m
 //  ios-clientes
 //
-//  Created by Pedro Cortez on 27-06-13.
+//  Created by Pedro Cortez on 17-07-13.
 //  Copyright (c) 2013 Bice Vida. All rights reserved.
 //
 
 #import "Usuario.h"
+#import "Ejecutivo.h"
 #import "Productos.h"
 
 
@@ -23,5 +24,6 @@
 @dynamic ultimaModificacion;
 @dynamic ultimoLogin;
 @dynamic tieneMuchosProductos;
+@dynamic tieneUnEjecutivo;
 
 @end

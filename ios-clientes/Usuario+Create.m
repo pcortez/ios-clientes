@@ -8,6 +8,9 @@
 
 #import "Usuario+Create.h"
 #import "Productos+Create.h"
+#import "Ejecutivo+Create.h"
+#import "BVApiConnection.h"
+
 
 @implementation Usuario (Create)
 
@@ -27,7 +30,7 @@
 //
 +(Usuario *)updateFromDictionary:(NSDictionary *)data client:(Usuario *)client inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    
+    if (!data)return nil;
     //check format
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
@@ -82,6 +85,9 @@
         //send data to server
     }
     
+    
+    if ([data objectForKey:@"ejecutivo"])
+        client.tieneUnEjecutivo = [Ejecutivo fromDictionary:[data objectForKey:@"ejecutivo"] inManagedObjectContext:context];
     
     for (NSDictionary *product in [data objectForKey:@"productos"]) {
         Productos *p = [Productos fromDictionary:product isOldData:[client.ultimaModificacion compare:date] inManagedObjectContext:context];

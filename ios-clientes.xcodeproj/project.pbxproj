@@ -11,10 +11,8 @@
 		8019A451177CA9A2000E372C /* Productos+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A450177CA999000E372C /* Productos+Create.m */; };
 		8019A456177CC682000E372C /* BVProductosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A455177CC663000E372C /* BVProductosTests.m */; };
 		8019A45B177CC8E5000E372C /* Productos.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A45A177CC8C3000E372C /* Productos.m */; };
-		8019A45C177CC8E5000E372C /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8019A458177CC8C3000E372C /* Usuario.m */; };
 		80225ECC1782197B004C61C0 /* BVPerfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80225ECB1782196F004C61C0 /* BVPerfilViewController.m */; };
 		80851A9817871200004F3CC5 /* BVSucursalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80851A971787115F004F3CC5 /* BVSucursalInfoViewController.m */; };
-		80851A9B17872152004F3CC5 /* Sucursal.m in Sources */ = {isa = PBXBuildFile; fileRef = 80851A9A17872092004F3CC5 /* Sucursal.m */; };
 		8091C3891783768B0025F418 /* BVEditarPerfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8091C388178376790025F418 /* BVEditarPerfilViewController.m */; };
 		809556A3177CEF8700DACAA0 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556A2177CEF3E00DACAA0 /* CoreDataTableViewController.m */; };
 		809556AC177DDFFF00DACAA0 /* CommonDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556AB177DDFD100DACAA0 /* CommonDrawing.m */; };
@@ -47,6 +45,10 @@
 		80E056BE176900F100C15EC6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05699176900F100C15EC6 /* CoreData.framework */; };
 		80E056C6176900F100C15EC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80E056C4176900F100C15EC6 /* InfoPlist.strings */; };
 		80F76A9F178AFF2E00EBD503 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F76A9E178AFF0400EBD503 /* PhoneNumberFormatter.m */; };
+		80F9D68E17972E9C00E223F0 /* Ejecutivo+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D68D17972E9C00E223F0 /* Ejecutivo+Create.m */; };
+		80F9D69A179738D400E223F0 /* Sucursal.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D699179738D400E223F0 /* Sucursal.m */; };
+		80F9D6A0179738FC00E223F0 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D69F179738FC00E223F0 /* Usuario.m */; };
+		80F9D6A91798554700E223F0 /* Ejecutivo.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D6A81798554700E223F0 /* Ejecutivo.m */; };
 		80FFB4D31770CD01005DB06F /* BVRutTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FC577A17709278008CC3EB /* BVRutTextField.m */; };
 		80FFB4D91770DF2E005DB06F /* CommonAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFB4D81770DDA5005DB06F /* CommonAlgorithm.m */; };
 /* End PBXBuildFile section */
@@ -66,16 +68,12 @@
 		8019A44F177CA999000E372C /* Productos+Create.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Productos+Create.h"; sourceTree = "<group>"; };
 		8019A450177CA999000E372C /* Productos+Create.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Productos+Create.m"; sourceTree = "<group>"; };
 		8019A455177CC663000E372C /* BVProductosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductosTests.m; sourceTree = "<group>"; };
-		8019A457177CC8C3000E372C /* Usuario.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Usuario.h; sourceTree = SOURCE_ROOT; };
-		8019A458177CC8C3000E372C /* Usuario.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = SOURCE_ROOT; };
 		8019A459177CC8C3000E372C /* Productos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Productos.h; sourceTree = SOURCE_ROOT; };
 		8019A45A177CC8C3000E372C /* Productos.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Productos.m; sourceTree = SOURCE_ROOT; };
 		80225ECA1782196F004C61C0 /* BVPerfilViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVPerfilViewController.h; sourceTree = "<group>"; };
 		80225ECB1782196F004C61C0 /* BVPerfilViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVPerfilViewController.m; sourceTree = "<group>"; };
 		80851A961787115F004F3CC5 /* BVSucursalInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSucursalInfoViewController.h; sourceTree = "<group>"; };
 		80851A971787115F004F3CC5 /* BVSucursalInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSucursalInfoViewController.m; sourceTree = "<group>"; };
-		80851A9917872092004F3CC5 /* Sucursal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Sucursal.h; path = ../Sucursal.h; sourceTree = "<group>"; };
-		80851A9A17872092004F3CC5 /* Sucursal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Sucursal.m; path = ../Sucursal.m; sourceTree = "<group>"; };
 		8091C387178376780025F418 /* BVEditarPerfilViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVEditarPerfilViewController.h; sourceTree = "<group>"; };
 		8091C388178376790025F418 /* BVEditarPerfilViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVEditarPerfilViewController.m; sourceTree = "<group>"; };
 		809556A1177CEF3D00DACAA0 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
@@ -126,6 +124,14 @@
 		80E056C5176900F100C15EC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		80F76A9D178AFF0400EBD503 /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
 		80F76A9E178AFF0400EBD503 /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberFormatter.m; sourceTree = "<group>"; };
+		80F9D68C17972E9C00E223F0 /* Ejecutivo+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Ejecutivo+Create.h"; sourceTree = "<group>"; };
+		80F9D68D17972E9C00E223F0 /* Ejecutivo+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ejecutivo+Create.m"; sourceTree = "<group>"; };
+		80F9D698179738D400E223F0 /* Sucursal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sucursal.h; path = ../Sucursal.h; sourceTree = "<group>"; };
+		80F9D699179738D400E223F0 /* Sucursal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sucursal.m; path = ../Sucursal.m; sourceTree = "<group>"; };
+		80F9D69E179738FC00E223F0 /* Usuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Usuario.h; path = ../Usuario.h; sourceTree = "<group>"; };
+		80F9D69F179738FC00E223F0 /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Usuario.m; path = ../Usuario.m; sourceTree = "<group>"; };
+		80F9D6A71798554700E223F0 /* Ejecutivo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ejecutivo.h; path = ../Ejecutivo.h; sourceTree = "<group>"; };
+		80F9D6A81798554700E223F0 /* Ejecutivo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ejecutivo.m; path = ../Ejecutivo.m; sourceTree = "<group>"; };
 		80FC577917709278008CC3EB /* BVRutTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRutTextField.h; sourceTree = "<group>"; };
 		80FC577A17709278008CC3EB /* BVRutTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVRutTextField.m; sourceTree = "<group>"; };
 		80FFB4D41770CF90005DB06F /* BVRutTextFieldDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRutTextFieldDelegate.h; sourceTree = "<group>"; };
@@ -199,10 +205,12 @@
 				80BDAB7817720FC800431A64 /* Categories */,
 				8019A459177CC8C3000E372C /* Productos.h */,
 				8019A45A177CC8C3000E372C /* Productos.m */,
-				8019A457177CC8C3000E372C /* Usuario.h */,
-				8019A458177CC8C3000E372C /* Usuario.m */,
-				80851A9917872092004F3CC5 /* Sucursal.h */,
-				80851A9A17872092004F3CC5 /* Sucursal.m */,
+				80F9D698179738D400E223F0 /* Sucursal.h */,
+				80F9D699179738D400E223F0 /* Sucursal.m */,
+				80F9D69E179738FC00E223F0 /* Usuario.h */,
+				80F9D69F179738FC00E223F0 /* Usuario.m */,
+				80F9D6A71798554700E223F0 /* Ejecutivo.h */,
+				80F9D6A81798554700E223F0 /* Ejecutivo.m */,
 			);
 			name = Models;
 			path = "ios-clientes";
@@ -219,6 +227,8 @@
 				80B3AD9B1785C4B800D60604 /* Sucursal+Create.m */,
 				80B3AD9E1786119B00D60604 /* Sucursal+MKAnnotation.h */,
 				80B3AD9F1786119B00D60604 /* Sucursal+MKAnnotation.m */,
+				80F9D68C17972E9C00E223F0 /* Ejecutivo+Create.h */,
+				80F9D68D17972E9C00E223F0 /* Ejecutivo+Create.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -448,26 +458,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				80F76A9F178AFF2E00EBD503 /* PhoneNumberFormatter.m in Sources */,
-				80851A9B17872152004F3CC5 /* Sucursal.m in Sources */,
 				80851A9817871200004F3CC5 /* BVSucursalInfoViewController.m in Sources */,
 				80B3ADA0178611E700D60604 /* Sucursal+Create.m in Sources */,
 				80B3ADA1178611E700D60604 /* Sucursal+MKAnnotation.m in Sources */,
 				80B3AD941785C32A00D60604 /* BVSucursalesViewController.m in Sources */,
 				8091C3891783768B0025F418 /* BVEditarPerfilViewController.m in Sources */,
 				80225ECC1782197B004C61C0 /* BVPerfilViewController.m in Sources */,
+				80F9D68E17972E9C00E223F0 /* Ejecutivo+Create.m in Sources */,
 				809556B0177DE42600DACAA0 /* GradientBackgroundHeader.m in Sources */,
 				809556AD177DE36400DACAA0 /* GradientBackground.m in Sources */,
 				809556AC177DDFFF00DACAA0 /* CommonDrawing.m in Sources */,
 				809556A3177CEF8700DACAA0 /* CoreDataTableViewController.m in Sources */,
 				8019A45B177CC8E5000E372C /* Productos.m in Sources */,
-				8019A45C177CC8E5000E372C /* Usuario.m in Sources */,
 				8019A451177CA9A2000E372C /* Productos+Create.m in Sources */,
 				80C7BF38177B922B00936A2C /* Usuario+Create.m in Sources */,
+				80F9D6A91798554700E223F0 /* Ejecutivo.m in Sources */,
 				80C7BF35177B7D1000936A2C /* BVProductosViewController.m in Sources */,
 				80BDAB811772500300431A64 /* BVApiConnection.m in Sources */,
 				80FFB4D91770DF2E005DB06F /* CommonAlgorithm.m in Sources */,
+				80F9D6A0179738FC00E223F0 /* Usuario.m in Sources */,
 				80FFB4D31770CD01005DB06F /* BVRutTextField.m in Sources */,
 				80E056AC176900F100C15EC6 /* ios_clientes.xcdatamodeld in Sources */,
+				80F9D69A179738D400E223F0 /* Sucursal.m in Sources */,
 				80E056A6176900F100C15EC6 /* BVAppDelegate.m in Sources */,
 				80DDF8B317947D2400801817 /* BVEjecutivoViewController.m in Sources */,
 				80E056B2176900F100C15EC6 /* BVLoginViewController.m in Sources */,

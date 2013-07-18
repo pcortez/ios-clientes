@@ -10,4 +10,5 @@
 
 @interface Sucursal (Create)
 +(Sucursal *)fromDictionary:(NSDictionary *)data inManagedObjectContext:(NSManagedObjectContext *)context;
++(Sucursal *)fromCode:(NSString *)code inManagedObjectContext:(NSManagedObjectContext *)context;
 @end
