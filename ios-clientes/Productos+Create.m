@@ -12,6 +12,8 @@
 
 +(Productos *)fromDictionary:(NSDictionary *)data isOldData:(int)isOldData inManagedObjectContext:(NSManagedObjectContext *)context
 {
+    if (!data)return nil;
+    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Productos"];
     request.predicate = [NSPredicate predicateWithFormat:@"contratoCodigo == %@",[data objectForKey:@"codigoContrato"]];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"nombre" ascending:YES];

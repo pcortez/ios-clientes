@@ -7,11 +7,15 @@
 //
 
 #import "Sucursal+Create.h"
+#import "BVApiConnection.h"
 
 @implementation Sucursal (Create)
 
 +(Sucursal *)fromDictionary:(NSDictionary *)data inManagedObjectContext:(NSManagedObjectContext *)context
 {
+    //pasa porque el jefe de ejecutivo no tiene sucursal
+    if (!data)return nil;
+    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Sucursal"];
     request.predicate = [NSPredicate predicateWithFormat:@"codigo == %@",[data objectForKey:@"codigo"]];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"nombre" ascending:YES];
@@ -58,7 +62,35 @@
     return sucursal;
 }
 
-
++(Sucursal *)fromCode:(NSString *)code inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Sucursal"];
+    request.predicate = [NSPredicate predicateWithFormat:@"codigo == %@",code];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"nombre" ascending:YES];
+    request.sortDescriptors = [NSArray arrayWithObject:sort];
+    
+    NSError *error;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    
+    
+    if (!matches) {
+        //handler error
+        NSLog(@"Error: nil");
+        return nil;
+    } else if([matches count]==0) {
+        //handler error
+        NSDictionary *json = getSucursal(code);
+        if (json) return [Sucursal fromDictionary:json inManagedObjectContext:context];
+        NSLog(@"Error no existe, hay que crearlo: 0");
+        return nil;
+    } else if([matches count]==1) {
+        //handler error
+        return [matches lastObject];
+    } else {
+        NSLog(@"Error no existe, hay varias sucursales con el mismo codigo: >1");
+        return [matches lastObject];
+    }
+}
 
 
 @end
