@@ -13,4 +13,6 @@
 BOOL userAuthentication(NSString *usuario, NSString *password);
 NSDictionary* userData(NSString *usuario);
 NSDictionary* getSucursales();
+NSDictionary* getSucursal(NSString *codigo);
+NSDictionary* getEjecutivoDeCuenta(NSString *rutCliente);
 @end

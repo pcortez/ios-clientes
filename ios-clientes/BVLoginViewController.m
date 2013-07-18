@@ -7,9 +7,6 @@
 //
 
 #import "BVLoginViewController.h"
-#import "BVProductosViewController.h"
-#import "BVPerfilViewController.h"
-
 #import "BVApiConnection.h"
 
 #import "Sucursal+Create.h"
@@ -262,14 +259,11 @@
 {
     if ([[segue identifier] isEqualToString:@"ProductosSegue"]) {
         
-        UITabBarController *tabBarViewController = (UITabBarController *) [segue destinationViewController];
-        UINavigationController *navController = [[tabBarViewController viewControllers] objectAtIndex:0];
-        
-        BVProductosViewController *ProductosVc = (BVProductosViewController *) [[navController viewControllers] objectAtIndex:0];
-        BVPerfilViewController *perfilVc = (BVPerfilViewController *) [[navController viewControllers] objectAtIndex:3];
+        UINavigationController *navController = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
 
-        [ProductosVc performSelector:@selector(setCliente:) withObject:self.cliente];
-        [perfilVc performSelector:@selector(setCliente:) withObject:self.cliente];
+        [[[navController viewControllers] objectAtIndex:0] performSelector:@selector(setCliente:) withObject:self.cliente];
+        [[[navController viewControllers] objectAtIndex:1] performSelector:@selector(setCliente:) withObject:self.cliente];
+        [[[navController viewControllers] objectAtIndex:3] performSelector:@selector(setCliente:) withObject:self.cliente];
     }
 }
 

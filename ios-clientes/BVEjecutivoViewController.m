@@ -7,8 +7,11 @@
 //
 
 #import "BVEjecutivoViewController.h"
-
 #import "GradientBackgroundHeader.h"
+#import "PhoneNumberFormatter.h"
+#import "Sucursal+Create.h"
+#import "Ejecutivo+Create.h"
+#import "BVApiConnection.h"
 
 @interface BVEjecutivoViewController(){
     CLLocationManager *locationManager;
@@ -17,6 +20,15 @@
 @end
 
 @implementation BVEjecutivoViewController
+
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
 
 - (CLLocationManager *)locationManager {
     CLLocationManager *context = nil;
@@ -49,6 +61,8 @@
     [super viewDidLoad];
     [self.tableView setContentInset:UIEdgeInsetsMake(64, self.tableView.contentInset.left, self.tableView.contentInset.bottom+48, self.tableView.contentInset.right)];
     
+    [self drawData];
+    //current location
     locationManager = [self locationManager];
     locationManager.delegate = self;
 }
@@ -71,7 +85,6 @@
 {
     return (section==0?0:30.0);
 }
-
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == 0)
@@ -108,14 +121,12 @@
     NSString *phoneNumber = [@"telprompt://" stringByAppendingString:numero];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
 }
-
 - (void)mandarEmailA:(NSString *)direccion
 {
     NSString *url = [@"mailto:" stringByAppendingString:direccion];
     url = [url stringByAppendingString:@"?subject=Bice%20Vida%20Ayuda"];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
-
 - (void)recorridoA:(double)latitud and:(double)longitud
 {
     NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking};
@@ -134,6 +145,28 @@
     [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
 }
 
+
+
+- (void)drawData
+{
+    self.labelNombres.text = [self.cliente.tieneUnEjecutivo.nombres capitalizedString];
+    self.labelApellidos.text = [self.cliente.tieneUnEjecutivo.apellidos capitalizedString];
+    [(UILabel *)[self.cellEmail viewWithTag:10] setText:[self.cliente.tieneUnEjecutivo.email lowercaseString]];
+    [(UILabel *)[self.cellDireccion viewWithTag:10] setText:[self.cliente.tieneUnEjecutivo.sucursal.direccion capitalizedString]];
+    self.cellRegion.detailTextLabel.text = [self.cliente.tieneUnEjecutivo.sucursal.region capitalizedString];
+    
+    PhoneNumberFormatter *formatter = [[PhoneNumberFormatter alloc] init];
+    NSString *formattedNumber = [formatter stringForObjectValue:self.cliente.tieneUnEjecutivo.telefono];
+    [(UILabel *)[self.cellTelefono viewWithTag:10] setText:formattedNumber];
+    
+    //jefe
+    [(UILabel *)[self.cellEmailJefe viewWithTag:10] setText:[self.cliente.tieneUnEjecutivo.jefe.email lowercaseString]];
+    formattedNumber = [formatter stringForObjectValue:self.cliente.tieneUnEjecutivo.jefe.telefono];
+    [(UILabel *)[self.cellTelefonoJefe viewWithTag:10] setText:formattedNumber];
+    [(UILabel *)[self.cellNombreJefe viewWithTag:10] setText:[[self.cliente.tieneUnEjecutivo nombreCompletoJefe] capitalizedString]];
+
+    self.image.image = [UIImage imageWithData:[NSData dataWithContentsOfFile:[self.cliente.tieneUnEjecutivo getImgPath]]];
+}
 
 - (IBAction)recorrido:(id)sender{ [self recorridoA:-33.425227 and: -70.614542];}
 
