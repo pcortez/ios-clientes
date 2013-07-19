@@ -31,7 +31,7 @@
     } else if([matches count]==0) {
         sucursal = [NSEntityDescription insertNewObjectForEntityForName:@"Sucursal" inManagedObjectContext:context];
         sucursal.nombre = [[data objectForKey:@"nombre"] capitalizedString];
-        sucursal.codigo = [data objectForKey:@"codigo"];
+        sucursal.codigo = [[data objectForKey:@"codigo"] uppercaseString];
         sucursal.latitud = [NSNumber numberWithDouble:[[data objectForKey:@"latitud"] doubleValue]];
         sucursal.longitud = [NSNumber numberWithDouble:[[data objectForKey:@"longitud"] doubleValue]];
         sucursal.region = [[data objectForKey:@"region"] capitalizedString];

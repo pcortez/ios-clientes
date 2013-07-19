@@ -44,6 +44,8 @@
 		80E056BD176900F100C15EC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05697176900F100C15EC6 /* UIKit.framework */; };
 		80E056BE176900F100C15EC6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E05699176900F100C15EC6 /* CoreData.framework */; };
 		80E056C6176900F100C15EC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80E056C4176900F100C15EC6 /* InfoPlist.strings */; };
+		80ECF3351798A1ED0095F405 /* BVEjecutivoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECF3341798A1ED0095F405 /* BVEjecutivoTests.m */; };
+		80ECF3361798A5B10095F405 /* BVApiConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BDAB8017724FDF00431A64 /* BVApiConnection.m */; };
 		80F76A9F178AFF2E00EBD503 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F76A9E178AFF0400EBD503 /* PhoneNumberFormatter.m */; };
 		80F9D68E17972E9C00E223F0 /* Ejecutivo+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D68D17972E9C00E223F0 /* Ejecutivo+Create.m */; };
 		80F9D69A179738D400E223F0 /* Sucursal.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D699179738D400E223F0 /* Sucursal.m */; };
@@ -122,6 +124,7 @@
 		80E056BA176900F100C15EC6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		80E056C3176900F100C15EC6 /* ios-clientesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios-clientesTests-Info.plist"; sourceTree = "<group>"; };
 		80E056C5176900F100C15EC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		80ECF3341798A1ED0095F405 /* BVEjecutivoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVEjecutivoTests.m; sourceTree = "<group>"; };
 		80F76A9D178AFF0400EBD503 /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
 		80F76A9E178AFF0400EBD503 /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberFormatter.m; sourceTree = "<group>"; };
 		80F9D68C17972E9C00E223F0 /* Ejecutivo+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Ejecutivo+Create.h"; sourceTree = "<group>"; };
@@ -303,6 +306,7 @@
 				80BDAB7D1772217300431A64 /* BVLoginTests.m */,
 				8019A455177CC663000E372C /* BVProductosTests.m */,
 				800D7846178B5704002050B4 /* BVSucursalesTests.m */,
+				80ECF3341798A1ED0095F405 /* BVEjecutivoTests.m */,
 				80E056C2176900F100C15EC6 /* Supporting Files */,
 			);
 			path = "ios-clientesTests";
@@ -491,8 +495,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80ECF3361798A5B10095F405 /* BVApiConnection.m in Sources */,
 				800D7847178B573B002050B4 /* BVSucursalesTests.m in Sources */,
 				8019A456177CC682000E372C /* BVProductosTests.m in Sources */,
+				80ECF3351798A1ED0095F405 /* BVEjecutivoTests.m in Sources */,
 				80BDAB7E177221E100431A64 /* BVLoginTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
