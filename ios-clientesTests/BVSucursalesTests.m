@@ -106,4 +106,15 @@
     
 }
 
+- (void)testLoadDataIndividual
+{
+    XCTAssertTrue([Sucursal fromDictionary:getSucursal(@"S2") inManagedObjectContext:managedObjectContext]);
+    XCTAssertNoThrow([managedObjectContext save:nil]);
+}
+
+- (void)testLoadDataIndividualBadCode
+{
+    XCTAssertNil([Sucursal fromDictionary:getSucursal(@"asdf") inManagedObjectContext:managedObjectContext]);
+}
+
 @end

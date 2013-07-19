@@ -46,9 +46,10 @@
         ejecutivo.sucursal = [Sucursal fromCode:[data objectForKey:@"sucursalCodigo"] inManagedObjectContext:context];
     if([data objectForKey:@"jefe"])
         ejecutivo.jefe = [Ejecutivo fromDictionary:[data objectForKey:@"jefe"] andJefe:ejecutivo inManagedObjectContext:context];
-    if([data objectForKey:@"imgURL"])
-        ejecutivo.imgNombre = [self guardarImg:[data objectForKey:@"imgURL"] name:[data objectForKey:@"rut"]];
-    
+    if([data objectForKey:@"imgURL"]){
+        NSString *path = [self guardarImg:[data objectForKey:@"imgURL"] name:[data objectForKey:@"rut"]];
+        if (path) ejecutivo.imgNombre = [self guardarImg:[data objectForKey:@"imgURL"] name:[data objectForKey:@"rut"]];
+    }
     return ejecutivo;
 }
 
@@ -88,8 +89,10 @@
     
     if([data objectForKey:@"sucursalCodigo"])
         ejecutivo.sucursal = [Sucursal fromCode:[data objectForKey:@"sucursalCodigo"] inManagedObjectContext:context];
-    if([data objectForKey:@"imgURL"])
-        ejecutivo.imgNombre = [self guardarImg:[data objectForKey:@"imgURL"] name:[data objectForKey:@"rut"]];
+    if([data objectForKey:@"imgURL"]){
+        NSString *path = [self guardarImg:[data objectForKey:@"imgURL"] name:[data objectForKey:@"rut"]];
+        if (path) ejecutivo.imgNombre = [self guardarImg:[data objectForKey:@"imgURL"] name:[data objectForKey:@"rut"]];
+    }
     
     request = [NSFetchRequest fetchRequestWithEntityName:@"Ejecutivo"];
     request.predicate = [NSPredicate predicateWithFormat:@"rut == %@",empleado.rut];
@@ -140,6 +143,7 @@
 }
 
 
+//nombes y apellidos ya estan con mayuscula al comienzo
 -(NSString *)nombreCompleto{return [[self.nombres stringByAppendingString:@" "] stringByAppendingString:self.apellidos];}
 -(NSString *)nombreCompletoJefe{return [[self.jefe.nombres stringByAppendingString:@" "] stringByAppendingString:self.jefe.apellidos];}
 -(NSString *)getImgPath
