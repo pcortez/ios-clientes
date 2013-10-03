@@ -10,7 +10,8 @@
 
 @interface BVApiConnection : NSObject
 
-BOOL userAuthentication(NSString *usuario, NSString *password);
+NSString* base64String(NSString *str);
+NSDictionary* userAuthentication(NSString *usuario, NSString *password);
 NSDictionary* userData(NSString *usuario);
 NSDictionary* getSucursales();
 NSDictionary* getSucursal(NSString *codigo);

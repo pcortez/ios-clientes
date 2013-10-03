@@ -212,18 +212,21 @@
     //thread autenticacion
     dispatch_queue_t downloadQueue = dispatch_queue_create("autentificacion web service", NULL);
     dispatch_async(downloadQueue, ^{
-        BOOL isValidado = userAuthentication([self.usuario getRutConVerificador:NO], self.password.text);
+        //BOOL isValidado = userAuthentication([self.usuario getRutConVerificador:NO], self.password.text);
+        NSDictionary *jsonTokens = userAuthentication([self.usuario getRutConVerificador:NO], self.password.text);
         NSDictionary *jsonData = nil;
-        if (isValidado) jsonData = userData([self.usuario getRutConVerificador:NO]);
+        if (jsonTokens) jsonData = userData([self.usuario getRutConVerificador:NO]);
         
         //este thread no se ejecuta antes de terminar el primer thread creado
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (isValidado && jsonData) {
+            if (jsonTokens && jsonData) {
                 //segue
                 //NSDictionary *jsonData = userData([self.usuario getRutConVerificador:NO]);
                 self.cliente=[Usuario updateFromDictionary:jsonData client:self.cliente inManagedObjectContext:self.managedObjectContext];
                 self.cliente.ultimoLogin = [NSDate date];
                 self.cliente.autoLogin = [NSNumber numberWithBool:YES];
+                self.cliente.accessToken = [jsonTokens objectForKey:@"access_token"];
+                self.cliente.refreshToken = [jsonTokens objectForKey:@"refresh_token"];
 
                 [self.managedObjectContext save:nil];
                 [self.loading stopAnimating];

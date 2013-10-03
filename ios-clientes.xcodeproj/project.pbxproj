@@ -17,6 +17,7 @@
 		805598A517999110008190F3 /* BVInversionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 805598A417999110008190F3 /* BVInversionViewController.m */; };
 		80851A9817871200004F3CC5 /* BVSucursalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80851A971787115F004F3CC5 /* BVSucursalInfoViewController.m */; };
 		8091C3891783768B0025F418 /* BVEditarPerfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8091C388178376790025F418 /* BVEditarPerfilViewController.m */; };
+		809551A717FD9750007157E7 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 809551A617FD9750007157E7 /* Usuario.m */; };
 		809556A3177CEF8700DACAA0 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556A2177CEF3E00DACAA0 /* CoreDataTableViewController.m */; };
 		809556AC177DDFFF00DACAA0 /* CommonDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556AB177DDFD100DACAA0 /* CommonDrawing.m */; };
 		809556AD177DE36400DACAA0 /* GradientBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 809556A9177DDF3D00DACAA0 /* GradientBackground.m */; };
@@ -52,7 +53,6 @@
 		80F76A9F178AFF2E00EBD503 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F76A9E178AFF0400EBD503 /* PhoneNumberFormatter.m */; };
 		80F9D68E17972E9C00E223F0 /* Ejecutivo+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D68D17972E9C00E223F0 /* Ejecutivo+Create.m */; };
 		80F9D69A179738D400E223F0 /* Sucursal.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D699179738D400E223F0 /* Sucursal.m */; };
-		80F9D6A0179738FC00E223F0 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D69F179738FC00E223F0 /* Usuario.m */; };
 		80F9D6A91798554700E223F0 /* Ejecutivo.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D6A81798554700E223F0 /* Ejecutivo.m */; };
 		80FFB4D31770CD01005DB06F /* BVRutTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FC577A17709278008CC3EB /* BVRutTextField.m */; };
 		80FFB4D91770DF2E005DB06F /* CommonAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFB4D81770DDA5005DB06F /* CommonAlgorithm.m */; };
@@ -87,6 +87,7 @@
 		80851A971787115F004F3CC5 /* BVSucursalInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSucursalInfoViewController.m; sourceTree = "<group>"; };
 		8091C387178376780025F418 /* BVEditarPerfilViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVEditarPerfilViewController.h; sourceTree = "<group>"; };
 		8091C388178376790025F418 /* BVEditarPerfilViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVEditarPerfilViewController.m; sourceTree = "<group>"; };
+		809551A617FD9750007157E7 /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Usuario.m; path = ../Usuario.m; sourceTree = "<group>"; };
 		809556A1177CEF3D00DACAA0 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		809556A2177CEF3E00DACAA0 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		809556A6177DDE6F00DACAA0 /* GradientBackgroundDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GradientBackgroundDelegate.h; sourceTree = "<group>"; };
@@ -141,7 +142,6 @@
 		80F9D698179738D400E223F0 /* Sucursal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sucursal.h; path = ../Sucursal.h; sourceTree = "<group>"; };
 		80F9D699179738D400E223F0 /* Sucursal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sucursal.m; path = ../Sucursal.m; sourceTree = "<group>"; };
 		80F9D69E179738FC00E223F0 /* Usuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Usuario.h; path = ../Usuario.h; sourceTree = "<group>"; };
-		80F9D69F179738FC00E223F0 /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Usuario.m; path = ../Usuario.m; sourceTree = "<group>"; };
 		80F9D6A71798554700E223F0 /* Ejecutivo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ejecutivo.h; path = ../Ejecutivo.h; sourceTree = "<group>"; };
 		80F9D6A81798554700E223F0 /* Ejecutivo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ejecutivo.m; path = ../Ejecutivo.m; sourceTree = "<group>"; };
 		80FC577917709278008CC3EB /* BVRutTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRutTextField.h; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 				80F9D698179738D400E223F0 /* Sucursal.h */,
 				80F9D699179738D400E223F0 /* Sucursal.m */,
 				80F9D69E179738FC00E223F0 /* Usuario.h */,
-				80F9D69F179738FC00E223F0 /* Usuario.m */,
+				809551A617FD9750007157E7 /* Usuario.m */,
 				80F9D6A71798554700E223F0 /* Ejecutivo.h */,
 				80F9D6A81798554700E223F0 /* Ejecutivo.m */,
 			);
@@ -513,12 +513,12 @@
 				80BDAB811772500300431A64 /* BVApiConnection.m in Sources */,
 				80FFB4D91770DF2E005DB06F /* CommonAlgorithm.m in Sources */,
 				805598A517999110008190F3 /* BVInversionViewController.m in Sources */,
-				80F9D6A0179738FC00E223F0 /* Usuario.m in Sources */,
 				805598A217998F62008190F3 /* RentabilidadLabel.m in Sources */,
 				80FFB4D31770CD01005DB06F /* BVRutTextField.m in Sources */,
 				80E056AC176900F100C15EC6 /* ios_clientes.xcdatamodeld in Sources */,
 				80F9D69A179738D400E223F0 /* Sucursal.m in Sources */,
 				80E056A6176900F100C15EC6 /* BVAppDelegate.m in Sources */,
+				809551A717FD9750007157E7 /* Usuario.m in Sources */,
 				80DDF8B317947D2400801817 /* BVEjecutivoViewController.m in Sources */,
 				80E056B2176900F100C15EC6 /* BVLoginViewController.m in Sources */,
 				80E056A2176900F100C15EC6 /* main.m in Sources */,
@@ -676,7 +676,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ios-clientes/ios-clientes-Prefix.pch";
@@ -698,7 +698,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ios-clientes/ios-clientes-Prefix.pch";

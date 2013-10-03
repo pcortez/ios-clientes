@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3383" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F37" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Ejecutivo" representedClassName="Ejecutivo" syncable="YES">
         <attribute name="apellidos" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,6 +40,7 @@
         <relationship name="trabajan" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ejecutivo" inverseName="sucursal" inverseEntity="Ejecutivo" syncable="YES"/>
     </entity>
     <entity name="Usuario" representedClassName="Usuario">
+        <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="apellido" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="autoLogin" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="celular" optional="YES" attributeType="String" syncable="YES"/>
@@ -47,6 +48,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="refreshToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rut" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ultimaModificacion" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="ultimoLogin" optional="YES" attributeType="Date">
@@ -57,9 +59,9 @@
         <userInfo/>
     </entity>
     <elements>
-        <element name="Productos" positionX="-126" positionY="54" width="128" height="210"/>
-        <element name="Sucursal" positionX="81" positionY="63" width="128" height="223"/>
-        <element name="Usuario" positionX="-153" positionY="387" width="128" height="223"/>
-        <element name="Ejecutivo" positionX="108" positionY="407" width="128" height="178"/>
+        <element name="Ejecutivo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Productos" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Sucursal" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Usuario" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

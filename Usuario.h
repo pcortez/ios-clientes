@@ -2,7 +2,7 @@
 //  Usuario.h
 //  ios-clientes
 //
-//  Created by Pedro Cortez on 17-07-13.
+//  Created by Pedro Cortez on 03-10-13.
 //  Copyright (c) 2013 Bice Vida. All rights reserved.
 //
 
@@ -23,6 +23,8 @@
 @property (nonatomic, retain) NSString * rut;
 @property (nonatomic, retain) NSDate * ultimaModificacion;
 @property (nonatomic, retain) NSDate * ultimoLogin;
+@property (nonatomic, retain) NSString * accessToken;
+@property (nonatomic, retain) NSString * refreshToken;
 @property (nonatomic, retain) NSSet *tieneMuchosProductos;
 @property (nonatomic, retain) Ejecutivo *tieneUnEjecutivo;
 @end
