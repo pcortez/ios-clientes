@@ -8,9 +8,11 @@
 
 #import "Ejecutivo+Create.h"
 #import "Sucursal+Create.h"
+#import "Usuario+Create.h"
 
 @implementation Ejecutivo (Create)
-+(Ejecutivo *)fromDictionary:(NSDictionary *)data inManagedObjectContext:(NSManagedObjectContext *)context
++(Ejecutivo *)fromDictionary:(NSDictionary *)data andCliente:(Usuario *)cliente inManagedObjectContext:(NSManagedObjectContext *)context
+//+(Ejecutivo *)fromDictionary:(NSDictionary *)data inManagedObjectContext:(NSManagedObjectContext *)context
 {
     if (!data)return nil;
     
@@ -42,18 +44,20 @@
         if([data objectForKey:@"telefono"]) [[data objectForKey:@"telefono"] lowercaseString];
     }
     
+    
     if([data objectForKey:@"sucursalCodigo"])
-        ejecutivo.sucursal = [Sucursal fromCode:[data objectForKey:@"sucursalCodigo"] inManagedObjectContext:context];
+        ejecutivo.sucursal = [Sucursal fromCode:[data objectForKey:@"sucursalCodigo"] andCliente:cliente inManagedObjectContext:context];
     if([data objectForKey:@"jefe"])
-        ejecutivo.jefe = [Ejecutivo fromDictionary:[data objectForKey:@"jefe"] andJefe:ejecutivo inManagedObjectContext:context];
+        ejecutivo.jefe = [Ejecutivo fromDictionary:[data objectForKey:@"jefe"] cliente:cliente andJefe:ejecutivo inManagedObjectContext:context];
+    /*
     if([data objectForKey:@"imgURL"]){
         NSString *path = [self guardarImg:[data objectForKey:@"imgURL"] name:[data objectForKey:@"rut"]];
         if (path) ejecutivo.imgNombre = [self guardarImg:[data objectForKey:@"imgURL"] name:[data objectForKey:@"rut"]];
-    }
+    }*/
     return ejecutivo;
 }
 
-+(Ejecutivo *)fromDictionary:(NSDictionary *)data andJefe:(Ejecutivo *)empleado inManagedObjectContext:(NSManagedObjectContext *)context
++(Ejecutivo *)fromDictionary:(NSDictionary *)data cliente:(Usuario *)cliente andJefe:(Ejecutivo *)empleado inManagedObjectContext:(NSManagedObjectContext *)context
 {
     if (!data)return nil;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Ejecutivo"];
@@ -88,12 +92,13 @@
     }
     
     if([data objectForKey:@"sucursalCodigo"])
-        ejecutivo.sucursal = [Sucursal fromCode:[data objectForKey:@"sucursalCodigo"] inManagedObjectContext:context];
+        ejecutivo.sucursal = [Sucursal fromCode:[data objectForKey:@"sucursalCodigo"] andCliente:cliente inManagedObjectContext:context];
+    /*
     if([data objectForKey:@"imgURL"]){
         NSString *path = [self guardarImg:[data objectForKey:@"imgURL"] name:[data objectForKey:@"rut"]];
         if (path) ejecutivo.imgNombre = [self guardarImg:[data objectForKey:@"imgURL"] name:[data objectForKey:@"rut"]];
     }
-    
+    */
     request = [NSFetchRequest fetchRequestWithEntityName:@"Ejecutivo"];
     request.predicate = [NSPredicate predicateWithFormat:@"rut == %@",empleado.rut];
     sort = [NSSortDescriptor sortDescriptorWithKey:@"nombres" ascending:YES];

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BiceVidaApiURL</key>
-	<string>http://desa-wlogic01.bicevida.cl:7312/RESTproject/api</string>
+	<string>https://10.170.6.71:3443/api/rest</string>
 	<key>BiceVidaOauth2TokenURL</key>
 	<string>https://10.170.6.71:4443/oauth2/token</string>
 	<key>BiceVidaOauth2Refresh</key>

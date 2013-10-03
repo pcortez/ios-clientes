@@ -36,7 +36,7 @@
     [self.view addGestureRecognizer:gestureRecognizer];
     
     //Revisando datos de usuario en db local
-    /*
+
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Usuario"];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"ultimoLogin" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sort];
@@ -45,13 +45,15 @@
     NSArray *matches = [self.managedObjectContext executeFetchRequest:request error:&error];
     if (matches && [matches count]>0){
         self.cliente = [matches lastObject];
+        [self login];
+        /*
         if (self.cliente.autoLogin) {
             self.usuario.text = self.cliente.rut;
             self.password.text = self.cliente.password;
             [self login];
         }
+         */
     }
-    */
 }
 
 
@@ -212,10 +214,12 @@
     //thread autenticacion
     dispatch_queue_t downloadQueue = dispatch_queue_create("autentificacion web service", NULL);
     dispatch_async(downloadQueue, ^{
-        //BOOL isValidado = userAuthentication([self.usuario getRutConVerificador:NO], self.password.text);
-        NSDictionary *jsonTokens = userAuthentication([self.usuario getRutConVerificador:NO], self.password.text);
+        NSDictionary *jsonTokens = nil;
         NSDictionary *jsonData = nil;
-        if (jsonTokens) jsonData = userData([self.usuario getRutConVerificador:NO]);
+
+        if (self.cliente && [self.cliente.refreshToken length]>0) jsonTokens = refreshUser(self.cliente.refreshToken);
+        else jsonTokens = userAuthentication([self.usuario getRutConVerificador:NO], self.password.text);
+        if (jsonTokens) jsonData = userData([jsonTokens objectForKey:@"access_token"]);
         
         //este thread no se ejecuta antes de terminar el primer thread creado
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -240,6 +244,11 @@
                 self.usuario.hidden = NO;
                 self.password.hidden = NO;
                 self.entrar.hidden = NO;
+                if (self.cliente && [self.cliente.refreshToken length]>0){
+                    self.cliente.refreshToken = nil;
+                    self.cliente.accessToken = nil;
+                    [self.managedObjectContext save:nil];
+                }
             }
         });
     });
@@ -266,6 +275,7 @@
 
         [[[navController viewControllers] objectAtIndex:0] performSelector:@selector(setCliente:) withObject:self.cliente];
         [[[navController viewControllers] objectAtIndex:1] performSelector:@selector(setCliente:) withObject:self.cliente];
+        [[[navController viewControllers] objectAtIndex:2] performSelector:@selector(setCliente:) withObject:self.cliente];
         [[[navController viewControllers] objectAtIndex:3] performSelector:@selector(setCliente:) withObject:self.cliente];
     }
 }

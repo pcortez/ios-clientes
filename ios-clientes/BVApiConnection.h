@@ -11,9 +11,12 @@
 @interface BVApiConnection : NSObject
 
 NSString* base64String(NSString *str);
+
 NSDictionary* userAuthentication(NSString *usuario, NSString *password);
-NSDictionary* userData(NSString *usuario);
-NSDictionary* getSucursales();
-NSDictionary* getSucursal(NSString *codigo);
+NSDictionary* refreshUser(NSString *refreshToken);
+
+NSDictionary* userData(NSString *accessToken);
+NSDictionary* getSucursales(NSString *accessToken);
+NSDictionary* getSucursal(NSString *accessToken,NSString *codigo);
 NSDictionary* getEjecutivoDeCuenta(NSString *rutCliente);
 @end

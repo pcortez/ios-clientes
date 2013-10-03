@@ -17,7 +17,6 @@
 
 
 NSString* base64String(NSString *str)
-//+ (NSString *)base64String:(NSString *)str
 {
     NSData *theData = [str dataUsingEncoding: NSASCIIStringEncoding];
     const uint8_t* input = (const uint8_t*)[theData bytes];
@@ -50,44 +49,6 @@ NSString* base64String(NSString *str)
     return [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 }
 
-/*
-BOOL userAuthentication(NSString *usuario, NSString *password)
-{
-    if (usuario && [usuario length]>4) {
-        NSError *error;
-        
-        NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/login/",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"]]];
-        
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:20];
-        
-        [request setHTTPMethod:@"POST"];
-        // This is how we set header fields
-        [request setValue:@"application/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-        // Convert your data and set your request's HTTPBody property
-        request.HTTPBody = [[NSString stringWithFormat:@"rut=%@&password=%@",usuario,password] dataUsingEncoding:NSUTF8StringEncoding];
-        
-        NSHTTPURLResponse *responseCode = nil;
-        NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-        
-        if (error) return NO;
-        if([responseCode statusCode] != 200){
-            NSLog(@"Error getting %@, HTTP status code %i", urlPath, [responseCode statusCode]);
-            return NO;
-        }
-        else{
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
-            if (error) return NO;
-            if ([json objectForKey:@"autentificado"])
-                return [[json objectForKey:@"autentificado"] boolValue];
-            else return NO;
-        }
-
-    }
-    else return NO;
-}
-*/
-
 NSDictionary* userAuthentication(NSString *usuario, NSString *password)
 {
     if (usuario && [usuario length]>4) {
@@ -112,7 +73,7 @@ NSDictionary* userAuthentication(NSString *usuario, NSString *password)
         if (error) return nil;
         if([responseCode statusCode] != 200){
             NSLog(@"Error getting %@, HTTP status code %i", urlPath, [responseCode statusCode]);
-            return NO;
+            return nil;
         }
         else{
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
@@ -120,80 +81,121 @@ NSDictionary* userAuthentication(NSString *usuario, NSString *password)
             if ([json objectForKey:@"access_token"] && [json objectForKey:@"refresh_token"]) return json;
             else return nil;
         }
-        
     }
     else return nil;
 }
 
-
-NSDictionary* userData(NSString *usuario)
+NSDictionary* refreshUser(NSString *refreshToken)
 {
-    usuario = [usuario substringWithRange:NSMakeRange(0,[usuario length]-2)];
-    if (usuario && [usuario length]>4) {
-        NSError *error;
+    NSError *error;
+    NSURL *urlPath = [NSURL URLWithString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaOauth2TokenURL"]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:20];
         
-        NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/cliente/%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"],usuario]];
+    [request setHTTPMethod:@"POST"];
+    // This is how we set header fields
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
+    NSString *authString = base64String([NSString stringWithFormat:@"%@:%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiPublicKey"],[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiPrivateKey"]]);
         
-        NSHTTPURLResponse *responseCode = nil;
-        NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    [request setValue:[NSString stringWithFormat:@"Basic %@",authString] forHTTPHeaderField:@"Authorization"];
+    // Convert your data and set your request's HTTPBody property
+    request.HTTPBody=[[NSString stringWithFormat:@"grant_type=refresh_token&refresh_token=%@",refreshToken] dataUsingEncoding:NSUTF8StringEncoding];
         
-        if (error) return nil;
-        if([responseCode statusCode] != 200){
-            NSLog(@"Error getting %@, HTTP status code %i", urlPath, [responseCode statusCode]);
+    NSHTTPURLResponse *responseCode = nil;
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+
+    if (error){
+        NSLog(@"Error getting %@: %@", urlPath, error);
+        return nil;
+    }
+    if([responseCode statusCode] != 200){
+        if([responseCode statusCode] == 401)NSLog(@"Unauthorize user, %@ HTTP status code %i", urlPath, [responseCode statusCode]);
+        else NSLog(@"Error getting %@, HTTP status code %i", urlPath, [responseCode statusCode]);
+        return nil;
+    }
+    else{
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
+        if (error){
+            NSLog(@"Error getting %@: %@", urlPath, error);
             return nil;
         }
-        else{
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
-            if (error) return nil;
-            if ([json objectForKey:@"rut"] && [json objectForKey:@"id"])
-                return json;
-            else return nil;
+        if ([json objectForKey:@"access_token"]){
+            return [[NSDictionary alloc] initWithObjectsAndKeys:[json objectForKey:@"access_token"], @"access_token", refreshToken, @"refresh_token",nil];
         }
+        else return nil;
     }
-    else return nil;
+
 }
 
-NSDictionary* getSucursales()
+
+NSDictionary* userData(NSString *accessToken)
+{
+    NSError *error;
+    NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/getCliente",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"]]];
+        
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
+    
+    [request setValue:[NSString stringWithFormat:@"Bearer %@",accessToken] forHTTPHeaderField:@"Authorization"];
+        
+    NSHTTPURLResponse *responseCode = nil;
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+        
+    if (error) return nil;
+    if([responseCode statusCode] != 200){
+        NSLog(@"%@",responseCode);
+        if([responseCode statusCode] == 401)NSLog(@"Unauthorize user, %@ HTTP status code %i", urlPath, [responseCode statusCode]);
+        else NSLog(@"Error getting %@, HTTP status code %i", urlPath, [responseCode statusCode]);
+        return nil;
+    }
+    else{
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
+        if (error) return nil;
+        if ([json objectForKey:@"rut"] && [json objectForKey:@"id"])
+            return json;
+        else return nil;
+    }
+}
+
+
+NSDictionary* getSucursales(NSString *accessToken)
 {
     NSError *error;
         
     NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/sucursales",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"]]];
         
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
+
+    [request setValue:[NSString stringWithFormat:@"Bearer %@",accessToken] forHTTPHeaderField:@"Authorization"];
+    NSHTTPURLResponse *responseCode = nil;
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
         
-        NSHTTPURLResponse *responseCode = nil;
-        NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-        
+    if (error){
+        NSLog(@"error: %@",error.description);
+        return nil;
+    }
+    if([responseCode statusCode] != 200){
+        if([responseCode statusCode] == 401)NSLog(@"Unauthorize user, %@ HTTP status code %i", urlPath, [responseCode statusCode]);
+        else NSLog(@"Error getting %@, HTTP status code %i", urlPath, [responseCode statusCode]);
+        return nil;
+    }
+    else{
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
         if (error){
             NSLog(@"error: %@",error.description);
             return nil;
         }
-        if([responseCode statusCode] != 200){
-            NSLog(@"Error getting %@, HTTP status code %i", urlPath, [responseCode statusCode]);
-            return nil;
-        }
-        else{
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
-            if (error){
-                NSLog(@"error: %@",error.description);
-                return nil;
-            }
-     
-            return json;
-        
-        }
+        return json;
+    }
 }
 
-NSDictionary* getSucursal(NSString *codigo)
+NSDictionary* getSucursal(NSString *accessToken,NSString *codigo)
 {
     NSError *error;
     
     NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/sucursal/%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"],codigo]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
-    
+    [request setValue:[NSString stringWithFormat:@"Bearer %@",accessToken] forHTTPHeaderField:@"Authorization"];
     NSHTTPURLResponse *responseCode = nil;
     NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
     
@@ -242,7 +244,6 @@ NSDictionary* getEjecutivoDeCuenta(NSString *rutCliente)
         }
     }
     else return nil;
-    
 }
 
 @end

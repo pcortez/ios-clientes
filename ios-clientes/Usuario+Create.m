@@ -87,7 +87,7 @@
     
     
     if ([data objectForKey:@"ejecutivo"])
-        client.tieneUnEjecutivo = [Ejecutivo fromDictionary:[data objectForKey:@"ejecutivo"] inManagedObjectContext:context];
+        client.tieneUnEjecutivo = [Ejecutivo fromDictionary:[data objectForKey:@"ejecutivo"] andCliente:client inManagedObjectContext:context];
     
     for (NSDictionary *product in [data objectForKey:@"productos"]) {
         Productos *p = [Productos fromDictionary:product isOldData:[client.ultimaModificacion compare:date] inManagedObjectContext:context];

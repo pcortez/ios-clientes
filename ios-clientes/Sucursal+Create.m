@@ -8,6 +8,7 @@
 
 #import "Sucursal+Create.h"
 #import "BVApiConnection.h"
+#import "Usuario+Create.h"
 
 @implementation Sucursal (Create)
 
@@ -62,7 +63,8 @@
     return sucursal;
 }
 
-+(Sucursal *)fromCode:(NSString *)code inManagedObjectContext:(NSManagedObjectContext *)context
+
++(Sucursal *)fromCode:(NSString *)code andCliente:(Usuario*)cliente inManagedObjectContext:(NSManagedObjectContext *)context
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Sucursal"];
     request.predicate = [NSPredicate predicateWithFormat:@"codigo == %@",code];
@@ -79,7 +81,7 @@
         return nil;
     } else if([matches count]==0) {
         //handler error
-        NSDictionary *json = getSucursal(code);
+        NSDictionary *json = getSucursal(code,cliente.accessToken);
         if (json) return [Sucursal fromDictionary:json inManagedObjectContext:context];
         NSLog(@"Error no existe, hay que crearlo: 0");
         return nil;

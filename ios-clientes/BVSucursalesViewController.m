@@ -72,7 +72,7 @@
     //se cargan aqui ya que cambian muy poco los datos
     dispatch_queue_t downloadQueue = dispatch_queue_create("autentificacion web service", NULL);
     dispatch_async(downloadQueue, ^{
-        NSDictionary *jsonSucursales = getSucursales();
+        NSDictionary *jsonSucursales = getSucursales(self.cliente.accessToken);
         dispatch_async(dispatch_get_main_queue(), ^{
             //sucursales
             if (jsonSucursales) {

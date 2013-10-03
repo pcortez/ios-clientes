@@ -7,8 +7,10 @@
 //
 
 #import "Sucursal.h"
+#import "Usuario+Create.h"
 
 @interface Sucursal (Create)
 +(Sucursal *)fromDictionary:(NSDictionary *)data inManagedObjectContext:(NSManagedObjectContext *)context;
-+(Sucursal *)fromCode:(NSString *)code inManagedObjectContext:(NSManagedObjectContext *)context;
+//+(Sucursal *)fromCode:(NSString *)code inManagedObjectContext:(NSManagedObjectContext *)context;
++(Sucursal *)fromCode:(NSString *)code andCliente:(Usuario*)cliente inManagedObjectContext:(NSManagedObjectContext *)context;
 @end
