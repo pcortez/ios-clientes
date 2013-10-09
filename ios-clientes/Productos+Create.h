@@ -11,7 +11,7 @@
 @interface Productos (Create)
 
 +(Productos *)fromDictionary:(NSDictionary *)data isOldData:(int) isOldData inManagedObjectContext:(NSManagedObjectContext *)context;
-
+- (void) setPolizaFromDictionary: (NSDictionary *) data inManagedObjectContext:(NSManagedObjectContext *)context;
 //-(double)getDoublePortfolioBalance:(NSManagedObjectContext *)context;
 //-(NSNumber *)getNSNumberPortfolioBalance:(NSManagedObjectContext *)context;
 //-(double)portfolioRescueTheAmountOf:(double)amount inContext: (NSManagedObjectContext *)context;

@@ -192,7 +192,7 @@ NSDictionary* getSucursal(NSString *accessToken,NSString *codigo)
 {
     NSError *error;
     
-    NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/sucursal/%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"],codigo]];
+    NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/sucursal/%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"], [codigo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
     [request setValue:[NSString stringWithFormat:@"Bearer %@",accessToken] forHTTPHeaderField:@"Authorization"];
@@ -216,6 +216,39 @@ NSDictionary* getSucursal(NSString *accessToken,NSString *codigo)
         return ([json objectForKey:@"codigo"]?json:nil);
     }
 }
+
+
+NSDictionary* getApvInversion(NSString *codigoContrato, NSString *codigoProducto, NSString *accessToken)
+{
+    NSError *error;
+    
+    NSURL *urlPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@/getApvInversion?contrato=%@&ramo=%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BiceVidaApiURL"],codigoContrato,codigoProducto]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlPath cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
+    
+    [request setValue:[NSString stringWithFormat:@"Bearer %@",accessToken] forHTTPHeaderField:@"Authorization"];
+    NSHTTPURLResponse *responseCode = nil;
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    
+    if (error){
+        NSLog(@"error: %@",error.description);
+        return nil;
+    }
+    if([responseCode statusCode] != 200){
+        if([responseCode statusCode] == 401)NSLog(@"Unauthorize user, %@ HTTP status code %i", urlPath, [responseCode statusCode]);
+        else NSLog(@"Error getting %@, HTTP status code %i", urlPath, [responseCode statusCode]);
+        return nil;
+    }
+    else{
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
+        if (error){
+            NSLog(@"error: %@",error.description);
+            return nil;
+        }
+        return json;
+    }
+}
+
 
 NSDictionary* getEjecutivoDeCuenta(NSString *rutCliente)
 {

@@ -221,6 +221,7 @@
         else jsonTokens = userAuthentication([self.usuario getRutConVerificador:NO], self.password.text);
         if (jsonTokens) jsonData = userData([jsonTokens objectForKey:@"access_token"]);
         
+        
         //este thread no se ejecuta antes de terminar el primer thread creado
         dispatch_async(dispatch_get_main_queue(), ^{
             if (jsonTokens && jsonData) {

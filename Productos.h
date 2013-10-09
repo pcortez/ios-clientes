@@ -2,14 +2,14 @@
 //  Productos.h
 //  ios-clientes
 //
-//  Created by Pedro Cortez on 27-06-13.
+//  Created by Pedro Cortez on 08-10-13.
 //  Copyright (c) 2013 Bice Vida. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Usuario;
+@class PolizaItem, Usuario;
 
 @interface Productos : NSManagedObject
 
@@ -24,5 +24,14 @@
 @property (nonatomic, retain) NSDate * vigenciaInicio;
 @property (nonatomic, retain) NSDate * vigenciaTermino;
 @property (nonatomic, retain) Usuario *tieneUnCliente;
+@property (nonatomic, retain) NSSet *tieneUnaPoliza;
+@end
+
+@interface Productos (CoreDataGeneratedAccessors)
+
+- (void)addTieneUnaPolizaObject:(PolizaItem *)value;
+- (void)removeTieneUnaPolizaObject:(PolizaItem *)value;
+- (void)addTieneUnaPoliza:(NSSet *)values;
+- (void)removeTieneUnaPoliza:(NSSet *)values;
 
 @end

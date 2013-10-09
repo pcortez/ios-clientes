@@ -7,7 +7,6 @@
 //
 
 #import "BVProductosViewController.h"
-#import "BVEditarPerfilViewController.h"
 #import "Productos+Create.h"
 #import "GradientBackgroundHeader.h"
 
@@ -84,20 +83,33 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProductoCell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
     Productos *producto = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    UITableViewCell *cell;
+    if ([producto.nombre  isEqual: @"APV"])
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ApvCell" forIndexPath:indexPath];
+    else
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ProductoCell" forIndexPath:indexPath];
+
     cell.textLabel.text = [producto.nombre capitalizedString];
     //[UIFont preferredFontForTextStyle:UIFontDescriptorTraitExpanded];
     cell.textLabel.font = [UIFont systemFontOfSize:20.0f];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Póliza: %@",[producto.contratoCodigo uppercaseString]];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:14.0f];
     
+        return cell;
+}
+
+//
+//segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if ([[segue identifier] isEqualToString:@"ApvInversionSegue"]) {
+        if ([segue.destinationViewController respondsToSelector:@selector(setCliente:)] && [segue.destinationViewController respondsToSelector:@selector(setProducto:)]) {
+            [segue.destinationViewController performSelector:@selector(setCliente:) withObject:self.cliente];
+            [segue.destinationViewController performSelector:@selector(setProducto:) withObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        }
+    }
 }
 
 #pragma mark - Gradient UIView delegate

@@ -66,6 +66,7 @@
 
 +(Sucursal *)fromCode:(NSString *)code andCliente:(Usuario*)cliente inManagedObjectContext:(NSManagedObjectContext *)context
 {
+    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Sucursal"];
     request.predicate = [NSPredicate predicateWithFormat:@"codigo == %@",code];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"nombre" ascending:YES];
@@ -81,7 +82,7 @@
         return nil;
     } else if([matches count]==0) {
         //handler error
-        NSDictionary *json = getSucursal(code,cliente.accessToken);
+        NSDictionary *json = getSucursal(cliente.accessToken, code);
         if (json) return [Sucursal fromDictionary:json inManagedObjectContext:context];
         NSLog(@"Error no existe, hay que crearlo: 0");
         return nil;
@@ -93,6 +94,5 @@
         return [matches lastObject];
     }
 }
-
 
 @end

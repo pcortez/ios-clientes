@@ -19,4 +19,5 @@ NSDictionary* userData(NSString *accessToken);
 NSDictionary* getSucursales(NSString *accessToken);
 NSDictionary* getSucursal(NSString *accessToken,NSString *codigo);
 NSDictionary* getEjecutivoDeCuenta(NSString *rutCliente);
+NSDictionary* getApvInversion(NSString *codigoContrato, NSString *codigoProducto, NSString *accessToken);
 @end

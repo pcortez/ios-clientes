@@ -2,11 +2,12 @@
 //  Productos.m
 //  ios-clientes
 //
-//  Created by Pedro Cortez on 27-06-13.
+//  Created by Pedro Cortez on 08-10-13.
 //  Copyright (c) 2013 Bice Vida. All rights reserved.
 //
 
 #import "Productos.h"
+#import "PolizaItem.h"
 #import "Usuario.h"
 
 
@@ -23,5 +24,6 @@
 @dynamic vigenciaInicio;
 @dynamic vigenciaTermino;
 @dynamic tieneUnCliente;
+@dynamic tieneUnaPoliza;
 
 @end

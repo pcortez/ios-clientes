@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F37" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Ejecutivo" representedClassName="Ejecutivo" syncable="YES">
         <attribute name="apellidos" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,6 +12,26 @@
         <relationship name="sucursal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sucursal" inverseName="trabajan" inverseEntity="Sucursal" syncable="YES"/>
         <relationship name="tieneVariosClientes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Usuario" inverseName="tieneUnEjecutivo" inverseEntity="Usuario" syncable="YES"/>
     </entity>
+    <entity name="Fondo" syncable="YES">
+        <attribute name="codigo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="distribucion" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rentabilidad" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="saldo" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="valorCuota" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="tieneUnProducto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductoApv" inverseName="portafolio" inverseEntity="ProductoApv" syncable="YES"/>
+    </entity>
+    <entity name="PolizaItem" representedClassName="PolizaItem" syncable="YES">
+        <attribute name="categoria" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valor" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tieneUnProducto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Productos" inverseName="tieneUnaPoliza" inverseEntity="Productos" syncable="YES"/>
+    </entity>
+    <entity name="ProductoApv" syncable="YES">
+        <attribute name="codigo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rentabilidad" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="portafolio" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Fondo" inverseName="tieneUnProducto" inverseEntity="Fondo" syncable="YES"/>
+    </entity>
     <entity name="Productos" representedClassName="Productos" syncable="YES">
         <attribute name="codigo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contratoCodigo" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,6 +43,7 @@
         <attribute name="rentabilidad" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="vigenciaInicio" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="vigenciaTermino" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="tieneUnaPoliza" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PolizaItem" inverseName="tieneUnProducto" inverseEntity="PolizaItem" syncable="YES"/>
         <relationship name="tieneUnCliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Usuario" inverseName="tieneMuchosProductos" inverseEntity="Usuario" syncable="YES"/>
     </entity>
     <entity name="Sucursal" representedClassName="Sucursal" syncable="YES">
@@ -58,9 +79,12 @@
         <userInfo/>
     </entity>
     <elements>
-        <element name="Ejecutivo" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Productos" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Sucursal" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Usuario" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Ejecutivo" positionX="261" positionY="171" width="128" height="195"/>
+        <element name="Productos" positionX="-56" positionY="-189" width="128" height="223"/>
+        <element name="Sucursal" positionX="-74" positionY="126" width="128" height="225"/>
+        <element name="Usuario" positionX="288" positionY="-198" width="128" height="240"/>
+        <element name="PolizaItem" positionX="-252" positionY="-81" width="128" height="103"/>
+        <element name="Fondo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ProductoApv" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

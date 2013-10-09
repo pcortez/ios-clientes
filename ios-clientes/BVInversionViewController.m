@@ -10,12 +10,35 @@
 #import "RentabilidadLabel.h"
 #import "DineroLabel.h"
 #import "GradientBackgroundHeader.h"
+#import "BVApiConnection.h"
+#import "Productos+Create.h"
 
 @interface BVInversionViewController ()
 
 @end
 
 @implementation BVInversionViewController
+
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
+- (void)setupFetchResultsController
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Fondo"];
+    request.predicate = [NSPredicate predicateWithFormat:@"tieneUnProducto.contratoCodigo == %@ AND saldo>0.0",self.producto.contratoCodigo];
+    request.sortDescriptors = [NSArray arrayWithObjects:
+                               [NSSortDescriptor sortDescriptorWithKey:@"saldo" ascending:NO],
+                               [NSSortDescriptor sortDescriptorWithKey:@"nombre" ascending:YES],
+                               nil];
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.producto.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,7 +52,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = self.producto.nombre;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self loadData];
 
 }
 
@@ -110,7 +135,7 @@
     }
     else if ([indexPath section]==2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"PolizaCell" forIndexPath:indexPath];
-        [(UILabel *)[cell viewWithTag:10] setText:@"APV-70001"];
+        [(UILabel *)[cell viewWithTag:10] setText:self.producto.contratoCodigo];
     }
     else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"FondoCell" forIndexPath:indexPath];
@@ -143,6 +168,29 @@
 -(float)getWidth
 {
     return self.tableView.frame.size.width;
+}
+
+- (void) loadData
+{
+    //thread autenticacion
+    dispatch_queue_t downloadQueue = dispatch_queue_create("descargar poliza y producto APV", NULL);
+    dispatch_async(downloadQueue, ^{
+        NSDictionary *jsonData = getApvInversion(self.producto.contratoCodigo, self.producto.codigo, self.cliente.accessToken);
+        //NSLog(@"%@", jsonData);
+        [self.producto setPolizaFromDictionary:jsonData inManagedObjectContext:self.managedObjectContext];
+        [self.managedObjectContext save:nil];
+
+        //este thread no se ejecuta antes de terminar el primer thread creado
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (jsonData) {
+                [self.producto setPolizaFromDictionary:jsonData inManagedObjectContext:self.managedObjectContext];
+                [self.managedObjectContext save:nil];
+            }
+            else {
+                //hacer algo
+            }
+        });
+    });
 }
 /*
 // Override to support conditional editing of the table view.
@@ -183,16 +231,19 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if ([[segue identifier] isEqualToString:@"PolizaApvSegue"]) {
+        if ([segue.destinationViewController respondsToSelector:@selector(setProducto:)]) {
+            [segue.destinationViewController performSelector:@selector(setProducto:) withObject:self.producto];
+        }
+    }
 }
 
- */
 
 @end

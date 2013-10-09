@@ -7,6 +7,7 @@
 //
 
 #import "Productos+Create.h"
+#import "PolizaItem+Create.h"
 
 @implementation Productos (Create)
 
@@ -82,6 +83,15 @@
     }
     
     return product;
+}
+
+
+- (void) setPolizaFromDictionary: (NSDictionary *) data inManagedObjectContext:(NSManagedObjectContext *)context{
+    
+    if (data) {
+        self.tieneUnaPoliza = [PolizaItem createPolizaFromDictionary:data withContratoCodigo:self.contratoCodigo inManagedObjectContext:context];
+    }
+    
 }
 
 @end
